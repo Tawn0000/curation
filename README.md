@@ -1,2 +1,2 @@
 # curation
-策展微信小程序(Spring boot + SQLserver)
+策展 微信小程序(Spring boot + SQLserver)
