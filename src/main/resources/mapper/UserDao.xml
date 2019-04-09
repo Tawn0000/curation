@@ -5,11 +5,11 @@
         <select id = "queryUser" resultType = "io.github.tawn0000.curation.entity.User">
             SELECT *
             FROM [dbo].[User]
-            ORDER BY U_id ASC
+            ORDER BY u_id ASC
         </select>
         <select id="queryUserById" resultType="io.github.tawn0000.curation.entity.User">
             SELECT *
             FROM [dbo].[User]
-            WHERE U_id=#{userId}
+            WHERE u_id=#{userId}
         </select>
 </mapper>

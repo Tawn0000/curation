@@ -3,5 +3,15 @@
 
 <mapper namespace = "io.github.tawn0000.curation.dao.EtagDao">
     <select id = "queryEtag" resultType = "io.github.tawn0000.curation.entity.Etag">
+        select *
+        from [dbo].[e_tag]
+        ORDER BY t_id ASC
     </select>
+
+    <select id="queryE_agByid" resultType = "io.github.tawn0000.curation.entity.Etag">
+        select *
+        from [dbo].[e_tag]
+        where  id = #{etagId}0
+    </select>
+
 </mapper>

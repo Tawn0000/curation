@@ -3,5 +3,39 @@
 
 <mapper namespace = "io.github.tawn0000.curation.dao.CommentDao">
     <select id = "queryComment" resultType = "io.github.tawn0000.curation.entity.Comment">
+        select *
+        from [dbo].[Comment]
+        ORDER BY c_id ASC
     </select>
+
+    <select id="queryCommentByid" resultType = "io.github.tawn0000.curation.entity.Comment">
+        select *
+        from [dbo].[Comment]
+        where c_id = #{commentId}
+    </select>
+
+    <insert id="insertComment" useGeneratedKeys="true" keyProperty="id" keyColumn="c_id" parameterType= "io.github.tawn0000.curation.entity.Comment">
+        insert into
+              [dbo].[Comment](u_id,e_id,e1_id,e_date,c_content,c_image)
+        values (#{uid},#{eid},#{e1id},#{date},#{content},#{image})
+    </insert>
+
+    <update id="updateComment"parameterType= "io.github.tawn0000.curation.entity.Comment">
+        update [dbo].[Comment]
+        <set>
+            u_id = #{uid}
+            e_id = #{eid}
+            e1_id = #{e1id}
+            e_date = #{date}
+            c_content = #{content}
+            c_image = #{image}
+        </set>
+    </update>
+
+    <delete id="deleteComment">
+        delete from
+                [dbo].[Comment]
+        where c_id = #{id}
+    </delete>
+
 </mapper>
