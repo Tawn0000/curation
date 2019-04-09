@@ -12,9 +12,9 @@ public class User {
     // 头像
     private String uIcon;
     // 蓝牙权限(开/关）
-    private Boolean uBluetoothstauts;
+    private String uBluetoothstauts;
     // 是否填写过调查问卷
-    private Boolean uQuarystatus;
+    private String uQuarystatus;
     // 喜好标签
     private String uTag;
 
@@ -58,19 +58,19 @@ public class User {
         this.uIcon = uIcon;
     }
 
-    public Boolean getuBluetoothstauts() {
+    public String getuBluetoothstauts() {
         return uBluetoothstauts;
     }
 
-    public void setuBluetoothstauts(Boolean uBluetoothstauts) {
+    public void setuBluetoothstauts(String uBluetoothstauts) {
         this.uBluetoothstauts = uBluetoothstauts;
     }
 
-    public Boolean getuQuarystatus() {
+    public String getuQuarystatus() {
         return uQuarystatus;
     }
 
-    public void setuQuarystatus(Boolean uQuarystatus) {
+    public void setuQuarystatus(String uQuarystatus) {
         this.uQuarystatus = uQuarystatus;
     }
 

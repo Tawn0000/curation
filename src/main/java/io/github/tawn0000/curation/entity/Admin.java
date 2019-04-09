@@ -2,53 +2,53 @@ package io.github.tawn0000.curation.entity;
 
 public class Admin {
     //主键ID
-    private Long id;
+    private int aId;
     //微信号
-    private String wc;
+    private String wcId;
     //密码
-    private String password;
+    private String aPassword;
     //姓名
-    private String name;
+    private String aName;
     //权限级别(0-1,0代表最高级别，1代表可以添加展览信息）
-    private int level;
+    private int aLevel;
 
-    public Long getId() {
-        return id;
+    public int getaId() {
+        return aId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setaId(int aId) {
+        this.aId = aId;
     }
 
-    public String getWc() {
-        return wc;
+    public String getWcId() {
+        return wcId;
     }
 
-    public void setWc(String wc) {
-        this.wc = wc;
+    public void setWcId(String wcId) {
+        this.wcId = wcId;
     }
 
-    public String getPassword() {
-        return password;
+    public String getaPassword() {
+        return aPassword;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setaPassword(String aPassword) {
+        this.aPassword = aPassword;
     }
 
-    public String getName() {
-        return name;
+    public String getaName() {
+        return aName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setaName(String aName) {
+        this.aName = aName;
     }
 
-    public int getLevel() {
-        return level;
+    public int getaLevel() {
+        return aLevel;
     }
 
-    public void setLevel(int level) {
-        this.level = level;
+    public void setaLevel(int aLevel) {
+        this.aLevel = aLevel;
     }
 }

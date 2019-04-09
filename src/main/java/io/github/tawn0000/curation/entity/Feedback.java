@@ -2,43 +2,43 @@ package io.github.tawn0000.curation.entity;
 
 public class Feedback {
     //自增编号
-    private Long id;
+    private Long fId;
     //用户编号
-    private Long uid;
+    private Long uId;
     //反馈内容
-    private String content;
+    private String fContent;
     //图片
-    private String image;
+    private String fImage;
 
-    public Long getId() {
-        return id;
+    public Long getfId() {
+        return fId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setfId(Long fId) {
+        this.fId = fId;
     }
 
-    public Long getUid() {
-        return uid;
+    public Long getuId() {
+        return uId;
     }
 
-    public void setUid(Long uid) {
-        this.uid = uid;
+    public void setuId(Long uId) {
+        this.uId = uId;
     }
 
-    public String getContent() {
-        return content;
+    public String getfContent() {
+        return fContent;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setfContent(String fContent) {
+        this.fContent = fContent;
     }
 
-    public String getImage() {
-        return image;
+    public String getfImage() {
+        return fImage;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setfImage(String fImage) {
+        this.fImage = fImage;
     }
 }

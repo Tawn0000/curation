@@ -2,33 +2,33 @@ package io.github.tawn0000.curation.entity;
 
 public class Etag {
     //自增编号
-    private Long id;
+    private Long etId;
     //展览编号
-    private Long eid;
+    private Long eId;
     //展览标签
-    private String tags;
+    private String eTags;
 
-    public Long getId() {
-        return id;
+    public Long getEtId() {
+        return etId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setEtId(Long etId) {
+        this.etId = etId;
     }
 
-    public Long getEid() {
-        return eid;
+    public Long geteId() {
+        return eId;
     }
 
-    public void setEid(Long eid) {
-        this.eid = eid;
+    public void seteId(Long eId) {
+        this.eId = eId;
     }
 
-    public String getTags() {
-        return tags;
+    public String geteTags() {
+        return eTags;
     }
 
-    public void setTags(String tags) {
-        this.tags = tags;
+    public void seteTags(String eTags) {
+        this.eTags = eTags;
     }
 }

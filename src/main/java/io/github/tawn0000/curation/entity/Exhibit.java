@@ -4,63 +4,73 @@ import java.util.Date;
 
 public class Exhibit {
     //自增展品编号
-    private Long id;
+    private Long e1Id;
+    //展览编号
+    private Long eId;
     //展品名称
-    private String name;
+    private String e1Name;
     //作者
-    private String author;
+    private String e1Author;
     //年代
-    private Date date;
+    private Date e1Date;
     //图片
-    private String image;
+    private String e1Image;
     //内容介绍
-    private String description;
+    private String e1Description;
 
-    public Long getId() {
-        return id;
+    public Long getE1Id() {
+        return e1Id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setE1Id(Long e1Id) {
+        this.e1Id = e1Id;
     }
 
-    public String getName() {
-        return name;
+    public Long geteId() {
+        return eId;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void seteId(Long eId) {
+        this.eId = eId;
     }
 
-    public String getAuthor() {
-        return author;
+    public String getE1Name() {
+        return e1Name;
     }
 
-    public void setAuthor(String author) {
-        this.author = author;
+    public void setE1Name(String e1Name) {
+        this.e1Name = e1Name;
     }
 
-    public Date getDate() {
-        return date;
+    public String getE1Author() {
+        return e1Author;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setE1Author(String e1Author) {
+        this.e1Author = e1Author;
     }
 
-    public String getImage() {
-        return image;
+    public Date getE1Date() {
+        return e1Date;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setE1Date(Date e1Date) {
+        this.e1Date = e1Date;
     }
 
-    public String getDescription() {
-        return description;
+    public String getE1Image() {
+        return e1Image;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setE1Image(String e1Image) {
+        this.e1Image = e1Image;
+    }
+
+    public String getE1Description() {
+        return e1Description;
+    }
+
+    public void setE1Description(String e1Description) {
+        this.e1Description = e1Description;
     }
 }

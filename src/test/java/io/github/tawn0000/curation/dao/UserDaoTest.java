@@ -29,14 +29,14 @@ public class UserDaoTest {
     public void testAqueryUser() {
         List<User> userList = userDao.queryUser();
         System.out.println(userList.get(0).getuId());
-        assertEquals(1, userList.size());
+        assertEquals(2, userList.size());
     }
 
     @Test
     public void testAqueryUserByid() {
-        User user = userDao.queryUserById(1L);
-        System.out.println(user.getWcId());
-  //      assertEquals(java.util.Optional.of(2), user.getuId());
+        User user = userDao.queryUserById(2L);
+        System.out.println(user.getuName());
+        assertEquals(Long.valueOf(2), user.getuId());
     }
 
     @Test
