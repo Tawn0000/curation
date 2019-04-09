@@ -14,4 +14,5 @@
         where  id = #{etagId}0
     </select>
 
+    <insert id="insertEtag"
 </mapper>
