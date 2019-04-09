@@ -7,7 +7,7 @@ import java.util.List;
 public interface UserDao {
     List<User> queryUser();
 
-    User queryUserByid(int userId);
+    User queryUserById(Long userId);
 
     int insertUser(User user);
 

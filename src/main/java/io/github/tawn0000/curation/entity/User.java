@@ -2,83 +2,83 @@ package io.github.tawn0000.curation.entity;
 
 public class User {
     //主键ID
-    private Long id;
+    private Long uId;
     //微信号
-    private String wc;
+    private String wcId;
     //姓名
-    private String name;
+    private String uName;
     // 性别
-    private String sex;
+    private String uSex;
     // 头像
-    private String icon;
+    private String uIcon;
     // 蓝牙权限(开/关）
-    private Boolean bluetoothstauts;
+    private Boolean uBluetoothstauts;
     // 是否填写过调查问卷
-    private Boolean quarystatus;
+    private Boolean uQuarystatus;
     // 喜好标签
-    private String tag;
+    private String uTag;
 
-    public Long getId() {
-        return id;
+    public Long getuId() {
+        return uId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setuId(Long uId) {
+        this.uId = uId;
     }
 
-    public String getWc() {
-        return wc;
+    public String getWcId() {
+        return wcId;
     }
 
-    public void setWc(String wc) {
-        this.wc = wc;
+    public void setWcId(String wcId) {
+        this.wcId = wcId;
     }
 
-    public String getName() {
-        return name;
+    public String getuName() {
+        return uName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setuName(String uName) {
+        this.uName = uName;
     }
 
-    public String getSex() {
-        return sex;
+    public String getuSex() {
+        return uSex;
     }
 
-    public void setSex(String sex) {
-        this.sex = sex;
+    public void setuSex(String uSex) {
+        this.uSex = uSex;
     }
 
-    public String getIcon() {
-        return icon;
+    public String getuIcon() {
+        return uIcon;
     }
 
-    public void setIcon(String icon) {
-        this.icon = icon;
+    public void setuIcon(String uIcon) {
+        this.uIcon = uIcon;
     }
 
-    public Boolean getBluetoothstauts() {
-        return bluetoothstauts;
+    public Boolean getuBluetoothstauts() {
+        return uBluetoothstauts;
     }
 
-    public void setBluetoothstauts(Boolean bluetoothstauts) {
-        this.bluetoothstauts = bluetoothstauts;
+    public void setuBluetoothstauts(Boolean uBluetoothstauts) {
+        this.uBluetoothstauts = uBluetoothstauts;
     }
 
-    public Boolean getQuarystatus() {
-        return quarystatus;
+    public Boolean getuQuarystatus() {
+        return uQuarystatus;
     }
 
-    public void setQuarystatus(Boolean quarystatus) {
-        this.quarystatus = quarystatus;
+    public void setuQuarystatus(Boolean uQuarystatus) {
+        this.uQuarystatus = uQuarystatus;
     }
 
-    public String getTag() {
-        return tag;
+    public String getuTag() {
+        return uTag;
     }
 
-    public void setTag(String tag) {
-        this.tag = tag;
+    public void setuTag(String uTag) {
+        this.uTag = uTag;
     }
 }

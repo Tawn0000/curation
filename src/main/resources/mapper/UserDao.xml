@@ -3,8 +3,13 @@
 
 <mapper namespace = "io.github.tawn0000.curation.dao.UserDao">
         <select id = "queryUser" resultType = "io.github.tawn0000.curation.entity.User">
-            SELECT U_Id
-            FROM User
-            ORDER BY U_ID ASC
+            SELECT *
+            FROM [dbo].[User]
+            ORDER BY U_id ASC
+        </select>
+        <select id="queryUserById" resultType="io.github.tawn0000.curation.entity.User">
+            SELECT *
+            FROM [dbo].[User]
+            WHERE U_id=#{userId}
         </select>
 </mapper>
