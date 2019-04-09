@@ -2,43 +2,43 @@ package io.github.tawn0000.curation.entity;
 
 public class UE {
     //自增编号
-    private Long id;
+    private Long ueId;
     //用户编号
-    private Long uid;
+    private Long uId;
     //展览编号
-    private Long eid;
-    //状态（未报名，已报名，正在参加，已参加）
-    private Long status;
+    private Long eId;
+    //状态（0未报名，1已报名，2正在参加，3已参加）
+    private int ueStatus;
 
-    public Long getId() {
-        return id;
+    public Long getUeId() {
+        return ueId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setUeId(Long ueId) {
+        this.ueId = ueId;
     }
 
-    public Long getUid() {
-        return uid;
+    public Long getuId() {
+        return uId;
     }
 
-    public void setUid(Long uid) {
-        this.uid = uid;
+    public void setuId(Long uId) {
+        this.uId = uId;
     }
 
-    public Long getEid() {
-        return eid;
+    public Long geteId() {
+        return eId;
     }
 
-    public void setEid(Long eid) {
-        this.eid = eid;
+    public void seteId(Long eId) {
+        this.eId = eId;
     }
 
-    public Long getStatus() {
-        return status;
+    public int getUeStatus() {
+        return ueStatus;
     }
 
-    public void setStatus(Long status) {
-        this.status = status;
+    public void setUeStatus(int ueStatus) {
+        this.ueStatus = ueStatus;
     }
 }

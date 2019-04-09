@@ -4,83 +4,83 @@ import java.util.Date;
 
 public class Record {
     //自增编号
-    private Long id;
+    private Long rId;
     //用户编号
-    private Long uid;
+    private Long uId;
     //展览编号
-    private Long eid;
+    private Long eId;
     //展品编号
-    private Long e1id;
+    private Long e1Id;
     //开始时间
-    private Date begin;
+    private Date rBeginTime;
     //结束时间
-    private Date end;
+    private Date rEndTime;
     //停留时长
-    private Long interval;
+    private int rInterval;
     //心率
-    private Long rate;
+    private int rHeartRate;
 
-    public Long getId() {
-        return id;
+    public Long getrId() {
+        return rId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setrId(Long rId) {
+        this.rId = rId;
     }
 
-    public Long getUid() {
-        return uid;
+    public Long getuId() {
+        return uId;
     }
 
-    public void setUid(Long uid) {
-        this.uid = uid;
+    public void setuId(Long uId) {
+        this.uId = uId;
     }
 
-    public Long getEid() {
-        return eid;
+    public Long geteId() {
+        return eId;
     }
 
-    public void setEid(Long eid) {
-        this.eid = eid;
+    public void seteId(Long eId) {
+        this.eId = eId;
     }
 
-    public Long getE1id() {
-        return e1id;
+    public Long getE1Id() {
+        return e1Id;
     }
 
-    public void setE1id(Long e1id) {
-        this.e1id = e1id;
+    public void setE1Id(Long e1Id) {
+        this.e1Id = e1Id;
     }
 
-    public Date getBegin() {
-        return begin;
+    public Date getrBeginTime() {
+        return rBeginTime;
     }
 
-    public void setBegin(Date begin) {
-        this.begin = begin;
+    public void setrBeginTime(Date rBeginTime) {
+        this.rBeginTime = rBeginTime;
     }
 
-    public Date getEnd() {
-        return end;
+    public Date getrEndTime() {
+        return rEndTime;
     }
 
-    public void setEnd(Date end) {
-        this.end = end;
+    public void setrEndTime(Date rEndTime) {
+        this.rEndTime = rEndTime;
     }
 
-    public Long getInterval() {
-        return interval;
+    public int getrInterval() {
+        return rInterval;
     }
 
-    public void setInterval(Long interval) {
-        this.interval = interval;
+    public void setrInterval(int rInterval) {
+        this.rInterval = rInterval;
     }
 
-    public Long getRate() {
-        return rate;
+    public int getrHeartRate() {
+        return rHeartRate;
     }
 
-    public void setRate(Long rate) {
-        this.rate = rate;
+    public void setrHeartRate(int rHeartRate) {
+        this.rHeartRate = rHeartRate;
     }
 }

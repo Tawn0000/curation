@@ -4,83 +4,93 @@ import java.util.Date;
 
 public class Exhibition {
     //自增展览编号
-    private Long id;
+    private Long eId;
     //名称
-    private String name;
+    private String eName;
     //地点
-    private String address;
+    private String eAddress;
     //时间
-    private Date date;
+    private Date eDate;
+    //价格
+    private int ePrice;
     //展览描述
-    private String description;
+    private String eDescription;
     //图片
-    private String image;
+    private String eImage;
     //视频
-    private String video;
+    private String eVideo;
     //负责人
-    private String personCharge;
+    private String ePersonCharge;
 
-    public Long getId() {
-        return id;
+    public Long geteId() {
+        return eId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void seteId(Long eId) {
+        this.eId = eId;
     }
 
-    public String getName() {
-        return name;
+    public String geteName() {
+        return eName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void seteName(String eName) {
+        this.eName = eName;
     }
 
-    public String getAddress() {
-        return address;
+    public String geteAddress() {
+        return eAddress;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void seteAddress(String eAddress) {
+        this.eAddress = eAddress;
     }
 
-    public Date getDate() {
-        return date;
+    public Date geteDate() {
+        return eDate;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void seteDate(Date eDate) {
+        this.eDate = eDate;
     }
 
-    public String getDescription() {
-        return description;
+    public int getePrice() {
+        return ePrice;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setePrice(int ePrice) {
+        this.ePrice = ePrice;
     }
 
-    public String getImage() {
-        return image;
+    public String geteDescription() {
+        return eDescription;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void seteDescription(String eDescription) {
+        this.eDescription = eDescription;
     }
 
-    public String getVideo() {
-        return video;
+    public String geteImage() {
+        return eImage;
     }
 
-    public void setVideo(String video) {
-        this.video = video;
+    public void seteImage(String eImage) {
+        this.eImage = eImage;
     }
 
-    public String getPersonCharge() {
-        return personCharge;
+    public String geteVideo() {
+        return eVideo;
     }
 
-    public void setPersonCharge(String personCharge) {
-        this.personCharge = personCharge;
+    public void seteVideo(String eVideo) {
+        this.eVideo = eVideo;
+    }
+
+    public String getePersonCharge() {
+        return ePersonCharge;
+    }
+
+    public void setePersonCharge(String ePersonCharge) {
+        this.ePersonCharge = ePersonCharge;
     }
 }

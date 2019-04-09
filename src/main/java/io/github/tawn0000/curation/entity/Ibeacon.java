@@ -2,83 +2,83 @@ package io.github.tawn0000.curation.entity;
 
 public class Ibeacon {
     //自增蓝牙编号
-    private Long id;
+    private Long iId;
     //UUID
-    private String uid;
+    private String iUid;
     //Marjor
-    private String major;
+    private String iMajor;
     //Minor
-    private String minor;
+    private String iMinor;
     //Measured_Power
-    private String power;
-    //Status
-    private boolean status;
-    //Connect_E1_id
-    private Long e1id;
+    private String iMeasuredPower;
+    //Status //是否被使用
+    private int iStatus;
+    //Connect_E1_id //被哪个展品使用
+    private Long e1Id;
     //Wide
-    private Float wide;
+    private Float iWide;
 
-    public Long getId() {
-        return id;
+    public Long getiId() {
+        return iId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setiId(Long iId) {
+        this.iId = iId;
     }
 
-    public String getUid() {
-        return uid;
+    public String getiUid() {
+        return iUid;
     }
 
-    public void setUid(String uid) {
-        this.uid = uid;
+    public void setiUid(String iUid) {
+        this.iUid = iUid;
     }
 
-    public String getMajor() {
-        return major;
+    public String getiMajor() {
+        return iMajor;
     }
 
-    public void setMajor(String major) {
-        this.major = major;
+    public void setiMajor(String iMajor) {
+        this.iMajor = iMajor;
     }
 
-    public String getMinor() {
-        return minor;
+    public String getiMinor() {
+        return iMinor;
     }
 
-    public void setMinor(String minor) {
-        this.minor = minor;
+    public void setiMinor(String iMinor) {
+        this.iMinor = iMinor;
     }
 
-    public String getPower() {
-        return power;
+    public String getiMeasuredPower() {
+        return iMeasuredPower;
     }
 
-    public void setPower(String power) {
-        this.power = power;
+    public void setiMeasuredPower(String iMeasuredPower) {
+        this.iMeasuredPower = iMeasuredPower;
     }
 
-    public boolean isStatus() {
-        return status;
+    public int getiStatus() {
+        return iStatus;
     }
 
-    public void setStatus(boolean status) {
-        this.status = status;
+    public void setiStatus(int iStatus) {
+        this.iStatus = iStatus;
     }
 
-    public Long getE1id() {
-        return e1id;
+    public Long getE1Id() {
+        return e1Id;
     }
 
-    public void setE1id(Long e1id) {
-        this.e1id = e1id;
+    public void setE1Id(Long e1Id) {
+        this.e1Id = e1Id;
     }
 
-    public Float getWide() {
-        return wide;
+    public Float getiWide() {
+        return iWide;
     }
 
-    public void setWide(Float wide) {
-        this.wide = wide;
+    public void setiWide(Float iWide) {
+        this.iWide = iWide;
     }
 }

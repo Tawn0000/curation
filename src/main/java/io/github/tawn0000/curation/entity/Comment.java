@@ -4,73 +4,73 @@ import java.util.Date;
 
 public class Comment {
     //自增评论编号
-    private Long  id;
+    private Long  cId;
     //用户编号
-    private Long uid;
+    private Long uId;
     //展览编号
-    private Long eid;
+    private Long eId;
     //展品编号
-    private Long e1id;
+    private Long e1Id;
     //评论时间
-    private Date date;
+    private Date cDate;
     //评论文字内容
-    private String content;
+    private String cContent;
     //评论图片
-    private String image;
+    private String cImage;
 
-    public Long getId() {
-        return id;
+    public Long getcId() {
+        return cId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setcId(Long cId) {
+        this.cId = cId;
     }
 
-    public Long getUid() {
-        return uid;
+    public Long getuId() {
+        return uId;
     }
 
-    public void setUid(Long uid) {
-        this.uid = uid;
+    public void setuId(Long uId) {
+        this.uId = uId;
     }
 
-    public Long getEid() {
-        return eid;
+    public Long geteId() {
+        return eId;
     }
 
-    public void setEid(Long eid) {
-        this.eid = eid;
+    public void seteId(Long eId) {
+        this.eId = eId;
     }
 
-    public Long getE1id() {
-        return e1id;
+    public Long getE1Id() {
+        return e1Id;
     }
 
-    public void setE1id(Long e1id) {
-        this.e1id = e1id;
+    public void setE1Id(Long e1Id) {
+        this.e1Id = e1Id;
     }
 
-    public Date getDate() {
-        return date;
+    public Date getcDate() {
+        return cDate;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setcDate(Date cDate) {
+        this.cDate = cDate;
     }
 
-    public String getContent() {
-        return content;
+    public String getcContent() {
+        return cContent;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setcContent(String cContent) {
+        this.cContent = cContent;
     }
 
-    public String getImage() {
-        return image;
+    public String getcImage() {
+        return cImage;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setcImage(String cImage) {
+        this.cImage = cImage;
     }
 }

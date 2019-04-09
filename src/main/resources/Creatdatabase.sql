@@ -30,20 +30,21 @@ CREATE TABLE [dbo].[User](
 
 CREATE TABLE [dbo].[Admin](
         [a_id] [int] identity(1,1)  ,
-        [uc_id] [varchar](20) NOT NULL ,
+        [wc_id] [varchar](20) NOT NULL ,
         [a_password] [varchar](32) NOT NULL ,
         [a_name] [varchar](20) NOT NULL ,
         [a_level] [int] default '1' check(a_level in ('0','1')) NOT NULL,
         CONSTRAINT [PK_Admin] PRIMARY KEY CLUSTERED ([a_id] ASC )
                     );
 
--- 展览（自增展览编号，名称，地点，时间，展览描述，图片,视频，负责人）
+-- 展览（自增展览编号，名称，地点，时间，价格,展览描述，图片,视频，负责人）
 
 CREATE TABLE [dbo].[Exhibition](
         [e_id] [bigint] identity(1,1) ,
         [e_name] [varchar](100) NOT NULL ,
         [e_address] [varchar](100) NOT NULL ,
         [e_date] [datetime] NOT NULL ,
+        [e_price] [int] NOT NULL,
         [e_description] text NOT NULL,
         [e_image] varchar(300) NOT NULL,
         [e_video] varchar(300) default 'NULL',
@@ -51,10 +52,11 @@ CREATE TABLE [dbo].[Exhibition](
         CONSTRAINT [PK_Exhibition] PRIMARY KEY CLUSTERED ([e_id] ASC )
 );
 
--- 展品 (自增展品编号，展品名称，作者，年代，图片，内容介绍)
+-- 展品 (自增展品编号，展览编号，展品名称，作者，年代，图片，内容介绍)
 
 CREATE TABLE [dbo].[Exhibit](
         [e1_id] [bigint] identity(1,1) ,
+        [e_id] [bigint] NOT NULL,
         [e1_name] [varchar](100) NOT NULL ,
         [e1_author] [varchar](20) NOT NULL ,
         [e1_date] [date] NOT NULL ,
@@ -66,79 +68,71 @@ CREATE TABLE [dbo].[Exhibit](
 -- 评论 (自增评论编号，用户编号，展览编号，展品编号，评论时间，评论文字内容，评论图片)
 
 CREATE TABLE [dbo].[Comment](
-         [C_id] [bigint] identity(1,1) ,
-         [U_id] [bigint] NOT NULL ,
-         [E_id] [bigint] NOT NULL ,
-         [E1_id] [bigint] ,
-         [E_date] [datetime] NOT NULL ,
-         [C_content] text NOT NULL,
-         [C_image] varchar(300) NOT NULL,
-         CONSTRAINT [PK_Comment] PRIMARY KEY CLUSTERED ([C_id] ASC )
+         [c_id] [bigint] identity(1,1) ,
+         [u_id] [bigint] NOT NULL ,
+         [e_id] [bigint] NOT NULL ,
+         [e1_id] [bigint] ,
+         [e_date] [datetime] NOT NULL ,
+         [c_content] text NOT NULL,
+         [c_image] varchar(300) NOT NULL,
+         CONSTRAINT [PK_Comment] PRIMARY KEY CLUSTERED ([c_id] ASC )
 );
 
 -- 用户反馈（自增编号，用户编号，反馈内容,图片）
 
 CREATE TABLE [dbo].[Feedback](
-         [F_id] [bigint] identity(1,1) ,
-         [U_id] [bigint] NOT NULL ,
-         [F_content] text NOT NULL,
-         [F_image] varchar(300),
-         CONSTRAINT [PK_Feedback] PRIMARY KEY CLUSTERED ([F_id] ASC )
+         [f_id] [bigint] identity(1,1) ,
+         [u_id] [bigint] NOT NULL ,
+         [f_content] text NOT NULL,
+         [f_image] varchar(300),
+         CONSTRAINT [PK_Feedback] PRIMARY KEY CLUSTERED ([f_id] ASC )
 );
 
 -- 蓝牙Ibeacon(自增蓝牙编号，UUID, Marjor ,Minor, Measured_Power, Status, Connect_E1_id, Wide)
 
 CREATE TABLE [dbo].[Ibeacon](
-         [I_ID] [int] identity(1,1) ,
-         [UID] [varchar](50) NOT NULL ,
-         [Major] [varchar](50) NOT NULL,
-         [Minor] [varchar](50) NOT NULL,
-         [Measured_Power] [varchar](50) NOT NULL,
-         [status] int default '0' check (status in ('0','1')) NOT NULL,
-         [Connect_E1_id]  [bigint],
-         [Wide] [float] default  '1'
-          CONSTRAINT [PK_Ibeacon] PRIMARY KEY CLUSTERED ([I_id] ASC )
+         [i_id] [int] identity(1,1) ,
+         [i_uid] [varchar](50) NOT NULL ,
+         [i_major] [varchar](50) NOT NULL,
+         [i_minor] [varchar](50) NOT NULL,
+         [i_measured_power] [varchar](50) NOT NULL,
+         [i_status] int default '0' check (i_status in ('0','1')) NOT NULL,
+         [i_connect_e1_id]  [bigint],
+         [i_wide] [float] default  '1'
+          CONSTRAINT [PK_Ibeacon] PRIMARY KEY CLUSTERED ([i_id] ASC )
 );
 
 -- 用户观展记录（自增编号，用户编号 , 展览编号, 展品编号，开始时间，结束时间，停留时长，心率）
 
 CREATE TABLE [dbo].[Record](
-        [R_id] [int] identity(1,1),
-        [U_id] [bigint] NOT NULL ,
-        [E_id] [bigint] NOT NULL ,
-        [E1_id] [bigint] NOT NULL ,
-        [R_begin_time] [datetime] NOT NULL ,
-        [R_end_time] [datetime] NOT NULL ,
-        [R_interval] [int] NOT NULL,
-        [R_heart_rate] [int]
-        CONSTRAINT [PK_Record] PRIMARY KEY CLUSTERED ([R_id] ASC )
+        [r_id] [bigint] identity(1,1),
+        [u_id] [bigint] NOT NULL ,
+        [e_id] [bigint] NOT NULL ,
+        [e1_id] [bigint] NOT NULL ,
+        [r_begin_time] [datetime] NOT NULL ,
+        [r_end_time] [datetime] NOT NULL ,
+        [r_interval] [int] NOT NULL,
+        [r_heart_rate] [int]
+        CONSTRAINT [PK_Record] PRIMARY KEY CLUSTERED ([r_id] ASC )
 );
 
 
 -- 用户_展览（自增编号，用户编号，展览编号，状态（未报名，已报名，正在参加，已参加））
 
 CREATE TABLE [dbo].[UE](
-        [UR_id] [bigint] identity(1,1) ,
-        [U_id] [bigint] NOT NULL ,
-        [E_id] [bigint] NOT NULL ,
-        [UR_status] [int] NOT NULL default '0' check (UR_status in ('0','1','2','3'))
-        CONSTRAINT [PK_UE] PRIMARY KEY CLUSTERED ([UR_id] ASC )
+        [ue_id] [bigint] identity(1,1) ,
+        [u_id] [bigint] NOT NULL ,
+        [e_id] [bigint] NOT NULL ,
+        [ue_status] [int] NOT NULL default '0' check (ue_status in ('0','1','2','3'))
+        CONSTRAINT [PK_UE] PRIMARY KEY CLUSTERED ([ue_id] ASC )
  );
 
--- 展览_展品 (展览编号，展品编号)
-
-CREATE TABLE [dbo].[EE]
-(
-    [U_id] [bigint] NOT NULL,
-    [E_id] [bigint] NOT NULL,
-    CONSTRAINT [PK_EE] PRIMARY KEY CLUSTERED ([U_id], [E_id] ASC)
-);
 
 -- 展览_标签（自增编号，展览编号，展览标签）
 
 CREATE TABLE [dbo].[E_tag](
-        [T_id] [bigint] NOT NULL ,
-        [E_id] [bigint] NOT NULL ,
-        [T_tags] [varchar](20) NOT NULL,
-        CONSTRAINT [PK_E_tag] PRIMARY KEY CLUSTERED ([T_id] ASC )
+        [et_id] [bigint] NOT NULL ,
+        [e_id] [bigint] NOT NULL ,
+        [e_tags] [varchar](20) NOT NULL,
+        CONSTRAINT [PK_E_tag] PRIMARY KEY CLUSTERED ([et_id] ASC )
 );
