@@ -9,9 +9,9 @@ public interface AdminDao {
 
     Admin queryAdminByid(int adminId);
 
-    int insertAdmin(Admin admin);
+    void insertAdmin(Admin admin);
 
-    int updateAdmin(Admin admin);
+    void updateAdmin(Admin admin);
 
-    int deleteAdmin(int adminId);
+    void deleteAdmin(int adminId);
 }

@@ -24,12 +24,12 @@
     <update id="updateAdmin" parameterType="io.github.tawn0000.curation.entity.Admin">
         update [dbo].[Admin]
         <set>
-            wc_id = #{wc}
-            a_password = #{password}
-            a_name  = #{name}
-            a_level = #{level}
+            wc_id = #{wcId}
+            a_password = #{aPassword}
+            a_name  = #{aName}
+            a_level = #{aLevel}
         </set>
-        where a_id = #{id}
+        where a_id = #{aId}
     </update>
 
     <delete id="deleteAdmin" >
