@@ -11,7 +11,7 @@
     <select id="queryE_agByid" resultType = "io.github.tawn0000.curation.entity.Etag">
         select *
         from [dbo].[e_tag]
-        where  id = #{etagId}0
+        where  id = #{etagId}
     </select>
 
     <insert id="insertEtag"

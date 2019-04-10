@@ -12,4 +12,29 @@
             FROM [dbo].[User]
             WHERE u_id=#{userId}
         </select>
+        <insert id="insertUser" useGeneratedKeys="true" keyProperty="uid" keyColumn="u_id" parameterType="io.github.tawn0000.curation.entity.User">
+            INSERT into
+            [dbo].[User] (wc_id,u_name,u_sex,u_icon,u_bluetooth_status,u_query_status,u_tag)
+            values
+                    (#{wcId},#{uName},#{uSex},#{uIcon},#{u_Bluetooth_Status},#{u_Query_Status},#{u_Tag})
+        </insert>
+        <update id="updateUser" parameterType="io.github.tawn0000.curation.entity.User">
+            update [dbo].[User]
+            <set>
+                wc_id = wcId
+                u_name = uName
+                u_sex = uSex
+                u_icon = uIcon
+                u_bluetooth_status =  uBluetoothStatus
+                u_query_status = uQueryStatus
+                u_tag = uTag
+            </set>
+            where u_id = #{uId}
+        </update>
+
+        <delete id="deleteUser" >
+            delete from
+                    [dbo].[User]
+            where u_id = #{userId}
+        </delete>
 </mapper>

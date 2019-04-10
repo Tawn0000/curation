@@ -10,9 +10,9 @@ import org.junit.runners.MethodSorters;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.Date;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -33,7 +33,8 @@ public class UserDaoTest {
     }
 
     @Test
-    public void testAqueryUserByid() {
+    @Ignore
+    public void testqueryUserByid() {
         User user = userDao.queryUserById(2L);
         System.out.println(user.getuName());
         assertEquals(Long.valueOf(2), user.getuId());
@@ -42,6 +43,13 @@ public class UserDaoTest {
     @Test
     @Ignore
     public void insertUser() {
+        //创建一个用户对象
+        User user = new User("fab123456","张宇","男","1.jpg","开","否","复古");
+        //将该对象实例添加入库
+        List<User> userList1 = userDao.queryUser();
+        //校验总数是否+1
+        List<User> userList2 = userDao.queryUser();
+        assertEquals(userList1.size()+1, userList2.size());
     }
 
     @Test

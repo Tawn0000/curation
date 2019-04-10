@@ -12,11 +12,21 @@ public class User {
     // 头像
     private String uIcon;
     // 蓝牙权限(开/关）
-    private String uBluetoothstauts;
+    private String uBluetoothStauts;
     // 是否填写过调查问卷
-    private String uQuarystatus;
+    private String uQuaryStatus;
     // 喜好标签
     private String uTag;
+
+    public User(String wcId, String uName, String uSex, String uIcon, String uBluetoothStauts, String uQuaryStatus, String uTag) {
+        this.wcId = wcId;
+        this.uName = uName;
+        this.uSex = uSex;
+        this.uIcon = uIcon;
+        this.uBluetoothStauts = uBluetoothStauts;
+        this.uQuaryStatus = uQuaryStatus;
+        this.uTag = uTag;
+    }
 
     public Long getuId() {
         return uId;
@@ -58,20 +68,20 @@ public class User {
         this.uIcon = uIcon;
     }
 
-    public String getuBluetoothstauts() {
-        return uBluetoothstauts;
+    public String getuBluetoothStauts() {
+        return uBluetoothStauts;
     }
 
-    public void setuBluetoothstauts(String uBluetoothstauts) {
-        this.uBluetoothstauts = uBluetoothstauts;
+    public void setuBluetoothStauts(String uBluetoothStauts) {
+        this.uBluetoothStauts = uBluetoothStauts;
     }
 
-    public String getuQuarystatus() {
-        return uQuarystatus;
+    public String getuQuaryStatus() {
+        return uQuaryStatus;
     }
 
-    public void setuQuarystatus(String uQuarystatus) {
-        this.uQuarystatus = uQuarystatus;
+    public void setuQuaryStatus(String uQuaryStatus) {
+        this.uQuaryStatus = uQuaryStatus;
     }
 
     public String getuTag() {
