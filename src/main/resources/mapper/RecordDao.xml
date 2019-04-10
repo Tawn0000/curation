@@ -3,5 +3,40 @@
 
 <mapper namespace = "io.github.tawn0000.curation.dao.RecordDao">
     <select id = "queryRecord" resultType = "io.github.tawn0000.curation.entity.Record">
+        select *
+        from [dbo].[Record]
+        ORDER BY r_id ASC
     </select>
+
+    <select id="queryRecordByid" resultType="io.github.tawn0000.curation.entity.Record">
+        select *
+        from [dbo].[Record]
+        where r_id = #{rId}
+    </select>
+
+    <insert id="insertRecord" useGeneratedKeys="true" keyProperty="rId" keyColumn="r_id" parameterType= "io.github.tawn0000.curation.entity.Record">
+        insert into
+                [dbo].[Record](u_id,e_id,e1_id,r_begin_time,r_end_time,r_interval,r_heart_rate)
+        values (#{uId},#{eId},#{e1Id},#{rBeginTime},#{rEndTime},#{rInterval},#{rHeartRate})
+    </insert>
+
+    <update id="updateRecord" parameterType="io.github.tawn0000.curation.entity.Record">
+        update [dbo].[Record]
+        <set>
+            u_id = #{uId}
+            e_id = #{eId}
+            e1_id = #{e1Id}
+            r_begin_time = #{rBeginTime}
+            r_end_time = #{rEndTime}
+            r_interval = #{rInterval}
+            r_heart_rate = #{rHeartRate}
+        </set>
+        where r_id = #{rId}
+    </update>
+
+    <delete id="deleteRecord">
+        delete from
+                [dbo].[Record]
+        where r_id = #{rId}
+    </delete>
 </mapper>

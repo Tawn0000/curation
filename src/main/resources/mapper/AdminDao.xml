@@ -18,7 +18,7 @@
         INSERT into
         [dbo].[Admin](wc_id,a_password,a_name,a_level)
         values
-                (#{wc},#{password},#{name},#{level})
+                (#{wcId},#{aPassword},#{aName},#{aLevel})
     </insert>
 
     <update id="updateAdmin" parameterType="io.github.tawn0000.curation.entity.Admin">

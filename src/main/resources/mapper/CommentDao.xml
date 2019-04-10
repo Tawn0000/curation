@@ -17,25 +17,26 @@
     <insert id="insertComment" useGeneratedKeys="true" keyProperty="id" keyColumn="c_id" parameterType= "io.github.tawn0000.curation.entity.Comment">
         insert into
               [dbo].[Comment](u_id,e_id,e1_id,e_date,c_content,c_image)
-        values (#{uid},#{eid},#{e1id},#{date},#{content},#{image})
+        values (#{uId},#{eId},#{e1Id},#{cDate},#{cContent},#{cImage})
     </insert>
 
     <update id="updateComment"parameterType= "io.github.tawn0000.curation.entity.Comment">
         update [dbo].[Comment]
         <set>
-            u_id = #{uid}
-            e_id = #{eid}
-            e1_id = #{e1id}
-            e_date = #{date}
-            c_content = #{content}
-            c_image = #{image}
+            u_id = #{uId}
+            e_id = #{eId}
+            e1_id = #{e1Id}
+            e_date = #{cDate}
+            c_content = #{cContent}
+            c_image = #{cImage}
         </set>
+        where c_id = #{cId}
     </update>
 
     <delete id="deleteComment">
         delete from
                 [dbo].[Comment]
-        where c_id = #{id}
+        where c_id = #{commentId}
     </delete>
 
 </mapper>

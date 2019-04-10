@@ -3,5 +3,41 @@
 
 <mapper namespace = "io.github.tawn0000.curation.dao.IbeaconDao">
     <select id = "queryIbeacon" resultType = "io.github.tawn0000.curation.entity.Ibeacon">
+        select *
+        from [dbo].[Ibeacon]
+        ORDER BY i_id ASC
     </select>
+
+    <select id="queryIbeaconByid" resultType="io.github.tawn0000.curation.entity.Ibeacon">
+        select *
+        from [dbo].[Ibeacon]
+        where i_id = #{ibeaconId}
+    </select>
+
+    <insert id="insertIbeacon" useGeneratedKeys="true" keyProperty="iId" keyColumn="i_id" parameterType="io.github.tawn0000.curation.entity.Ibeacon">
+        insert into
+                [dbo].[Ibeacon](i_uid,i_major,i_minor,i_measured_power,i_status,i_connect_e1_id,i_wide)
+        values (#{iUid},#{iMajor},#{iMinor},#{iMeasuredPower},#{iStatus},#{e1Id},#{iWide})
+    </insert>
+
+    <update id="updateIbeacon" parameterType="io.github.tawn0000.curation.entity.Ibeacon">
+        update [dbo].[Ibeacon]
+        <set>
+            i_uid = #{iUid}
+            i_major = #{iMajor}
+            i_minor = #{iMinor}
+            i_measured_power = #{iMeasuredPower}
+            i_status = #{iStatus}
+            i_connect_e1_id = #{e1Id}
+            i_wide = #{iWide}
+        </set>
+        where i_id = #{iId}
+    </update>
+
+    <delete id="deleteIbeacon">
+        delete from
+                [dbo].[Ibeacon]
+        where i_id = #{ibeaconId}
+    </delete>
+
 </mapper>

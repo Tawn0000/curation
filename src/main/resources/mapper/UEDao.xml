@@ -3,5 +3,37 @@
 
 <mapper namespace = "io.github.tawn0000.curation.dao.UEDao">
     <select id = "queryUE" resultType = "io.github.tawn0000.curation.entity.UE">
+        select *
+        from [dbo].[UE]
+        ORDER BY ue_id ASC
     </select>
+
+    <select id="queryUEByid" resultType="io.github.tawn0000.curation.entity.UE">
+        select *
+        from [dbo].[UE]
+        where ue_id = #{ueId}
+    </select>
+
+    <insert id="insertUE" useGeneratedKeys="true" keyProperty="ueId" keyColumn="ue_id" parameterType="io.github.tawn0000.curation.entity.UE">
+        insert into
+                [dbo].[UE](u_id,e_id,ue_status)
+        values (#{uId},#{eId},#{ueStatus})
+    </insert>
+
+    <update id="updateUE" parameterType="io.github.tawn0000.curation.entity.UE">
+        update
+                [dbo].[UE]
+        <set>
+            u_id = #{uId}
+            e_id = #{eId}
+            ue_status = #{ueStatus}
+        </set>
+        where ue_id = #{ueId}
+    </update>
+
+    <delete id="deleteUE">
+        delete
+        from [dbo].[UE]
+        where ue_id = #{ueId}
+    </delete>
 </mapper>
