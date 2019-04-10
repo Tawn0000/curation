@@ -20,15 +20,15 @@
         values (#{uId},#{eId},#{e1Id},#{cDate},#{cContent},#{cImage})
     </insert>
 
-    <update id="updateComment"parameterType= "io.github.tawn0000.curation.entity.Comment">
+    <update id="updateComment" parameterType= "io.github.tawn0000.curation.entity.Comment">
         update [dbo].[Comment]
         <set>
-            u_id = #{uId}
-            e_id = #{eId}
-            e1_id = #{e1Id}
-            e_date = #{cDate}
-            c_content = #{cContent}
-            c_image = #{cImage}
+            u_id = #{uId},
+            e_id = #{eId},
+            e1_id = #{e1Id},
+            e_date = #{cDate},
+            c_content = #{cContent},
+            c_image = #{cImage},
         </set>
         where c_id = #{cId}
     </update>

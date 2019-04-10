@@ -16,7 +16,7 @@
             INSERT into
             [dbo].[User] (wc_id,u_name,u_sex,u_icon,u_bluetooth_status,u_query_status,u_tag)
             values
-                    (#{wcId},#{uName},#{uSex},#{uIcon},#{u_Bluetooth_Status},#{u_Query_Status},#{u_Tag})
+                    (#{wcId},#{uName},#{uSex},#{uIcon},#{uBluetoothStatus},#{uQueryStatus},#{uTag})
         </insert>
         <update id="updateUser" parameterType="io.github.tawn0000.curation.entity.User">
             update [dbo].[User]

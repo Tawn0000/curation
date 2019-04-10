@@ -40,12 +40,12 @@ public class UserDaoTest {
     }
 
     @Test
-    @Ignore
     public void insertUser() {
+        List<User> userList1 = userDao.queryUser();
         //创建一个用户对象
         User user = new User("fab123456","张宇","男","1.jpg","开","否","复古");
         //将该对象实例添加入库
-        List<User> userList1 = userDao.queryUser();
+        userDao.insertUser(user);
         //校验总数是否+1
         List<User> userList2 = userDao.queryUser();
         assertEquals(userList1.size()+1, userList2.size());

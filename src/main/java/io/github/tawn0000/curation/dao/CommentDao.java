@@ -1,15 +1,17 @@
 package io.github.tawn0000.curation.dao;
 
+import io.github.tawn0000.curation.entity.Comment;
+
 import java.util.List;
 
 public interface CommentDao {
-    List<CommentDao> queryComment();
+    List<Comment> queryComment();
 
-    CommentDao queryCommentByid(int commentId);
+    Comment queryCommentByid(int commentId);
 
-    int insertComment(CommentDao comment);
+    void insertComment(CommentDao comment);
 
-    int updateComment(CommentDao comment);
+    void updateComment(CommentDao comment);
 
-    int deleteComment(int commentId);
+    void deleteComment(int commentId);
 }

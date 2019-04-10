@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 
 import java.beans.PropertyVetoException;
 
-@Configuration
+@Configuration("")
 //配置mybatis mapper 的扫描路径
 @MapperScan("io.github.tawn0000.curation.config.dao")
 public class DataSourceConfiguration {

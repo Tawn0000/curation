@@ -12,19 +12,30 @@ public class User {
     // 头像
     private String uIcon;
     // 蓝牙权限(开/关）
-    private String uBluetoothStauts;
+    private String uBluetoothStatus;
     // 是否填写过调查问卷
-    private String uQuaryStatus;
+    private String uQueryStatus;
     // 喜好标签
     private String uTag;
 
-    public User(String wcId, String uName, String uSex, String uIcon, String uBluetoothStauts, String uQuaryStatus, String uTag) {
+    public User(String wcId, String uName, String uSex, String uIcon, String uBluetoothStatus, String uQueryStatus, String uTag) {
         this.wcId = wcId;
         this.uName = uName;
         this.uSex = uSex;
         this.uIcon = uIcon;
-        this.uBluetoothStauts = uBluetoothStauts;
-        this.uQuaryStatus = uQuaryStatus;
+        this.uBluetoothStatus = uBluetoothStatus;
+        this.uQueryStatus = uQueryStatus;
+        this.uTag = uTag;
+    }
+
+    public User(Long uId,String wcId, String uName, String uSex, String uIcon, String uBluetoothStatus, String uQueryStatus, String uTag) {
+        this.uId = uId;
+        this.wcId = wcId;
+        this.uName = uName;
+        this.uSex = uSex;
+        this.uIcon = uIcon;
+        this.uBluetoothStatus = uBluetoothStatus;
+        this.uQueryStatus = uQueryStatus;
         this.uTag = uTag;
     }
 
@@ -68,20 +79,20 @@ public class User {
         this.uIcon = uIcon;
     }
 
-    public String getuBluetoothStauts() {
-        return uBluetoothStauts;
+    public String getuBluetoothStatus() {
+        return uBluetoothStatus;
     }
 
-    public void setuBluetoothStauts(String uBluetoothStauts) {
-        this.uBluetoothStauts = uBluetoothStauts;
+    public void setuBluetoothStatus(String uBluetoothStatus) {
+        this.uBluetoothStatus = uBluetoothStatus;
     }
 
-    public String getuQuaryStatus() {
-        return uQuaryStatus;
+    public String getuQueryStatus() {
+        return uQueryStatus;
     }
 
-    public void setuQuaryStatus(String uQuaryStatus) {
-        this.uQuaryStatus = uQuaryStatus;
+    public void setuQueryStatus(String uQueryStatus) {
+        this.uQueryStatus = uQueryStatus;
     }
 
     public String getuTag() {
