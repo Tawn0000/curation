@@ -3,5 +3,6 @@
 
 <mapper namespace = "io.github.tawn0000.curation.dao.EEDao">
     <select id = "queryEE" resultType = "io.github.tawn0000.curation.entity.EE">
+
     </select>
 </mapper>

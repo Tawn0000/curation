@@ -3,5 +3,43 @@
 
 <mapper namespace = "io.github.tawn0000.curation.dao.ExhibitionDao">
     <select id = "queryExhibition" resultType = "io.github.tawn0000.curation.entity.Exhibition">
+        select *
+        from [dbo].[Exhibition]
+        order by e_id ASC
     </select>
+
+    <select id="queryExhibitionByid" resultType="io.github.tawn0000.curation.entity.Exhibition">
+        select *
+        from [dbo].[Exhibition]
+        where e_id = #{exhibitionId}
+    </select>
+
+    <insert id="insertExhibition" useGeneratedKeys="true" keyProperty="eId" keyColumn="e_id" parameterType="io.github.tawn0000.curation.entity.Exhibition">
+        insert into
+                [dbo].[Exhibition](e_name,e_address,e_date,e_price,e_description,e_image,e_video,e_person_in_charge)
+        values (#{eName},#{eAddress},#{eDate},#{ePrice},#{eDescription},#{eImage},#{eVideo},#{ePersonCharge})
+
+    </insert>
+
+    <update id="updateExhibition" parameterType="io.github.tawn0000.curation.entity.Exhibition">
+        update [dbo].[Exhibition]
+        <set>
+            e_name = #{eName}
+            e_address = #{eAddress}
+            e_date = #{eDate}
+            e_price = #{ePrice}
+            e_description = #{eDescription}
+            e_image = #{eImage}
+            e_video = #{eVideo}
+            e_person_in_charge = #{ePersonCharge}
+        </set>
+        where e_id = #{eId}
+    </update>
+
+    <delete id="deleteExhibition">
+        delete from
+                [dbo].[Exhibition]
+        where e_id = #{exhibitionId}
+    </delete>
+
 </mapper>
