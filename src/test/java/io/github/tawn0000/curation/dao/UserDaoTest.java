@@ -33,7 +33,6 @@ public class UserDaoTest {
     }
 
     @Test
-    @Ignore
     public void testqueryUserByid() {
         User user = userDao.queryUserById(2L);
         System.out.println(user.getuName());
