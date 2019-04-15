@@ -13,5 +13,5 @@ public interface UserDao {
 
     int updateUser(User user);
 
-    int deleteUser(int userId);
+    int deleteUser(Long userId);
 }

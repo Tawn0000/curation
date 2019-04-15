@@ -23,13 +23,13 @@
     <update id="updateRecord" parameterType="io.github.tawn0000.curation.entity.Record">
         update [dbo].[Record]
         <set>
-            u_id = #{uId}
-            e_id = #{eId}
-            e1_id = #{e1Id}
-            r_begin_time = #{rBeginTime}
-            r_end_time = #{rEndTime}
-            r_interval = #{rInterval}
-            r_heart_rate = #{rHeartRate}
+            <if test = "uId != null"> u_id = #{uId}, </if>
+            <if test = "eId != null"> e_id = #{eId}, </if>
+            <if test = "e1Id != null"> e1_id = #{e1Id}, </if>
+            <if test = "rBeginTime != null"> r_begin_time = #{rBeginTime}, </if>
+            <if test = "rEndTime != null"> r_end_time = #{rEndTime}, </if>
+            <if test = "rInterval != null"> r_interval = #{rInterval}, </if>
+            <if test = "rHeartRate != null"> r_heart_rate = #{rHeartRate}</if>
         </set>
         where r_id = #{rId}
     </update>

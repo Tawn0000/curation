@@ -91,12 +91,12 @@ CREATE TABLE [dbo].[Feedback](
 -- 蓝牙Ibeacon(自增蓝牙编号，UUID, Marjor ,Minor, Measured_Power, Status, Connect_E1_id, Wide)
 
 CREATE TABLE [dbo].[Ibeacon](
-         [i_id] [int] identity(1,1) ,
+         [i_id] [bigint] identity(1,1) ,
          [i_uid] [varchar](50) NOT NULL ,
          [i_major] [varchar](50) NOT NULL,
          [i_minor] [varchar](50) NOT NULL,
          [i_measured_power] [varchar](50) NOT NULL,
-         [i_status] int default '0' check (i_status in ('0','1')) NOT NULL,
+         [i_status] bit default '0' check (i_status in ('0','1')) NOT NULL,
          [i_connect_e1_id]  [bigint],
          [i_wide] [float] default  '1'
           CONSTRAINT [PK_Ibeacon] PRIMARY KEY CLUSTERED ([i_id] ASC )
@@ -110,9 +110,9 @@ CREATE TABLE [dbo].[Record](
         [u_id] [bigint] NOT NULL ,
         [e_id] [bigint] NOT NULL ,
         [e1_id] [bigint] NOT NULL ,
-        [r_begin_time] [datetime] NOT NULL ,
-        [r_end_time] [datetime] NOT NULL ,
-        [r_interval] [int] NOT NULL,
+        [r_begin_time] [datetime]  ,
+        [r_end_time] [datetime]  ,
+        [r_interval] [int] ,
         [r_heart_rate] [int]
         CONSTRAINT [PK_Record] PRIMARY KEY CLUSTERED ([r_id] ASC )
 );
@@ -132,7 +132,7 @@ CREATE TABLE [dbo].[UE](
 -- 展览_标签（自增编号，展览编号，展览标签）
 
 CREATE TABLE [dbo].[E_tag](
-        [et_id] [bigint] NOT NULL ,
+        [et_id] [bigint] identity(1,1) ,
         [e_id] [bigint] NOT NULL ,
         [e_tags] [varchar](20) NOT NULL,
         CONSTRAINT [PK_E_tag] PRIMARY KEY CLUSTERED ([et_id] ASC )

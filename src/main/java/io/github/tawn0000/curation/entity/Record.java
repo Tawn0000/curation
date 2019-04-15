@@ -1,5 +1,7 @@
 package io.github.tawn0000.curation.entity;
 
+import java.sql.Time;
+import java.sql.Timestamp;
 import java.util.Date;
 
 public class Record {
@@ -12,13 +14,34 @@ public class Record {
     //展品编号
     private Long e1Id;
     //开始时间
-    private Date rBeginTime;
+    private Timestamp rBeginTime;
     //结束时间
-    private Date rEndTime;
+    private Timestamp rEndTime;
     //停留时长
-    private int rInterval;
+    private Integer rInterval;
     //心率
-    private int rHeartRate;
+    private Integer rHeartRate;
+
+    public Record(Long rId, Long uId, Long eId, Long e1Id, Timestamp rBeginTime, Timestamp rEndTime, Integer rInterval, Integer rHeartRate) {
+        this.rId = rId;
+        this.uId = uId;
+        this.eId = eId;
+        this.e1Id = e1Id;
+        this.rBeginTime = rBeginTime;
+        this.rEndTime = rEndTime;
+        this.rInterval = rInterval;
+        this.rHeartRate = rHeartRate;
+    }
+
+    public Record(Long uId, Long eId, Long e1Id, Timestamp rBeginTime, Timestamp rEndTime, Integer rInterval, Integer rHeartRate) {
+        this.uId = uId;
+        this.eId = eId;
+        this.e1Id = e1Id;
+        this.rBeginTime = rBeginTime;
+        this.rEndTime = rEndTime;
+        this.rInterval = rInterval;
+        this.rHeartRate = rHeartRate;
+    }
 
     public Long getrId() {
         return rId;
@@ -52,35 +75,35 @@ public class Record {
         this.e1Id = e1Id;
     }
 
-    public Date getrBeginTime() {
+    public Timestamp getrBeginTime() {
         return rBeginTime;
     }
 
-    public void setrBeginTime(Date rBeginTime) {
+    public void setrBeginTime(Timestamp rBeginTime) {
         this.rBeginTime = rBeginTime;
     }
 
-    public Date getrEndTime() {
+    public Timestamp getrEndTime() {
         return rEndTime;
     }
 
-    public void setrEndTime(Date rEndTime) {
+    public void setrEndTime(Timestamp rEndTime) {
         this.rEndTime = rEndTime;
     }
 
-    public int getrInterval() {
+    public Integer getrInterval() {
         return rInterval;
     }
 
-    public void setrInterval(int rInterval) {
+    public void setrInterval(Integer rInterval) {
         this.rInterval = rInterval;
     }
 
-    public int getrHeartRate() {
+    public Integer getrHeartRate() {
         return rHeartRate;
     }
 
-    public void setrHeartRate(int rHeartRate) {
+    public void setrHeartRate(Integer rHeartRate) {
         this.rHeartRate = rHeartRate;
     }
 }

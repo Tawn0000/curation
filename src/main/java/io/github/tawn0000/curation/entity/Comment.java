@@ -1,5 +1,8 @@
 package io.github.tawn0000.curation.entity;
 
+import io.github.tawn0000.curation.utils.DateUtil;
+
+import java.sql.Timestamp;
 import java.util.Date;
 
 public class Comment {
@@ -12,11 +15,30 @@ public class Comment {
     //展品编号
     private Long e1Id;
     //评论时间
-    private Date cDate;
+    private Timestamp cDate;
     //评论文字内容
     private String cContent;
     //评论图片
     private String cImage;
+
+    public Comment(Long cId, Long uId, Long eId, Long e1Id, Timestamp cDate, String cContent, String cImage) {
+        this.cId = cId;
+        this.uId = uId;
+        this.eId = eId;
+        this.e1Id = e1Id;
+        this.cDate = cDate;
+        this.cContent = cContent;
+        this.cImage = cImage;
+    }
+
+    public Comment(Long uId, Long eId, Long e1Id, Timestamp cDate, String cContent, String cImage) {
+        this.uId = uId;
+        this.eId = eId;
+        this.e1Id = e1Id;
+        this.cDate = cDate;
+        this.cContent = cContent;
+        this.cImage = cImage;
+    }
 
     public Long getcId() {
         return cId;
@@ -54,7 +76,7 @@ public class Comment {
         return cDate;
     }
 
-    public void setcDate(Date cDate) {
+    public void setcDate(Timestamp cDate) {
         this.cDate = cDate;
     }
 

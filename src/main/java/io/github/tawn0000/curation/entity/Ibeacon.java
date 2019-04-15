@@ -12,11 +12,32 @@ public class Ibeacon {
     //Measured_Power
     private String iMeasuredPower;
     //Status //是否被使用
-    private int iStatus;
+    private boolean iStatus;
     //Connect_E1_id //被哪个展品使用
     private Long e1Id;
     //Wide
-    private Float iWide;
+    private Double iWide;
+
+    public Ibeacon(Long iId, String iUid, String iMajor, String iMinor, String iMeasuredPower, boolean iStatus, Long e1Id, Double iWide) {
+        this.iId = iId;
+        this.iUid = iUid;
+        this.iMajor = iMajor;
+        this.iMinor = iMinor;
+        this.iMeasuredPower = iMeasuredPower;
+        this.iStatus = iStatus;
+        this.e1Id = e1Id;
+        this.iWide = iWide;
+    }
+
+    public Ibeacon(String iUid, String iMajor, String iMinor, String iMeasuredPower, boolean iStatus, Long e1Id, Double iWide) {
+        this.iUid = iUid;
+        this.iMajor = iMajor;
+        this.iMinor = iMinor;
+        this.iMeasuredPower = iMeasuredPower;
+        this.iStatus = iStatus;
+        this.e1Id = e1Id;
+        this.iWide = iWide;
+    }
 
     public Long getiId() {
         return iId;
@@ -58,11 +79,11 @@ public class Ibeacon {
         this.iMeasuredPower = iMeasuredPower;
     }
 
-    public int getiStatus() {
+    public boolean isiStatus() {
         return iStatus;
     }
 
-    public void setiStatus(int iStatus) {
+    public void setiStatus(boolean iStatus) {
         this.iStatus = iStatus;
     }
 
@@ -74,11 +95,11 @@ public class Ibeacon {
         this.e1Id = e1Id;
     }
 
-    public Float getiWide() {
+    public Double getiWide() {
         return iWide;
     }
 
-    public void setiWide(Float iWide) {
+    public void setiWide(Double iWide) {
         this.iWide = iWide;
     }
 }

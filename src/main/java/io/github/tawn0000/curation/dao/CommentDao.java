@@ -9,9 +9,9 @@ public interface CommentDao {
 
     Comment queryCommentByid(int commentId);
 
-    void insertComment(CommentDao comment);
+    void insertComment(Comment comment);
 
-    void updateComment(CommentDao comment);
+    void updateComment(Comment comment);
 
     void deleteComment(int commentId);
 }

@@ -12,6 +12,21 @@ public class Admin {
     //权限级别(0-1,0代表最高级别，1代表可以添加展览信息）
     private int aLevel;
 
+    public Admin(int aId, String wcId, String aPassword, String aName, int aLevel) {
+        this.aId = aId;
+        this.wcId = wcId;
+        this.aPassword = aPassword;
+        this.aName = aName;
+        this.aLevel = aLevel;
+    }
+
+    public Admin(String wcId, String aPassword, String aName, int aLevel) {
+        this.wcId = wcId;
+        this.aPassword = aPassword;
+        this.aName = aName;
+        this.aLevel = aLevel;
+    }
+
     public int getaId() {
         return aId;
     }

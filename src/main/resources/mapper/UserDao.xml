@@ -12,7 +12,7 @@
             FROM [dbo].[User]
             WHERE u_id=#{userId}
         </select>
-        <insert id="insertUser" useGeneratedKeys="true" keyProperty="uid" keyColumn="u_id" parameterType="io.github.tawn0000.curation.entity.User">
+        <insert id="insertUser" useGeneratedKeys="true" keyProperty="uId" keyColumn="u_id" parameterType="io.github.tawn0000.curation.entity.User">
             INSERT into
             [dbo].[User] (wc_id,u_name,u_sex,u_icon,u_bluetooth_status,u_query_status,u_tag)
             values
@@ -21,13 +21,13 @@
         <update id="updateUser" parameterType="io.github.tawn0000.curation.entity.User">
             update [dbo].[User]
             <set>
-                wc_id = wcId
-                u_name = uName
-                u_sex = uSex
-                u_icon = uIcon
-                u_bluetooth_status =  uBluetoothStatus
-                u_query_status = uQueryStatus
-                u_tag = uTag
+                <if test = "wcId != null"> wc_id = #{wcId},</if>
+                <if test = "uName != null">u_name = #{uName},</if>
+                <if test = "uSex != null"> u_sex = #{uSex}, </if>
+                <if test = "uIcon != null"> u_icon = #{uIcon}, </if>
+                <if test = "uBluetoothStatus != null"> u_bluetooth_status =  #{uBluetoothStatus},</if>
+                <if test = "uQueryStatus != null"> u_query_status = #{uQueryStatus},</if>
+                <if test = "uTag != null"> u_tag = #{uTag} </if>
             </set>
             where u_id = #{uId}
         </update>

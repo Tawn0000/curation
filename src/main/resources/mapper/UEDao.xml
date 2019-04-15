@@ -21,19 +21,17 @@
     </insert>
 
     <update id="updateUE" parameterType="io.github.tawn0000.curation.entity.UE">
-        update
-                [dbo].[UE]
+        update [dbo].[UE]
         <set>
-            u_id = #{uId}
-            e_id = #{eId}
-            ue_status = #{ueStatus}
+            <if test = "uId != null"> u_id = #{uId}, </if>
+            <if test = "eId != null"> e_id = #{eId}.</if>
+            <if test = "ueStatus != null"> ue_status = #{ueStatus}</if>
         </set>
         where ue_id = #{ueId}
     </update>
 
     <delete id="deleteUE">
-        delete
-        from [dbo].[UE]
+        delete from [dbo].[UE]
         where ue_id = #{ueId}
     </delete>
 </mapper>

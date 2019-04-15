@@ -1,5 +1,7 @@
 package io.github.tawn0000.curation.entity;
 
+import org.springframework.context.annotation.Bean;
+
 public class User {
     //主键ID
     private Long uId;
