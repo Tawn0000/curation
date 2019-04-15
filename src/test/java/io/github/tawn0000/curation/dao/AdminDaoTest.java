@@ -32,7 +32,7 @@ public class AdminDaoTest {
     public void testQueryAdminByid() {
         Admin admin = adminDao.queryAdminByid(1);
         System.out.println(admin.getaName());
-        assertEquals(1,admin.getaId());
+        assertEquals(Integer.valueOf(1),admin.getaId());
     }
 
     @Test
