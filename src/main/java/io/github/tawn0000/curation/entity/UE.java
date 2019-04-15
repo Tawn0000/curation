@@ -10,6 +10,19 @@ public class UE {
     //状态（0未报名，1已报名，2正在参加，3已参加）
     private int ueStatus;
 
+    public UE(Long ueId, Long uId, Long eId, int ueStatus) {
+        this.ueId = ueId;
+        this.uId = uId;
+        this.eId = eId;
+        this.ueStatus = ueStatus;
+    }
+
+    public UE(Long uId, Long eId, int ueStatus) {
+        this.uId = uId;
+        this.eId = eId;
+        this.ueStatus = ueStatus;
+    }
+
     public Long getUeId() {
         return ueId;
     }

@@ -23,9 +23,9 @@
     <update id="updateFeedback" parameterType="io.github.tawn0000.curation.entity.Feedback">
         update [dbo].[Feedback]
         <set>
-            u_id = #{uId}
-            f_content = #{fContent}
-            f_image = #{fImage}
+            <if test = "uId != null"> u_id = #{uId}, </if>
+            <if test = "fContent != null"> f_content = #{fContent},</if>
+            <if test = "fImage != null"> f_image = #{fImage}</if>
         </set>
         where f_id = #{fId}
     </update>

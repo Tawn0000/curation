@@ -12,6 +12,17 @@ public class Etag {
         return etId;
     }
 
+    public Etag(Long etId, Long eId, String eTags) {
+        this.etId = etId;
+        this.eId = eId;
+        this.eTags = eTags;
+    }
+
+    public Etag(Long eId, String eTags) {
+        this.eId = eId;
+        this.eTags = eTags;
+    }
+
     public void setEtId(Long etId) {
         this.etId = etId;
     }

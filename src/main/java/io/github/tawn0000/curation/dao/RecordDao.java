@@ -7,11 +7,11 @@ import java.util.List;
 public interface RecordDao {
     List<Record> queryRecord();
 
-    Record queryRecordByid(int recordId);
+    Record queryRecordByid(Long recordId);
 
     int insertRecord(Record record);
 
     int updateRecord(Record record);
 
-    int deleteRecord(int recordId);
+    int deleteRecord(Long recordId);
 }

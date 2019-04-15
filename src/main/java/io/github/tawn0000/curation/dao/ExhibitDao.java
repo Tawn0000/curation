@@ -7,12 +7,12 @@ import java.util.List;
 public interface ExhibitDao {
     List<Exhibit> queryExhibit();
 
-    Exhibit queryExhibitByid(int exhibitId);
+    Exhibit queryExhibitByid(Long exhibitId);
 
     int insertExhibit(Exhibit exhibit);
 
     int updateExhibit(Exhibit exhibit);
 
-    int deleteExhibit(int exhibitId);
+    int deleteExhibit(Long exhibitId);
 }
 

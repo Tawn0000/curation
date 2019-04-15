@@ -23,12 +23,12 @@
     <update id="updateComment" parameterType= "io.github.tawn0000.curation.entity.Comment">
         update [dbo].[Comment]
         <set>
-            u_id = #{uId},
-            e_id = #{eId},
-            e1_id = #{e1Id},
-            e_date = #{cDate},
-            c_content = #{cContent},
-            c_image = #{cImage},
+            <if test = "uId != null" > u_id = #{uId}, </if>
+            <if test = "eId != null" >e_id = #{eId},</if>
+            <if test = "e1Id != null" >e1_id = #{e1Id},</if>
+            <if test = "cDate != null" >e_date = #{cDate},</if>
+            <if test = "cContent != null" >c_content = #{cContent},</if>
+            <if test = "cImage != null" >c_image = #{cImage}</if>
         </set>
         where c_id = #{cId}
     </update>

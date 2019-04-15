@@ -18,6 +18,35 @@ public class Exhibit {
     //内容介绍
     private String e1Description;
 
+    public Exhibit(Long e1Id, Long eId, String e1Name, String e1Author, java.sql.Date e1Date, String e1Image, String e1Description) {
+        this.e1Id = e1Id;
+        this.eId = eId;
+        this.e1Name = e1Name;
+        this.e1Author = e1Author;
+        this.e1Date = new Date(e1Date.getTime());
+        this.e1Image = e1Image;
+        this.e1Description = e1Description;
+    }
+
+    public Exhibit(Long e1Id, Long eId, String e1Name, String e1Author, Date e1Date, String e1Image, String e1Description) {
+        this.e1Id = e1Id;
+        this.eId = eId;
+        this.e1Name = e1Name;
+        this.e1Author = e1Author;
+        this.e1Date = e1Date;
+        this.e1Image = e1Image;
+        this.e1Description = e1Description;
+    }
+
+    public Exhibit(Long eId, String e1Name, String e1Author, Date e1Date, String e1Image, String e1Description) {
+        this.eId = eId;
+        this.e1Name = e1Name;
+        this.e1Author = e1Author;
+        this.e1Date = e1Date;
+        this.e1Image = e1Image;
+        this.e1Description = e1Description;
+    }
+
     public Long getE1Id() {
         return e1Id;
     }

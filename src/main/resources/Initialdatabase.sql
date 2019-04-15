@@ -7,3 +7,40 @@ VALUES ('fag123','lingxiao','男','jfkafajflajf','关','是','cute')
 
 Select *
 From [dbo].[User]
+
+Select *
+From [dbo].[Admin]
+
+describe Admin
+ORDER BY a_id ASC
+
+
+INSERT INTO [dbo].[Admin](a_Id,wc_id, a_password, a_name, a_level)
+VALUES ('2','admin','123456','lingxiao','1')
+
+Select *
+From [dbo].[Comment]
+
+Select *
+From [dbo].[E_tag]
+
+Select *
+From [dbo].[Exhibit]
+
+SELECT *
+FROM  [dbo].[Exhibition]
+
+SELECT *
+FROM [dbo].[Feedback]
+
+SELECT *
+FROM [dbo].[Ibeacon]
+
+SELECT *
+FROM [dbo].[Record]
+
+SELECT *
+FROM [dbo].UE
+
+SELECT *
+FROM [dbo].[User]

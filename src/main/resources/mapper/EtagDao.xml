@@ -8,7 +8,7 @@
         ORDER BY et_id ASC
     </select>
 
-    <select id="queryE_agByid" resultType = "io.github.tawn0000.curation.entity.Etag">
+    <select id="queryEtagByid" resultType = "io.github.tawn0000.curation.entity.Etag">
         select *
         from [dbo].[E_tag]
         where  et_id = #{etagId}
@@ -23,8 +23,8 @@
     <update id="updateEtag" parameterType="io.github.tawn0000.curation.entity.Etag">
         update [dbo].[E_tag]
         <set>
-            e_id = #{eId}
-            e_tags = #{eTags}
+            <if test = "eId != null" > e_id = #{eId},</if>
+            <if test = "eTags != null" > e_tags = #{eTags}</if>
         </set>
         where et_id = #{etId}
     </update>

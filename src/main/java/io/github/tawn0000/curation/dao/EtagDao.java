@@ -7,11 +7,11 @@ import java.util.List;
 public interface EtagDao {
     List<Etag> queryEtag();
 
-    Etag queryE_agByid(int etagId);
+    Etag queryEtagByid(Long etagId);
 
     int insertEtag(Etag etag);
 
     int updateEtag(Etag etag);
 
-    int deleteEtag(int etagId);
+    int deleteEtag(Long etagId);
 }

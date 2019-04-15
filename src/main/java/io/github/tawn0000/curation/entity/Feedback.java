@@ -10,6 +10,19 @@ public class Feedback {
     //图片
     private String fImage;
 
+    public Feedback(Long fId, Long uId, String fContent, String fImage) {
+        this.fId = fId;
+        this.uId = uId;
+        this.fContent = fContent;
+        this.fImage = fImage;
+    }
+
+    public Feedback(Long uId, String fContent, String fImage) {
+        this.uId = uId;
+        this.fContent = fContent;
+        this.fImage = fImage;
+    }
+
     public Long getfId() {
         return fId;
     }

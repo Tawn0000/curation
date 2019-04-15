@@ -7,11 +7,11 @@ import java.util.List;
 public interface UEDao {
     List<UE> queryUE();
 
-    UE queryUEByid(int ueId);
+    UE queryUEByid(Long ueId);
 
     int insertUE(UE ue);
 
     int updateUE(UE ue);
 
-    int deleteUE(int ueId);
+    int deleteUE(Long ueId);
 }

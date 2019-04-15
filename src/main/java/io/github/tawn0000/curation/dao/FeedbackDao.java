@@ -7,11 +7,11 @@ import java.util.List;
 public interface FeedbackDao {
     List<Feedback> queryFeedback();
 
-    Feedback queryFeedbackByid(int feedbackId);
+    Feedback queryFeedbackByid(Long feedbackId);
 
     int insertFeedback(Feedback feedback);
 
     int updateFeedback(Feedback feedback);
 
-    int deleteFeedback(int feedbackId);
+    int deleteFeedback(Long feedbackId);
 }

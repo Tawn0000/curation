@@ -24,14 +24,14 @@
     <update id="updateExhibition" parameterType="io.github.tawn0000.curation.entity.Exhibition">
         update [dbo].[Exhibition]
         <set>
-            e_name = #{eName}
-            e_address = #{eAddress}
-            e_date = #{eDate}
-            e_price = #{ePrice}
-            e_description = #{eDescription}
-            e_image = #{eImage}
-            e_video = #{eVideo}
-            e_person_in_charge = #{ePersonCharge}
+            <if test = "eName != null">e_name = #{eName},</if>
+            <if test = "eAddress != null">e_address = #{eAddress},</if>
+            <if test = "eDate != null">e_date = #{eDate},</if>
+            <if test = "ePrice != null">e_price = #{ePrice},</if>
+            <if test = "eDescription != null">e_description = #{eDescription},</if>
+            <if test = "eImage != null">e_image = #{eImage},</if>
+            <if test = "eVideo != null">e_video = #{eVideo},</if>
+            <if test = "ePersonCharge != null">e_person_in_charge = #{ePersonCharge}</if>
         </set>
         where e_id = #{eId}
     </update>

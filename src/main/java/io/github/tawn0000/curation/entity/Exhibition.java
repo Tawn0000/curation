@@ -1,5 +1,6 @@
 package io.github.tawn0000.curation.entity;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 public class Exhibition {
@@ -10,7 +11,7 @@ public class Exhibition {
     //地点
     private String eAddress;
     //时间
-    private Date eDate;
+    private Timestamp eDate;
     //价格
     private int ePrice;
     //展览描述
@@ -21,6 +22,29 @@ public class Exhibition {
     private String eVideo;
     //负责人
     private String ePersonCharge;
+
+    public Exhibition(String eName, String eAddress, Timestamp eDate, int ePrice, String eDescription, String eImage, String eVideo, String ePersonCharge) {
+        this.eName = eName;
+        this.eAddress = eAddress;
+        this.eDate = eDate;
+        this.ePrice = ePrice;
+        this.eDescription = eDescription;
+        this.eImage = eImage;
+        this.eVideo = eVideo;
+        this.ePersonCharge = ePersonCharge;
+    }
+
+    public Exhibition(Long eId, String eName, String eAddress, Timestamp eDate, int ePrice, String eDescription, String eImage, String eVideo, String ePersonCharge) {
+        this.eId = eId;
+        this.eName = eName;
+        this.eAddress = eAddress;
+        this.eDate = eDate;
+        this.ePrice = ePrice;
+        this.eDescription = eDescription;
+        this.eImage = eImage;
+        this.eVideo = eVideo;
+        this.ePersonCharge = ePersonCharge;
+    }
 
     public Long geteId() {
         return eId;
@@ -50,7 +74,7 @@ public class Exhibition {
         return eDate;
     }
 
-    public void seteDate(Date eDate) {
+    public void seteDate(Timestamp eDate) {
         this.eDate = eDate;
     }
 
