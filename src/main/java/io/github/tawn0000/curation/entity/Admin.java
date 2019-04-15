@@ -2,7 +2,7 @@ package io.github.tawn0000.curation.entity;
 
 public class Admin {
     //主键ID
-    private int aId;
+    private Integer aId;
     //微信号
     private String wcId;
     //密码
@@ -10,9 +10,9 @@ public class Admin {
     //姓名
     private String aName;
     //权限级别(0-1,0代表最高级别，1代表可以添加展览信息）
-    private int aLevel;
+    private Integer aLevel;
 
-    public Admin(int aId, String wcId, String aPassword, String aName, int aLevel) {
+    public Admin(Integer aId, String wcId, String aPassword, String aName, Integer aLevel) {
         this.aId = aId;
         this.wcId = wcId;
         this.aPassword = aPassword;
@@ -20,18 +20,18 @@ public class Admin {
         this.aLevel = aLevel;
     }
 
-    public Admin(String wcId, String aPassword, String aName, int aLevel) {
+    public Admin(String wcId, String aPassword, String aName, Integer aLevel) {
         this.wcId = wcId;
         this.aPassword = aPassword;
         this.aName = aName;
         this.aLevel = aLevel;
     }
 
-    public int getaId() {
+    public Integer getaId() {
         return aId;
     }
 
-    public void setaId(int aId) {
+    public void setaId(Integer aId) {
         this.aId = aId;
     }
 
@@ -59,11 +59,11 @@ public class Admin {
         this.aName = aName;
     }
 
-    public int getaLevel() {
+    public Integer getaLevel() {
         return aLevel;
     }
 
-    public void setaLevel(int aLevel) {
+    public void setaLevel(Integer aLevel) {
         this.aLevel = aLevel;
     }
 }
