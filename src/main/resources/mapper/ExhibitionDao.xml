@@ -8,7 +8,7 @@
         order by e_id ASC
     </select>
 
-    <select id="queryExhibitionByid" resultType="io.github.tawn0000.curation.entity.Exhibition">
+    <select id="queryExhibitionById" resultType="io.github.tawn0000.curation.entity.Exhibition">
         select *
         from [dbo].[Exhibition]
         where e_id = #{exhibitionId}
