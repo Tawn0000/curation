@@ -3,12 +3,13 @@ package io.github.tawn0000.curation.service.impl;
 import io.github.tawn0000.curation.dao.CommentDao;
 import io.github.tawn0000.curation.entity.Comment;
 import io.github.tawn0000.curation.service.CommentService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.beans.Transient;
 import java.util.List;
 
 public class CommentServiceImpl implements CommentService {
-    @Override
+    @Autowired
     private CommentDao commentDao;
 
     @Override
@@ -72,5 +73,6 @@ public class CommentServiceImpl implements CommentService {
         else {
             throw new RuntimeException("评论id有误");
         }
+        return true;
     }
 }

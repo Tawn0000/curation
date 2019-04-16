@@ -77,5 +77,6 @@ public class AdminServiceImpl implements AdminService {
         else {
             throw new RuntimeException("管理员adminId不能为空");
         }
+        return true;
     }
 }
