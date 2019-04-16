@@ -124,6 +124,7 @@ CREATE TABLE [dbo].[UE](
         [u_id] [bigint] NOT NULL ,
         [e_id] [bigint] NOT NULL ,
         [ue_status] [int] NOT NULL default '0' check (ue_status in ('0','1','2','3'))
+        [ue_collection] [bit]
         CONSTRAINT [PK_UE] PRIMARY KEY CLUSTERED ([ue_id] ASC )
  );
 

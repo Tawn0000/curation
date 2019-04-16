@@ -7,8 +7,10 @@ public class UE {
     private Long uId;
     //展览编号
     private Long eId;
-    //状态（0未报名，1已报名，2正在参加，3已参加）
+    //状态（0未报名，1已报名，2正在参加，3已参加
     private int ueStatus;
+
+
 
     public UE(Long ueId, Long uId, Long eId, int ueStatus) {
         this.ueId = ueId;
