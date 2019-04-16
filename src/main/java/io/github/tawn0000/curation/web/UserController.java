@@ -25,13 +25,9 @@
 //
 //    @RequestMapping(value = "/listuser", method = RequestMethod.GET)
 //    private Map<String, Object> listUser() {
-//        /*
-//
-//         */
-//        Map<String, Object> modelMap = new HashMap<String, Object>();
-//        List<User> list = new ArrayList<User>();
+//        Map<String, Object> modelMap = new HashMap<>();
 //        // 获取用户列表
-//        list = userService.getUserList();
+//        List<User> list = userService.getUserList();
 //        modelMap.put("userList", list);
 //        return modelMap;
 //    }

@@ -28,6 +28,10 @@ public class UserServiceImpl implements UserService {
             //通过userId返回用户信息
             return userDao.queryUserById(userId);
         }
+        public User getUserByopenId(String openId){
+            //通过openId返回用户信息
+            return userDao.queryUserByopenId(openId);
+        }
 
         @Transactional
         @Override
