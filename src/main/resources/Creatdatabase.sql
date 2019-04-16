@@ -117,14 +117,15 @@ CREATE TABLE [dbo].[Record](
 );
 
 
--- 用户_展览（自增编号，用户编号，展览编号，状态（未报名，已报名，正在参加，已参加））
+-- 用户_展览（自增编号，用户编号，展览编号，状态（未报名，已报名，正在参加，已参加）,是否收藏，最后一次访问时间）
 
 CREATE TABLE [dbo].[UE](
         [ue_id] [bigint] identity(1,1) ,
         [u_id] [bigint] NOT NULL ,
         [e_id] [bigint] NOT NULL ,
-        [ue_status] [int] NOT NULL default '0' check (ue_status in ('0','1','2','3'))
-        [ue_collection] [bit]
+        [ue_status] [int] NOT NULL default '0' check (ue_status in ('0','1','2','3')),
+        [ue_collection] [bit] default '0' check(ue_collection in ('0','1')),
+        [ue_time] [datetime]
         CONSTRAINT [PK_UE] PRIMARY KEY CLUSTERED ([ue_id] ASC )
  );
 

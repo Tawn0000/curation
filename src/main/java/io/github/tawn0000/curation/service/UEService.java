@@ -1,47 +1,28 @@
 package io.github.tawn0000.curation.service;
 
-import io.github.tawn0000.curation.entity.User;
+import io.github.tawn0000.curation.entity.UE;
 
 import java.util.List;
 
 public interface UEService {
+    
+    List<UE> getUEList();
 
-    /**
-     * 获取用户展览列表
-     *
-     * @return
-     */
-    List<User> getUserList();
+    //查询用户的所有访问过的展览
+    List<UE> queryUEByUid(Long uid);
 
-    /**
-     * 通过用户展览Id获取用户展览信息
-     *
-     * @param userId
-     * @return
-     */
-    User getUserById(Long userId);
-    /**
-     * 增加用户展览信息
-     *
-     * @param user
-     * @return
-     */
-    boolean addUser(User user);
+    //查询所有收藏的展览的ID
+    List<Long> queryExhibitionByUid(Long uid);
 
-    /**
-     * 修改用户展览信息
-     *
-     * @param user
-     * @return
-     */
-    boolean modifyUser(User user);
+    //查询用户某种状态的展览
+    List<Long> queryUEByUeStatus(Long uid, Integer ueStatus);
 
-    /**
-     * 删除用户展览信息
-     *
-     * @param user
-     * @return
-     */
-    boolean deleteUser(Long userId);
+    UE getUEById(Long ueId);
+
+    boolean addUE(UE ue);
+    
+    boolean modifyUE(UE ue);
+
+    boolean deleteUE(Long ueId);
 
 }

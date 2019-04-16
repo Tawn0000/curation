@@ -44,3 +44,8 @@ FROM [dbo].UE
 
 SELECT *
 FROM [dbo].[User]
+
+
+select e_id
+from [dbo].[UE]
+where  ue_collection = 1

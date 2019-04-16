@@ -8,26 +8,51 @@
         ORDER BY ue_id ASC
     </select>
 
-    <select id="queryUEByid" resultType="io.github.tawn0000.curation.entity.UE">
+    <select id = "queryUEByUid" resultType = "io.github.tawn0000.curation.entity.UE">
+        select *
+        from [dbo].[UE]
+        ORDER BY ue_time ASC
+        where ue_time != NULL
+    </select>
+
+
+
+    <select id="queryUEById" resultType="io.github.tawn0000.curation.entity.UE">
         select *
         from [dbo].[UE]
         where ue_id = #{ueId}
     </select>
 
+
+    <select id="queryExhibitionByUid" resultType="Long">
+        select e_id
+        from [dbo].[UE]
+        where u_id = #{uid} AND ue_collection = 1
+    </select>
+
+    <select id="queryUEByUeStatus" resultType="Long">
+        select e_id
+        from [dbo].[UE]
+        where u_id = #{uid} AND ue_collection = #{ueStatus}
+    </select>
+
+
     <insert id="insertUE" useGeneratedKeys="true" keyProperty="ueId" keyColumn="ue_id" parameterType="io.github.tawn0000.curation.entity.UE">
         insert into
-                [dbo].[UE](u_id,e_id,ue_status)
-        values (#{uId},#{eId},#{ueStatus})
+                [dbo].[UE](u_id,e_id,ue_status,ue_collection,ue_time)
+        values (#{uId},#{eId},#{ueStatus},#{ueCollection},#{ue_time})
     </insert>
 
     <update id="updateUE" parameterType="io.github.tawn0000.curation.entity.UE">
         update [dbo].[UE]
         <set>
             <if test = "uId != null"> u_id = #{uId}, </if>
-            <if test = "eId != null"> e_id = #{eId}.</if>
-            <if test = "ueStatus != null"> ue_status = #{ueStatus}</if>
+            <if test = "eId != null"> e_id = #{eId},</if>
+            <if test = "ueStatus != null"> ue_status = #{ueStatus},</if>
+            <if test = "ue_collection != null"> ue_collection = #{ueCollection},</if>
+            <if test = "ue_time != null">ue_time = #{ueTime}</if>
         </set>
-        where ue_id = #{ueId}
+        where u_id = #{uId} AND e_id = #{eId}
     </update>
 
     <delete id="deleteUE">
