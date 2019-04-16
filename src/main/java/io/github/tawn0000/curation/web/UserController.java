@@ -92,5 +92,4 @@ class UserController{
         }
         return Responsetil.badArgument();
     }
-
 }
