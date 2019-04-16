@@ -1,44 +1,42 @@
 package io.github.tawn0000.curation.entity;
 
-import org.springframework.context.annotation.Bean;
-
 public class User {
     //主键ID
     private Long uId;
     //微信号
-    private String wcId;
+    private String openId;
     //姓名
     private String uName;
     // 性别
     private String uSex;
     // 头像
     private String uIcon;
-    // 蓝牙权限(开/关）
-    private String uBluetoothStatus;
     // 是否填写过调查问卷
     private String uQueryStatus;
     // 喜好标签
     private String uTag;
 
-    public User(String wcId, String uName, String uSex, String uIcon, String uBluetoothStatus, String uQueryStatus, String uTag) {
-        this.wcId = wcId;
+    public User(Long uId, String openId, String uName, String uSex, String uIcon, String uQueryStatus, String uTag) {
+        this.uId = uId;
+        this.openId = openId;
         this.uName = uName;
         this.uSex = uSex;
         this.uIcon = uIcon;
-        this.uBluetoothStatus = uBluetoothStatus;
         this.uQueryStatus = uQueryStatus;
         this.uTag = uTag;
     }
 
-    public User(Long uId,String wcId, String uName, String uSex, String uIcon, String uBluetoothStatus, String uQueryStatus, String uTag) {
-        this.uId = uId;
-        this.wcId = wcId;
+    public User(String openId, String uName, String uSex, String uIcon, String uQueryStatus, String uTag) {
+        this.openId = openId;
         this.uName = uName;
         this.uSex = uSex;
         this.uIcon = uIcon;
-        this.uBluetoothStatus = uBluetoothStatus;
         this.uQueryStatus = uQueryStatus;
         this.uTag = uTag;
+    }
+
+    public User(String openId) {
+        this.openId = openId;
     }
 
     public Long getuId() {
@@ -49,12 +47,12 @@ public class User {
         this.uId = uId;
     }
 
-    public String getWcId() {
-        return wcId;
+    public String getOpenId() {
+        return openId;
     }
 
-    public void setWcId(String wcId) {
-        this.wcId = wcId;
+    public void setOpenId(String openId) {
+        this.openId = openId;
     }
 
     public String getuName() {
@@ -79,14 +77,6 @@ public class User {
 
     public void setuIcon(String uIcon) {
         this.uIcon = uIcon;
-    }
-
-    public String getuBluetoothStatus() {
-        return uBluetoothStatus;
-    }
-
-    public void setuBluetoothStatus(String uBluetoothStatus) {
-        this.uBluetoothStatus = uBluetoothStatus;
     }
 
     public String getuQueryStatus() {

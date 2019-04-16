@@ -16,11 +16,10 @@ CREATE Database curation;
 
 CREATE TABLE [dbo].[User](
         [u_id] [bigint] identity(1,1) ,
-        [wc_id] [varchar](20) NOT NULL ,
+        [open_id] [varchar](20) NOT NULL ,
         [u_name] [varchar](32)  ,
         [u_sex] [varchar](3)  default '男' check (U_sex in ('男','女')),
         [u_icon] [varchar](300) ,
-        [u_bluetooth_status] [varchar](3)  default '关' check (u_bluetooth_status in ('开','关')),
         [u_query_status] [varchar](3) default '否' check (u_query_status in ('是','否')),
         [u_tag] [varchar](50) ,
         CONSTRAINT [PK_User] PRIMARY KEY CLUSTERED ([u_id] ASC )
@@ -30,7 +29,7 @@ CREATE TABLE [dbo].[User](
 
 CREATE TABLE [dbo].[Admin](
         [a_id] [int] identity(1,1)  ,
-        [wc_id] [varchar](20) NOT NULL ,
+        [open_id] [varchar](20) NOT NULL ,
         [a_password] [varchar](32) NOT NULL ,
         [a_name] [varchar](20) NOT NULL ,
         [a_level] [int] default '1' check(a_level in ('0','1')) NOT NULL,
