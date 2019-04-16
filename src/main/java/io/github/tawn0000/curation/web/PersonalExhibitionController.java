@@ -2,6 +2,8 @@ package io.github.tawn0000.curation.web;
 
 
 import io.github.tawn0000.curation.entity.Exhibition;
+import io.github.tawn0000.curation.entity.UE;
+import io.github.tawn0000.curation.service.ExhibitionService;
 import io.github.tawn0000.curation.service.UEService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -35,10 +37,10 @@ public class PersonalExhibitionController {
     @ResponseBody
     public List<Exhibition> collect(Long id)
     {
-        List<Long> eids = ueService.findByid(id);
+        List<Long> eids = ueService.queryExhibitionByUid(id);
         List<Exhibition> exhibitions = new ArrayList<>();
         for(Long eid : eids){
-            Exhibition exhibition = exhibitionService.findbyid(eid);
+            Exhibition exhibition = exhibitionService.queryExhibitionById(eid);
             exhibitions.add(exhibition);
         }
         return exhibitions;
@@ -50,10 +52,10 @@ public class PersonalExhibitionController {
     @ResponseBody
     public List<Exhibition> history(Long id)
     {
-        List<Long> eids = ueService.findByid(id);
+        List<UE> ueList = ueService.queryUEByUid(id);
         List<Exhibition> exhibitions = new ArrayList<>();
-        for(Long eid : eids){
-            Exhibition exhibition = exhibitionService.findbyid(eid);
+        for(UE ue : ueList){
+            Exhibition exhibition = exhibitionService.queryExhibitionById(ue.geteId());
             exhibitions.add(exhibition);
         }
         return exhibitions;
@@ -64,21 +66,21 @@ public class PersonalExhibitionController {
     @GetMapping("/experience")
     public Object experience(Long id){
         Map<Object, Object> result = new HashMap<>();
-        List<Long> eidsexperirnce = ueService.findexperiencebyid(id, 1);
+        List<Long> experiencedList = ueService.queryUEByUeStatus(id, 3);
         List<Exhibition> experienceExhibitions = new ArrayList<>();
-        for(Long eid : eidsexperirnce){
-            Exhibition exhibition = exhibitionService.findbyid(eid);
+        for(Long eid : experiencedList){
+            Exhibition exhibition = exhibitionService.queryExhibitionById(eid);
             experienceExhibitions.add(exhibition);
         }
-        result.put("Experience",experienceExhibitions);
+        result.put("Experienced",experienceExhibitions);
 
-        List<Long> eidsNoexperirnce = ueService.findexperiencebyid(id, 3);
+        List<Long> noExperiencedList = ueService.queryUEByUeStatus(id, 1);
         List<Exhibition> experienceNoExhibitions = new ArrayList<>();
-        for(Long eid : eidsNoexperirnce){
-            Exhibition exhibition = exhibitionService.findbyid(eid);
+        for(Long eid : noExperiencedList){
+            Exhibition exhibition = exhibitionService.queryExhibitionById(eid);
             experienceNoExhibitions.add(exhibition);
         }
-        result.put("NoExperience",experienceNoExhibitions);
+        result.put("NoExperienced",experienceNoExhibitions);
 
         return Responsetil.ok(result);
     }
