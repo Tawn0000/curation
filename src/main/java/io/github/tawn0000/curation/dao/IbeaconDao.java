@@ -7,7 +7,11 @@ import java.util.List;
 public interface IbeaconDao {
     List<Ibeacon> queryIbeacon();
 
-    Ibeacon queryIbeaconByid(Long ibeaconId);
+    List<Ibeacon> queryIbeaconByStatus(boolean status);
+
+    Ibeacon queryIbeaconById(Long ibeaconId);
+
+    Long queryExhibitByUuid(String uuid);
 
     int insertIbeacon(Ibeacon ibeacon);
 

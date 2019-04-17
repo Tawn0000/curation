@@ -28,9 +28,9 @@ public class UserServiceImpl implements UserService {
             //通过userId返回用户信息
             return userDao.queryUserById(userId);
         }
-        public User getUserByopenId(String openId){
+        public User getUserByOpenId(String openId){
             //通过openId返回用户信息
-            return userDao.queryUserByopenId(openId);
+            return userDao.queryUserByOpenId(openId);
         }
 
         @Transactional
@@ -71,7 +71,7 @@ public class UserServiceImpl implements UserService {
         public boolean deleteUser(Long userId) {
             if (userId > 0) {
                 try {
-                    // 删除区域信息
+                    // 删除用户信息
                     userDao.deleteUser(userId);
                 } catch (Exception e) {
                     throw new RuntimeException("删除用户信息失败:" + e.toString());

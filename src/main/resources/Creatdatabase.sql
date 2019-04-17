@@ -41,13 +41,13 @@ CREATE TABLE [dbo].[Admin](
 CREATE TABLE [dbo].[Exhibition](
         [e_id] [bigint] identity(1,1) ,
         [e_name] [varchar](100) NOT NULL ,
-        [e_address] [varchar](100) NOT NULL ,
-        [e_date] [datetime] NOT NULL ,
-        [e_price] [int] NOT NULL,
-        [e_description] text NOT NULL,
-        [e_image] varchar(300) NOT NULL,
-        [e_video] varchar(300) default 'NULL',
-        [e_person_in_charge] varchar(20) NOT NULL,
+        [e_address] [varchar](100)  ,
+        [e_date] [datetime]  ,
+        [e_price] [int] ,
+        [e_description] text ,
+        [e_image] varchar(300) ,
+        [e_video] varchar(300) default NULL,
+        [e_person_in_charge] varchar(20) ,
         CONSTRAINT [PK_Exhibition] PRIMARY KEY CLUSTERED ([e_id] ASC )
 );
 
@@ -77,13 +77,15 @@ CREATE TABLE [dbo].[Comment](
          CONSTRAINT [PK_Comment] PRIMARY KEY CLUSTERED ([c_id] ASC )
 );
 
--- 用户反馈（自增编号，用户编号，反馈内容,图片）
+-- 用户反馈（自增编号，用户编号，反馈内容,图片,电话号码,反馈时间）
 
 CREATE TABLE [dbo].[Feedback](
          [f_id] [bigint] identity(1,1) ,
          [u_id] [bigint] NOT NULL ,
-         [f_content] text NOT NULL,
-         [f_image] varchar(300),
+         [f_content] [text] NOT NULL,
+         [f_image] [varchar](300),
+         [f_phone_number] [varchar](20),
+         [f_time] [datetime]
          CONSTRAINT [PK_Feedback] PRIMARY KEY CLUSTERED ([f_id] ASC )
 );
 

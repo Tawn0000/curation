@@ -8,10 +8,24 @@
         ORDER BY i_id ASC
     </select>
 
-    <select id="queryIbeaconByid" resultType="io.github.tawn0000.curation.entity.Ibeacon">
+    <select id = "queryIbeaconByStatus" resultType = "io.github.tawn0000.curation.entity.Ibeacon">
+        select *
+        from [dbo].[Ibeacon]
+        ORDER BY i_id ASC
+        where i_status = #{status}
+    </select>
+
+
+    <select id="queryIbeaconById" resultType="io.github.tawn0000.curation.entity.Ibeacon">
         select *
         from [dbo].[Ibeacon]
         where i_id = #{ibeaconId}
+    </select>
+
+    <select id="queryExhibitByUuid" resultType="Long">
+        select i_connect_e1_id
+        from [dbo].[Ibeacon]
+        where i_uid = #{uuid}
     </select>
 
     <insert id="insertIbeacon" useGeneratedKeys="true" keyProperty="iId" keyColumn="i_id" parameterType="io.github.tawn0000.curation.entity.Ibeacon">

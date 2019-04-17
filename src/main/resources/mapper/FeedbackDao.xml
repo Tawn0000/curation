@@ -8,7 +8,20 @@
         order by f_id ASC
     </select>
 
-    <select id="queryFeedbackByid" resultType="io.github.tawn0000.curation.entity.Feedback">
+    <select id = "queryFeedbackByTime" resultType = "io.github.tawn0000.curation.entity.Feedback">
+        select *
+        from [dbo].[Feedback]
+        order by f_time ASC
+        where f_fime between #{beginTime} and #{endTime}
+    </select>
+
+    <select id="queryFeedbackByUid" resultType="io.github.tawn0000.curation.entity.Feedback">
+        select *
+        from [dbo].[Feedback]
+        where u_id = #{userId}
+    </select>
+
+    <select id="queryFeedbackById" resultType="io.github.tawn0000.curation.entity.Feedback">
         select *
         from [dbo].[Feedback]
         where f_id = #{feedbackId}
@@ -16,8 +29,8 @@
 
     <insert id="insertFeedback" useGeneratedKeys="true" keyProperty="fId" keyColumn="f_id" parameterType="io.github.tawn0000.curation.entity.Feedback">
         insert into
-                [dbo].[Feedback](u_id,f_content,f_image)
-        values (#{uId},#{fContent},#{fImage})
+                [dbo].[Feedback](u_id,f_content,f_image,f_phone_number,f_time)
+        values (#{uId},#{fContent},#{fImage},#{fPhoneNumber},#{fTime})
     </insert>
 
     <update id="updateFeedback" parameterType="io.github.tawn0000.curation.entity.Feedback">
@@ -25,7 +38,9 @@
         <set>
             <if test = "uId != null"> u_id = #{uId}, </if>
             <if test = "fContent != null"> f_content = #{fContent},</if>
-            <if test = "fImage != null"> f_image = #{fImage}</if>
+            <if test = "fImage != null"> f_image = #{fImage},</if>
+            <if test = "fPhoneNumber != null"> f_phone_number = #{fPhoneNumber},</if>
+            <if test = "fTime != null"> f_time = #{fTime} </if>
         </set>
         where f_id = #{fId}
     </update>

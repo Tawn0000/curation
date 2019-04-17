@@ -10,7 +10,7 @@ public interface UserService {
 
     User getUserById(Long userId);
 
-    User getUserByopenId(String openId);
+    User getUserByOpenId(String openId);
 
     boolean addUser(User user);
 

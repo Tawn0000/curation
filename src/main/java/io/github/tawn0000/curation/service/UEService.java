@@ -17,6 +17,8 @@ public interface UEService {
     //查询用户某种状态的展览
     List<Long> queryUEByUeStatus(Long uid, Integer ueStatus);
 
+    UE queryUEByUidEid(Long userId, Long exhibitionId);
+
     UE getUEById(Long ueId);
 
     boolean addUE(UE ue);

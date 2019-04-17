@@ -7,11 +7,15 @@ import java.util.List;
 public interface CommentService {
     List<Comment> queryComment();
 
-    Comment queryCommentByid(int commentId);
+    //根据展览ID查询所有该展览的评论信息
+    List<Comment> queryCommentByEid(Long exhibitionId);
 
-    Boolean insertComment(Comment comment);
+    Comment queryCommentById(Long commentId);
 
-    Boolean updateComment(Comment comment);
+    //添加评论信息
+    Boolean addComment(Comment comment);
 
-    Boolean deleteComment(int commentId);
+    Boolean modifyComment(Comment comment);
+
+    Boolean deleteComment(Long commentId);
 }

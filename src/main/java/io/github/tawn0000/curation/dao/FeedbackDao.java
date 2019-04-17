@@ -2,12 +2,17 @@ package io.github.tawn0000.curation.dao;
 
 import io.github.tawn0000.curation.entity.Feedback;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 public interface FeedbackDao {
     List<Feedback> queryFeedback();
 
-    Feedback queryFeedbackByid(Long feedbackId);
+    List<Feedback> queryFeedbackByTime(Timestamp beginTime, Timestamp endTime);
+
+    Feedback queryFeedbackByUid(Long userId);
+
+    Feedback queryFeedbackById(Long feedbackId);
 
     int insertFeedback(Feedback feedback);
 

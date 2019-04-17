@@ -3,10 +3,15 @@ package io.github.tawn0000.curation.service.impl;
 import io.github.tawn0000.curation.dao.CommentDao;
 import io.github.tawn0000.curation.entity.Comment;
 import io.github.tawn0000.curation.service.CommentService;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.beans.Transient;
 import java.util.List;
+
+@Service
+@MapperScan("io.github.tawn0000.curation")
 
 public class CommentServiceImpl implements CommentService {
     @Autowired
@@ -18,13 +23,18 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
-    public Comment queryCommentByid(int commentId){
-        return commentDao.queryCommentByid(commentId);
+    public List<Comment> queryCommentByEid(Long exhibitionId){
+        return commentDao.queryCommentByEid(exhibitionId);
+    }
+
+    @Override
+    public Comment queryCommentById(Long commentId){
+        return commentDao.queryCommentById(commentId);
     }
 
     @Transient
     @Override
-    public Boolean insertComment(Comment comment){
+    public Boolean addComment(Comment comment){
         //此评论的用户编号不为空并且用户编号大于0
         if (comment.getuId() != null && comment.getuId() > 0){
             try {
@@ -42,7 +52,7 @@ public class CommentServiceImpl implements CommentService {
 
     @Transient
     @Override
-    public Boolean updateComment(Comment comment){
+    public Boolean modifyComment(Comment comment){
         //此评论的id号不为空且大于0
         if (comment.getcId() != null && comment.getcId() > 0){
             try{
@@ -60,7 +70,7 @@ public class CommentServiceImpl implements CommentService {
 
     @Transient
     @Override
-    public  Boolean deleteComment(int commentId){
+    public  Boolean deleteComment(Long commentId){
         if (commentId > 0)
         {
             try {

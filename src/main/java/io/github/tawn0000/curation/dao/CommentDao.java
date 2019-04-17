@@ -7,11 +7,13 @@ import java.util.List;
 public interface CommentDao {
     List<Comment> queryComment();
 
-    Comment queryCommentByid(int commentId);
+    List<Comment> queryCommentByEid(Long exhibitionId);
+
+    Comment queryCommentById(Long commentId);
 
     void insertComment(Comment comment);
 
     void updateComment(Comment comment);
 
-    void deleteComment(int commentId);
+    void deleteComment(Long commentId);
 }

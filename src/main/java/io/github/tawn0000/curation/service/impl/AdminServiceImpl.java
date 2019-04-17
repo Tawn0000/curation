@@ -3,10 +3,15 @@ package io.github.tawn0000.curation.service.impl;
 import io.github.tawn0000.curation.dao.AdminDao;
 import io.github.tawn0000.curation.entity.Admin;
 import io.github.tawn0000.curation.service.AdminService;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.beans.Transient;
 import java.util.List;
+
+@Service
+@MapperScan("io.github.tawn0000.curation")
 
 public class AdminServiceImpl implements AdminService {
     @Autowired

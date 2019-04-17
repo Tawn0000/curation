@@ -7,7 +7,14 @@
         from [dbo].[Exhibit]
         ORDER BY e1_id ASC
     </select>
-    <select id="queryExhibitByid" resultType="io.github.tawn0000.curation.entity.Exhibit">
+
+    <select id = "queryExhibitByEid" resultType = "io.github.tawn0000.curation.entity.Exhibit">
+        select *
+        from [dbo].[Exhibit]
+        where e_id = #{exhibitionId}
+    </select>
+
+    <select id="queryExhibitById" resultType="io.github.tawn0000.curation.entity.Exhibit">
         select *
         from [dbo].[Exhibit]
         where e1_id = #{exhibitId}
@@ -30,6 +37,12 @@
         </set>
         where e1_id = #{e1Id}
     </update>
+
+    <delete id="deleteExhibitByEid">
+        delete from
+                [dbo].[Exhibit]
+        where e_id = #{exhibitionId}
+    </delete>
 
     <delete id="deleteExhibit">
         delete from

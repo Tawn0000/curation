@@ -9,7 +9,7 @@ public interface UserDao {
 
     User queryUserById(Long userId);
 
-    User queryUserByopenId(String openId);
+    User queryUserByOpenId(String openId);
 
     int insertUser(User user);
 

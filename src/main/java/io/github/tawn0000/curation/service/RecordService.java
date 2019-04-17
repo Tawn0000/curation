@@ -1,11 +1,10 @@
-package io.github.tawn0000.curation.dao;
+package io.github.tawn0000.curation.service;
 
 import io.github.tawn0000.curation.entity.Record;
 
 import java.util.List;
 
-public interface RecordDao {
-    List<Record> queryRecord();
+public interface RecordService {
 
     //根据userId和exhibitionId获得所有的Record
     List<Record> queryRecordById(Long userId, Long exhibitionId);
@@ -14,10 +13,8 @@ public interface RecordDao {
     Record queryRecordByAllId(Long userId, Long exhibitionId, Long exhibitId);
 
     //根据userId,exhibitionId和exhibitId插入记录
-    int insertRecord(Record record);
+    int addRecord(Record record);
 
     //根据userId,exhibitionId和exhibitIdg更新记录
-    int updateRecord(Record record);
-
-    int deleteRecord(Long recordId);
+    int modifyRecord(Record record);
 }

@@ -31,7 +31,7 @@ public class FeedbackDaoTest {
 
     @Test
     public void testQueryFeedbackByid() {
-        Feedback feedback = feedbackDao.queryFeedbackByid(1L);
+        Feedback feedback = feedbackDao.queryFeedbackById(1L);
         System.out.println(feedback.getuId().toString() + " " + feedback.getfContent());
     }
 

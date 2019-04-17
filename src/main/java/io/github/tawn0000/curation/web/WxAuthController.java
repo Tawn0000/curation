@@ -49,9 +49,9 @@ public class WxAuthController {
         //用户的唯一标识（openid）
         String openid = (String) json.get("openid");
 
-        User user = userService.getUserByopenId(openid);
+        User user = userService.getUserByOpenId(openid);
         if(user == null) userService.addUser(new User(openid));
-        user = userService.getUserByopenId(openid);
+        user = userService.getUserByOpenId(openid);
         map.put("uId",user.getuId());
         return map;
     }

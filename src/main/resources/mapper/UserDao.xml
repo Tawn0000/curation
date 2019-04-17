@@ -12,7 +12,7 @@
             FROM [dbo].[User]
             WHERE u_id=#{userId}
         </select>
-       <select id="queryUserByopenId" resultType="io.github.tawn0000.curation.entity.User">
+       <select id="queryUserByOpenId" resultType="io.github.tawn0000.curation.entity.User">
             SELECT *
             FROM [dbo].[User]
             WHERE open_id=#{openId}

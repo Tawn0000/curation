@@ -12,10 +12,15 @@
         select *
         from [dbo].[UE]
         ORDER BY ue_time ASC
-        where ue_time != NULL
+        where ue_time != NULL AND u_id = #{userId}
     </select>
 
 
+    <select id="queryUEByUidEid" resultType="io.github.tawn0000.curation.entity.UE">
+        select *
+        from [dbo].[UE]
+        where  u_id = #{userId} AND e_id = #{exhibitonId}
+    </select>
 
     <select id="queryUEById" resultType="io.github.tawn0000.curation.entity.UE">
         select *
@@ -27,13 +32,13 @@
     <select id="queryExhibitionByUid" resultType="Long">
         select e_id
         from [dbo].[UE]
-        where u_id = #{uid} AND ue_collection = 1
+        where u_id = #{userId} AND ue_collection = 1
     </select>
 
     <select id="queryUEByUeStatus" resultType="Long">
         select e_id
         from [dbo].[UE]
-        where u_id = #{uid} AND ue_collection = #{ueStatus}
+        where u_id = #{userId} AND ue_collection = #{ueStatus}
     </select>
 
 

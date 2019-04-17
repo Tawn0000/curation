@@ -8,7 +8,14 @@
         ORDER BY c_id ASC
     </select>
 
-    <select id="queryCommentByid" resultType = "io.github.tawn0000.curation.entity.Comment">
+    <select id = "queryCommentByEid" resultType = "io.github.tawn0000.curation.entity.Comment">
+        select *
+        from [dbo].[Comment]
+        ORDER BY e_date ASC
+        where e_id = #{eId}
+    </select>
+
+    <select id="queryCommentById" resultType = "io.github.tawn0000.curation.entity.Comment">
         select *
         from [dbo].[Comment]
         where c_id = #{commentId}

@@ -1,9 +1,8 @@
 package io.github.tawn0000.curation.entity;
 
 import java.sql.Timestamp;
-import java.util.Date;
 
-public class Exhibition {
+public class ExhibitionToken {
     //自增展览编号
     private Long eId;
     //名称
@@ -18,23 +17,8 @@ public class Exhibition {
     private String eDescription;
     //图片
     private String eImage;
-    //视频
-    private String eVideo;
-    //负责人
-    private String ePersonCharge;
 
-    public Exhibition(String eName, String eAddress, Timestamp eDate, int ePrice, String eDescription, String eImage, String eVideo, String ePersonCharge) {
-        this.eName = eName;
-        this.eAddress = eAddress;
-        this.eDate = eDate;
-        this.ePrice = ePrice;
-        this.eDescription = eDescription;
-        this.eImage = eImage;
-        this.eVideo = eVideo;
-        this.ePersonCharge = ePersonCharge;
-    }
-
-    public Exhibition(Long eId, String eName, String eAddress, Timestamp eDate, int ePrice, String eDescription, String eImage, String eVideo, String ePersonCharge) {
+    public ExhibitionToken(Long eId, String eName, String eAddress, Timestamp eDate, int ePrice, String eDescription, String eImage) {
         this.eId = eId;
         this.eName = eName;
         this.eAddress = eAddress;
@@ -42,8 +26,17 @@ public class Exhibition {
         this.ePrice = ePrice;
         this.eDescription = eDescription;
         this.eImage = eImage;
-        this.eVideo = eVideo;
-        this.ePersonCharge = ePersonCharge;
+    }
+
+    public ExhibitionToken(Exhibition exhibition)
+    {
+        this.eId = exhibition.geteId();
+        this.eName = exhibition.geteName();
+        this.eAddress = exhibition.geteAddress();
+        this.eDate = exhibition.geteDate();
+        this.ePrice = exhibition.getePrice();
+        this.eDescription = exhibition.geteDescription();
+        this.eImage = exhibition.geteImage();
     }
 
     public Long geteId() {
@@ -100,21 +93,5 @@ public class Exhibition {
 
     public void seteImage(String eImage) {
         this.eImage = eImage;
-    }
-
-    public String geteVideo() {
-        return eVideo;
-    }
-
-    public void seteVideo(String eVideo) {
-        this.eVideo = eVideo;
-    }
-
-    public String getePersonCharge() {
-        return ePersonCharge;
-    }
-
-    public void setePersonCharge(String ePersonCharge) {
-        this.ePersonCharge = ePersonCharge;
     }
 }
