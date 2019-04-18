@@ -34,5 +34,16 @@ d) 点击某个展览标签，从数据库获得该展览的所有信息
     点击购票，将购票用户插入数据库用户展览表
 
 
+文件路径解释说明
+展览块
+展览图片：tmp/curation/exhibitions/exhibitionid(根据数据库获得)/image（展览id+图片本来的名称）
+展览展品图片:tmp/curation/exhibitions/exhibitionid(根据数据库获得)/exhibits/image(展品本身id+图片本来的名称)
+展览评论图片:tmp/curaiton/exhibitions/exhibitionid(根据数据库获得)/comments/uids(用户id(根据数据库获得))/Dates(时间)/image(图片本身名称获得)
+
+个人块：
+头像:tmp/curation/user/images/image(根据用户id+图片本身id获得)
+反馈：tmp/curation/user/feedbacks/image(根据用户id+图片本身id获得)
+
+
 
 
