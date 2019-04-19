@@ -12,8 +12,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
-
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
@@ -30,8 +28,23 @@ public class IbeaconDaoTest {
     }
 
     @Test
-    public void testQueryIbeaconByid() {
-        Ibeacon ibeacon = ibeaconDao.queryIbeaconByid(1L);
+    public void testQueryIbeaconByStatus()
+    {
+        List<Ibeacon> ibeaconList = ibeaconDao.queryIbeaconByStatus(false);
+        System.out.println(ibeaconList.size());
+    }
+
+    @Test
+    public void testQueryExhibitByUuid()
+    {
+        Long exhibitId = ibeaconDao.queryExhibitByUuid("111");
+        System.out.println(exhibitId);
+    }
+
+
+    @Test
+    public void testQueryIbeaconById() {
+        Ibeacon ibeacon = ibeaconDao.queryIbeaconById(1L);
         System.out.println(ibeacon.getiUid() + " " + ibeacon.getiMajor() + " " + ibeacon.getiMinor() + " " + ibeacon.getiMeasuredPower());
     }
 
@@ -46,7 +59,7 @@ public class IbeaconDaoTest {
     public void testUpdateIbeacon() {
         Ibeacon ibeacon = new Ibeacon(1L,"111","222","333","55",false,1L,0.5D);
         ibeaconDao.updateIbeacon(ibeacon);
-        testQueryIbeaconByid();
+        testQueryIbeaconById();
     }
 
     @Test

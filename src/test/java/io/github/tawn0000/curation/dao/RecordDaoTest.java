@@ -32,9 +32,16 @@ public class RecordDaoTest {
     }
 
     @Test
-    public void testQueryRecordByid() {
-        Record record = recordDao.queryRecordByid(1L);
-        System.out.println(record.getrBeginTime()+ " " +record.getrEndTime());
+    public void testQueryRecordById() {
+        List<Record> recordList = recordDao.queryRecordById(1L,1L);
+        System.out.println(recordList.size());
+    }
+
+    @Test
+    //根据userId,exhibitionId和exhibitId获得特定展品的Record
+    public void testQueryRecordByAllId(){
+         Record record = recordDao.queryRecordByAllId(1L,1L,1L);
+         System.out.println(record.getrInterval());
     }
 
     @Test
@@ -49,7 +56,7 @@ public class RecordDaoTest {
         Record record = new Record(1L,1L,1L,1L, new Timestamp(System.currentTimeMillis()),null,null,null);
         //Record record = new Record(1L,1L,1L,1L, null,new Timestamp(System.currentTimeMillis()),null,null);
         recordDao.updateRecord(record);
-        testQueryRecordByid();
+        testQueryRecordById();
     }
 
 

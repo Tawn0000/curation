@@ -6,11 +6,13 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
+import org.mockito.internal.verification.Times;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.sql.Timestamp;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
@@ -40,8 +42,9 @@ public class ExhibitionDaoTest {
     public void testInsertExhibition() {
         Calendar calendar = new GregorianCalendar();
         calendar.set(2020,06,1,13,00);
-        Exhibition exhibition = new Exhibition("张宇画展","江苏省无锡市江南大学李园", DateUtil.dateToTime(calendar.getTime()),50,"张宇的个人画展","1.jpg","1.mp4","张宇");
+        Exhibition exhibition = new Exhibition("张宇画展","江苏省无锡市江南大学桃园", new Timestamp(calendar.getTimeInMillis()),50,"张宇的个人画展","1.jpg","1.mp4","张宇");
         exhibitionDao.insertExhibition(exhibition);
+        System.out.println(exhibition.geteId());
         testQueryExhibition();
     }
 

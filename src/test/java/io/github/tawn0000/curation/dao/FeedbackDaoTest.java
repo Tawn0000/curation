@@ -1,19 +1,23 @@
 package io.github.tawn0000.curation.dao;
 
 import io.github.tawn0000.curation.entity.Feedback;
+import io.github.tawn0000.curation.utils.DateUtil;
 import org.apache.ibatis.annotations.Mapper;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
+import org.mockito.internal.verification.Times;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.Date;
+import java.sql.Timestamp;
+import java.util.GregorianCalendar;
 import java.util.List;
 
-import static org.junit.Assert.*;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
@@ -30,23 +34,25 @@ public class FeedbackDaoTest {
     }
 
     @Test
-    public void testQueryFeedbackByid() {
-        Feedback feedback = feedbackDao.queryFeedbackById(1L);
-        System.out.println(feedback.getuId().toString() + " " + feedback.getfContent());
+    public void testQueryFeedbackByTime()
+    {
+        Timestamp beginTime = new Timestamp(new GregorianCalendar(2018,0,1).getTimeInMillis());
+        List<Feedback> feedbackList = feedbackDao.queryFeedbackByTime(beginTime,new Timestamp(GregorianCalendar.getInstance().getTimeInMillis()));
+        for(Feedback x : feedbackList) System.out.println(x.getuId().toString() + " " + x.getfContent());
+
+    }
+
+    @Test
+    public void testQueryFeedbackByUuid() {
+        List<Feedback> feedbackList = feedbackDao.queryFeedbackByUid(1L);
+        for(Feedback x : feedbackList) System.out.println(x.getuId().toString() + " " + x.getfContent());
     }
 
     @Test
     public void testInsertFeedback() {
-        Feedback feedback = new Feedback(1L, "非常好！ I like it", "1.jpg");
+        Feedback feedback = new Feedback(1L, "非常好！ I like it", "1.jpg","131555555", DateUtil.dateToTime(GregorianCalendar.getInstance().getTime()));
         feedbackDao.insertFeedback(feedback);
         testQueryFeedback();
-    }
-
-    @Test
-    public void testUpdateFeedback() {
-        Feedback feedback = new Feedback(1L,1L, "很好！ I like it", "1.jpg");
-        feedbackDao.updateFeedback(feedback);
-        testQueryFeedbackByid();
     }
 
     @Test

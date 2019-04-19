@@ -7,7 +7,7 @@ import java.util.List;
 public interface EtagDao {
     List<Etag> queryEtag();
 
-    Etag queryEtagByid(Long etagId);
+    Etag queryEtagById(Long etagId);
 
     int insertEtag(Etag etag);
 

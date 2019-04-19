@@ -9,13 +9,9 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import sun.util.resources.CalendarData;
 
-import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
-
-import static org.junit.Assert.*;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @FixMethodOrder(MethodSorters.NAME_ASCENDING) // 按方法名大小升序执行
@@ -26,12 +22,35 @@ public class ExhibitDaoTest {
     @Test
     public void testQueryExhibit() {
         List<Exhibit> exhibitList = exhibitDao.queryExhibit();
-        System.out.println(exhibitList.size());
+        for(Exhibit x : exhibitList)
+            System.out.println(x.getE1Name()+ " "+ x.getE1Description() + " " + x.getE1Date()+ x.getE1Author());
+    }
+
+
+    //通过展览id获得所有展品信息
+    //List<Exhibit> queryExhibitByEid(Long exhibitionId);
+
+    @Test
+    public void testQueryExhibitByEid()
+    {
+        List<Exhibit> exhibitList = exhibitDao.queryExhibitByEid(1L);
+        for(Exhibit x : exhibitList)
+        System.out.println(x.getE1Author());
+    }
+
+    //通过展览id删除所有的展品信息
+    //int deleteExhibitByEid(Long exhibitionId);
+
+    @Test
+    public void testDeleteExhibitionByEid()
+    {
+        exhibitDao.deleteExhibitByEid(1L);
+        testQueryExhibit();
     }
 
     @Test
-    public void testQueryExhibitByid() {
-        System.out.println(exhibitDao.queryExhibitByid(1L).getE1Author());
+    public void testQueryExhibitById() {
+        System.out.println(exhibitDao.queryExhibitById(2L).getE1Author());
     }
 
     @Test

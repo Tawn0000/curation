@@ -67,13 +67,13 @@ public class ExhibitionController {
 //    @ApiImplicitParams({
 //            @ApiImplicitParam(name = "uid", value = "用户id", required = true, dataType = "Long"),
 //            @ApiImplicitParam(name = "eid", value = "展览id", required = true, dataType = "Long"),
-//            @ApiImplicitParam(name = "e1Id", value = "展品id", required = true, dataType = "Long"),
+//            @ApiImplicitParam(name = "grade", value = "评分", required = true, dataType = "Integer"),
 //            @ApiImplicitParam(name = "time", value = "时间", required = true, dataType = "Timestamp"),
 //            @ApiImplicitParam(name = "context", value = "评论内容", required = true, dataType = "String"),
 //            @ApiImplicitParam(name = "Image", value = "图片", required = true, dataType = "file");
 //    })
     @PostMapping("/insert")
-    public Object insertComment(MultipartHttpServletRequest multipartHttpServletRequest, Long uid, Long eid, Long e1id, Timestamp timestamp, String context){
+    public Object insertComment(MultipartHttpServletRequest multipartHttpServletRequest, Long uid, Long eid, Integer grade, Timestamp timestamp, String context){
 
         List<MultipartFile> fileList = multipartHttpServletRequest.getFiles("IMAGES");
         if(fileList != null){
@@ -85,7 +85,7 @@ public class ExhibitionController {
                 }
                 UploadUtil.uploadFile(file,uploadDir,originalFilename);
             }
-            Comment comment = new Comment(uid,eid,e1id,timestamp,context,uploadDir);
+            Comment comment = new Comment(uid,eid,grade,timestamp,context,uploadDir);
             commentService.addComment(comment);
             return Responsetil.ok();
         }

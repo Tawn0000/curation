@@ -8,7 +8,7 @@
         ORDER BY a_id ASC
     </select>
 
-    <select id="queryAdminByid" resultType="io.github.tawn0000.curation.entity.Admin">
+    <select id="queryAdminById" resultType="io.github.tawn0000.curation.entity.Admin">
         select *
         from [dbo].[Admin]
         where a_id = #{adminId}

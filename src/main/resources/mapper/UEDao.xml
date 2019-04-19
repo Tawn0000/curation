@@ -19,7 +19,7 @@
     <select id="queryUEByUidEid" resultType="io.github.tawn0000.curation.entity.UE">
         select *
         from [dbo].[UE]
-        where  u_id = #{userId} AND e_id = #{exhibitonId}
+        where  u_id = #{userId} AND e_id = #{exhibitionId}
     </select>
 
     <select id="queryUEById" resultType="io.github.tawn0000.curation.entity.UE">
@@ -45,7 +45,7 @@
     <insert id="insertUE" useGeneratedKeys="true" keyProperty="ueId" keyColumn="ue_id" parameterType="io.github.tawn0000.curation.entity.UE">
         insert into
                 [dbo].[UE](u_id,e_id,ue_status,ue_collection,ue_time)
-        values (#{uId},#{eId},#{ueStatus},#{ueCollection},#{ue_time})
+        values (#{uId},#{eId},#{ueStatus},#{ueCollection},#{ueTime})
     </insert>
 
     <update id="updateUE" parameterType="io.github.tawn0000.curation.entity.UE">
@@ -54,8 +54,8 @@
             <if test = "uId != null"> u_id = #{uId}, </if>
             <if test = "eId != null"> e_id = #{eId},</if>
             <if test = "ueStatus != null"> ue_status = #{ueStatus},</if>
-            <if test = "ue_collection != null"> ue_collection = #{ueCollection},</if>
-            <if test = "ue_time != null">ue_time = #{ueTime}</if>
+            <if test = "ueCollection != null"> ue_collection = #{ueCollection},</if>
+            <if test = "ueTime != null">ue_time = #{ueTime}</if>
         </set>
         where u_id = #{uId} AND e_id = #{eId}
     </update>

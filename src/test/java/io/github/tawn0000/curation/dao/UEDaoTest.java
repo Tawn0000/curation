@@ -1,6 +1,7 @@
 package io.github.tawn0000.curation.dao;
 
 import io.github.tawn0000.curation.entity.UE;
+import io.github.tawn0000.curation.utils.DateUtil;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,9 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.GregorianCalendar;
 import java.util.List;
-
-import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -28,23 +28,51 @@ public class UEDaoTest {
     }
 
     @Test
-    public void testQueryUEByid() {
-        UE ue = ueDao.queryUEByid(2L);
+    //查询用户的所有访问过的展览
+    public void testQueryUEByUid(){
+     List<UE> ueList = ueDao.queryUEByUid(1L);
+     System.out.println(ueList.size());
+    }
+
+    @Test
+    //查询所有收藏的展览的ID
+    public void testQueryExhibitionByUid(){
+        List<Long> ueList = ueDao.queryExhibitionByUid(1L);
+        System.out.println(ueList.size());
+    }
+
+    @Test
+    //查询用户某种状态的展览
+    public void testQueryUEByUeStatus(){
+        List<Long> ueList = ueDao.queryUEByUeStatus(1L,0);
+        System.out.println(ueList.size());
+        System.out.println(ueList);
+    }
+
+    @Test
+    public void testQueryUEByUidEid(){
+        UE ue = ueDao.queryUEByUidEid(1L,1L);
+        System.out.println(ue.getUeTime());
+    }
+
+    @Test
+    public void testQueryUEById() {
+        UE ue = ueDao.queryUEById(1L);
         System.out.println(ue.geteId() + " " + ue.geteId() + " " + ue.getUeStatus());
     }
 
     @Test
     public void testInsertUE() {
-        UE ue = new UE(1L,1L,0);
+        UE ue = new UE(1L,1L,0,false, DateUtil.dateToTime(GregorianCalendar.getInstance().getTime()));
         ueDao.insertUE(ue);
         testQueryUE();
     }
 
     @Test
     public void testUpdateUE() {
-        UE ue = new UE(2L,null,null,1);
+        UE ue = new UE(1L,null,1,false, DateUtil.dateToTime(GregorianCalendar.getInstance().getTime()));
         ueDao.updateUE(ue);
-        testQueryUEByid();
+        testQueryUEById();
     }
 
     @Test

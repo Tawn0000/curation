@@ -12,7 +12,7 @@ public interface FeedbackService {
     List<Feedback> queryFeedbackByTime(Timestamp beginTime, Timestamp endTime);
 
     //查询某个用户的反馈
-    Feedback queryFeedbackByUid(Long userId);
+    List<Feedback> queryFeedbackByUid(Long userId);
 
     //Feedback queryFeedbackById(Long feedbackId);
 

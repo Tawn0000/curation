@@ -16,7 +16,7 @@ CREATE Database curation;
 
 CREATE TABLE [dbo].[User](
         [u_id] [bigint] identity(1,1) ,
-        [open_id] [varchar](20) NOT NULL ,
+        [open_id] [varchar](20) unique NOT NULL ,
         [u_name] [varchar](32)  ,
         [u_sex] [varchar](3)  default '男' check (U_sex in ('男','女')),
         [u_icon] [varchar](300) ,
@@ -70,10 +70,10 @@ CREATE TABLE [dbo].[Comment](
          [c_id] [bigint] identity(1,1) ,
          [u_id] [bigint] NOT NULL ,
          [e_id] [bigint] NOT NULL ,
-         [e1_id] [bigint] ,
-         [e_date] [datetime] NOT NULL ,
-         [c_content] text NOT NULL,
-         [c_image] varchar(300) NOT NULL,
+         [c_grade] [int] ,
+         [c_date] [datetime] NOT NULL ,
+         [c_content] text ,
+         [c_image] varchar(300) ,
          CONSTRAINT [PK_Comment] PRIMARY KEY CLUSTERED ([c_id] ASC )
 );
 
@@ -93,7 +93,7 @@ CREATE TABLE [dbo].[Feedback](
 
 CREATE TABLE [dbo].[Ibeacon](
          [i_id] [bigint] identity(1,1) ,
-         [i_uid] [varchar](50) NOT NULL ,
+         [i_uid] [varchar](50) unique NOT NULL ,
          [i_major] [varchar](50) NOT NULL,
          [i_minor] [varchar](50) NOT NULL,
          [i_measured_power] [varchar](50) NOT NULL,

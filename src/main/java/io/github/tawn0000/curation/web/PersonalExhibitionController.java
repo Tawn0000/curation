@@ -6,11 +6,13 @@ import io.github.tawn0000.curation.entity.ExhibitionToken;
 import io.github.tawn0000.curation.entity.UE;
 import io.github.tawn0000.curation.service.ExhibitionService;
 import io.github.tawn0000.curation.service.UEService;
+import io.github.tawn0000.curation.service.impl.UEServiceImpl;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import io.github.tawn0000.curation.utils.Responsetil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,10 +26,11 @@ import java.util.Map;
 
 @Api(value = "个人中心展览信息",tags = "PersonalExhibition")
 @RestController
-@RequestMapping("/personalExhibition")
+@RequestMapping("io.github.tawn0000.curation")
 public class PersonalExhibitionController {
 
     @Autowired
+    @Qualifier("UEServiceImpl")
     private UEService ueService;
 
     @Autowired

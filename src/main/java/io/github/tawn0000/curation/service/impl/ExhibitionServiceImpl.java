@@ -57,24 +57,28 @@ public class ExhibitionServiceImpl implements ExhibitionService {
 
     @Transient
     @Override
-    public int addExhibition(Exhibition exhibition,List<Exhibit> exhibitList){
-
+    public List<Long> addExhibition(Exhibition exhibition,List<Exhibit> exhibitList){
+        List <Long> res = new ArrayList<>();
         exhibitionDao.insertExhibition(exhibition);
+        res.add(exhibition.geteId());
         for(Exhibit x : exhibitList)
         {
             exhibitDao.insertExhibit(x);
+            res.add(x.getE1Id());
         }
-        return 1;
+        return res;
     }
 
     @Transient
     @Override
-    public int modifyExhibition(Exhibition exhibition){
-        return exhibitionDao.updateExhibition((exhibition));
+    public Long modifyExhibition(Exhibition exhibition){
+         exhibitionDao.updateExhibition((exhibition));
+         return exhibition.geteId();
     }
 
-    public int modifyExhibit(Exhibit exhibit){
-        return exhibitDao.updateExhibit(exhibit);
+    public Long modifyExhibit(Exhibit exhibit){
+        exhibitDao.updateExhibit(exhibit);
+        return exhibit.getE1Id();
     }
 
      @Transient

@@ -11,9 +11,9 @@ public interface CommentDao {
 
     Comment queryCommentById(Long commentId);
 
-    void insertComment(Comment comment);
+    int insertComment(Comment comment);
 
-    void updateComment(Comment comment);
+    int updateComment(Comment comment);
 
-    void deleteComment(Long commentId);
+    int deleteComment(Long commentId);
 }

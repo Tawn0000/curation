@@ -19,14 +19,14 @@
         </select>
         <insert id="insertUser" useGeneratedKeys="true" keyProperty="uId" keyColumn="u_id" parameterType="io.github.tawn0000.curation.entity.User">
             INSERT into
-            [dbo].[User] (wc_id,u_name,u_sex,u_icon,u_query_status,u_tag)
+            [dbo].[User] (open_id,u_name,u_sex,u_icon,u_query_status,u_tag)
             values
-                    (#{wcId},#{uName},#{uSex},#{uIcon},#{uQueryStatus},#{uTag})
+                    (#{openId},#{uName},#{uSex},#{uIcon},#{uQueryStatus},#{uTag})
         </insert>
         <update id="updateUser" parameterType="io.github.tawn0000.curation.entity.User">
             update [dbo].[User]
             <set>
-                <if test = "wcId != null"> wc_id = #{wcId},</if>
+                <if test = "openId != null"> open_id = #{openId},</if>
                 <if test = "uName != null">u_name = #{uName},</if>
                 <if test = "uSex != null"> u_sex = #{uSex}, </if>
                 <if test = "uIcon != null"> u_icon = #{uIcon}, </if>

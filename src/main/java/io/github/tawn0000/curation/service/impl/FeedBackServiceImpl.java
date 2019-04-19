@@ -28,7 +28,7 @@ public class FeedBackServiceImpl implements FeedbackService {
     }
 
     @Override
-    public Feedback queryFeedbackByUid(Long userId){
+    public List<Feedback> queryFeedbackByUid(Long userId){
         return feedbackDao.queryFeedbackByUid(userId);
     }
     @Transient

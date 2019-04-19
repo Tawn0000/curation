@@ -13,7 +13,7 @@ public class Comment {
     //展览编号
     private Long eId;
     //展品编号
-    private Long e1Id;
+    private Integer cGrade;
     //评论时间
     private Timestamp cDate;
     //评论文字内容
@@ -21,20 +21,20 @@ public class Comment {
     //评论图片
     private String cImage;
 
-    public Comment(Long cId, Long uId, Long eId, Long e1Id, Timestamp cDate, String cContent, String cImage) {
+    public Comment(Long cId, Long uId, Long eId, Integer cGrade, Timestamp cDate, String cContent, String cImage) {
         this.cId = cId;
         this.uId = uId;
         this.eId = eId;
-        this.e1Id = e1Id;
+        this.cGrade = cGrade;
         this.cDate = cDate;
         this.cContent = cContent;
         this.cImage = cImage;
     }
 
-    public Comment(Long uId, Long eId, Long e1Id, Timestamp cDate, String cContent, String cImage) {
+    public Comment(Long uId, Long eId, Integer cGrade, Timestamp cDate, String cContent, String cImage) {
         this.uId = uId;
         this.eId = eId;
-        this.e1Id = e1Id;
+        this.cGrade = cGrade;
         this.cDate = cDate;
         this.cContent = cContent;
         this.cImage = cImage;
@@ -64,15 +64,15 @@ public class Comment {
         this.eId = eId;
     }
 
-    public Long getE1Id() {
-        return e1Id;
+    public Integer getcGrade() {
+        return cGrade;
     }
 
-    public void setE1Id(Long e1Id) {
-        this.e1Id = e1Id;
+    public void setcGrade(Integer cGrade) {
+        this.cGrade = cGrade;
     }
 
-    public Date getcDate() {
+    public Timestamp getcDate() {
         return cDate;
     }
 

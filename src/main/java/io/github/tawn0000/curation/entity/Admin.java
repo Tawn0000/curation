@@ -4,7 +4,7 @@ public class Admin {
     //主键ID
     private Integer aId;
     //微信号
-    private String wcId;
+    private String openId;
     //密码
     private String aPassword;
     //姓名
@@ -12,16 +12,16 @@ public class Admin {
     //权限级别(0-1,0代表最高级别，1代表可以添加展览信息）
     private Integer aLevel;
 
-    public Admin(Integer aId, String wcId, String aPassword, String aName, Integer aLevel) {
+    public Admin(Integer aId, String openId, String aPassword, String aName, Integer aLevel) {
         this.aId = aId;
-        this.wcId = wcId;
+        this.openId = openId;
         this.aPassword = aPassword;
         this.aName = aName;
         this.aLevel = aLevel;
     }
 
-    public Admin(String wcId, String aPassword, String aName, Integer aLevel) {
-        this.wcId = wcId;
+    public Admin(String openId, String aPassword, String aName, Integer aLevel) {
+        this.openId = openId;
         this.aPassword = aPassword;
         this.aName = aName;
         this.aLevel = aLevel;
@@ -35,12 +35,12 @@ public class Admin {
         this.aId = aId;
     }
 
-    public String getWcId() {
-        return wcId;
+    public String getOpenId() {
+        return openId;
     }
 
-    public void setWcId(String wcId) {
-        this.wcId = wcId;
+    public void setOpenId(String openId) {
+        this.openId = openId;
     }
 
     public String getaPassword() {

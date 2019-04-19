@@ -11,8 +11,8 @@
     <select id = "queryCommentByEid" resultType = "io.github.tawn0000.curation.entity.Comment">
         select *
         from [dbo].[Comment]
-        ORDER BY e_date ASC
         where e_id = #{eId}
+        ORDER BY c_date ASC
     </select>
 
     <select id="queryCommentById" resultType = "io.github.tawn0000.curation.entity.Comment">
@@ -23,8 +23,8 @@
 
     <insert id="insertComment" useGeneratedKeys="true" keyProperty="id" keyColumn="c_id" parameterType= "io.github.tawn0000.curation.entity.Comment">
         insert into
-              [dbo].[Comment](u_id,e_id,e1_id,e_date,c_content,c_image)
-        values (#{uId},#{eId},#{e1Id},#{cDate},#{cContent},#{cImage})
+              [dbo].[Comment](u_id,e_id,c_grade,c_date,c_content,c_image)
+        values (#{uId},#{eId},#{cGrade},#{cDate},#{cContent},#{cImage})
     </insert>
 
     <update id="updateComment" parameterType= "io.github.tawn0000.curation.entity.Comment">
@@ -32,8 +32,8 @@
         <set>
             <if test = "uId != null" > u_id = #{uId}, </if>
             <if test = "eId != null" >e_id = #{eId},</if>
-            <if test = "e1Id != null" >e1_id = #{e1Id},</if>
-            <if test = "cDate != null" >e_date = #{cDate},</if>
+            <if test = "cGrade != null" >c_grade = #{cGrade},</if>
+            <if test = "cDate != null" >c_date = #{cDate},</if>
             <if test = "cContent != null" >c_content = #{cContent},</if>
             <if test = "cImage != null" >c_image = #{cImage}</if>
         </set>

@@ -49,3 +49,9 @@ FROM [dbo].[User]
 select e_id
 from [dbo].[UE]
 where  ue_collection = 1
+
+
+select *
+from [dbo].[Ibeacon]
+where i_status = 1
+ORDER BY i_id ASC

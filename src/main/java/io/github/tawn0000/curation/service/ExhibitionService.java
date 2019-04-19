@@ -20,14 +20,14 @@ public interface ExhibitionService {
     //通过指定地址的所有展览简要信息
     List<ExhibitionToken> queryExhibitionByAddress(String address);
 
-    //添加除展品外的展览信息
-    int addExhibition(Exhibition exhibition, List<Exhibit> exhibitList);
+    //添加展览信息
+    List<Long> addExhibition(Exhibition exhibition, List<Exhibit> exhibitList);
 
     //修改除展品外的展览信息
-    int modifyExhibition(Exhibition exhibition);
+    Long modifyExhibition(Exhibition exhibition);
 
     //修改展品信息
-    int modifyExhibit(Exhibit exhibit);
+    Long modifyExhibit(Exhibit exhibit);
 
     //删除展览信息
     int deleteExhibition(Long exhibitionId);

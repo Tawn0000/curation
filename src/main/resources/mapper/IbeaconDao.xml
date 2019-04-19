@@ -11,8 +11,8 @@
     <select id = "queryIbeaconByStatus" resultType = "io.github.tawn0000.curation.entity.Ibeacon">
         select *
         from [dbo].[Ibeacon]
-        ORDER BY i_id ASC
         where i_status = #{status}
+        ORDER BY i_id ASC
     </select>
 
 

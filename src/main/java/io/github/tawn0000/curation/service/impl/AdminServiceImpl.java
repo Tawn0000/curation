@@ -26,14 +26,14 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public Admin queryAdminByid(int adminId){
         //根据管理员id获取管理员信息
-        return adminDao.queryAdminByid(adminId);
+        return adminDao.queryAdminById(adminId);
     }
 
     @Transient
     @Override
     public Boolean insertAdmin(Admin admin){
-        //空值判断，主要是判断wcId是否为空
-        if (admin.getWcId() != null && !"".equals(admin.getWcId()))
+        //空值判断，主要是判断openId是否为空
+        if (admin.getOpenId() != null && !"".equals(admin.getOpenId()))
         {
             try {
                 adminDao.insertAdmin(admin);

@@ -7,11 +7,11 @@ import java.util.List;
 public interface AdminDao {
     List<Admin> queryAdmin();
 
-    Admin queryAdminByid(int adminId);
+    Admin queryAdminById(int adminId);
 
-    void insertAdmin(Admin admin);
+    int insertAdmin(Admin admin);
 
-    void updateAdmin(Admin admin);
+    int updateAdmin(Admin admin);
 
-    void deleteAdmin(int adminId);
+    int deleteAdmin(int adminId);
 }

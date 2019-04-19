@@ -8,7 +8,7 @@
         ORDER BY et_id ASC
     </select>
 
-    <select id="queryEtagByid" resultType = "io.github.tawn0000.curation.entity.Etag">
+    <select id="queryEtagById" resultType = "io.github.tawn0000.curation.entity.Etag">
         select *
         from [dbo].[E_tag]
         where  et_id = #{etagId}

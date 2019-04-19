@@ -11,8 +11,8 @@
     <select id = "queryFeedbackByTime" resultType = "io.github.tawn0000.curation.entity.Feedback">
         select *
         from [dbo].[Feedback]
+        where f_time between #{beginTime} and #{endTime}
         order by f_time ASC
-        where f_fime between #{beginTime} and #{endTime}
     </select>
 
     <select id="queryFeedbackByUid" resultType="io.github.tawn0000.curation.entity.Feedback">

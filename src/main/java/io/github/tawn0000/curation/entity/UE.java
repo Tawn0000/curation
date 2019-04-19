@@ -12,11 +12,11 @@ public class UE {
     //状态（0未报名，1已报名，2正在参加，3已参加
     private Integer ueStatus;
 
-    private boolean ueCollection;
+    private Boolean ueCollection;
 
     private Timestamp ueTime;
 
-    public UE(Long ueId, Long uId, Long eId, Integer ueStatus, boolean ueCollection, Timestamp ueTime) {
+    public UE(Long ueId, Long uId, Long eId, Integer ueStatus, Boolean ueCollection, Timestamp ueTime) {
         this.ueId = ueId;
         this.uId = uId;
         this.eId = eId;
@@ -25,7 +25,7 @@ public class UE {
         this.ueTime = ueTime;
     }
 
-    public UE(Long uId, Long eId, Integer ueStatus, boolean ueCollection, Timestamp ueTime) {
+    public UE(Long uId, Long eId, Integer ueStatus, Boolean ueCollection, Timestamp ueTime) {
         this.uId = uId;
         this.eId = eId;
         this.ueStatus = ueStatus;
@@ -65,11 +65,11 @@ public class UE {
         this.ueStatus = ueStatus;
     }
 
-    public boolean isUeCollection() {
+    public Boolean getUeCollection() {
         return ueCollection;
     }
 
-    public void setUeCollection(boolean ueCollection) {
+    public void setUeCollection(Boolean ueCollection) {
         this.ueCollection = ueCollection;
     }
 
