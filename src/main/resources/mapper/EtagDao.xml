@@ -4,24 +4,24 @@
 <mapper namespace = "io.github.tawn0000.curation.dao.EtagDao">
     <select id = "queryEtag" resultType = "io.github.tawn0000.curation.entity.Etag">
         select *
-        from [dbo].[E_tag]
+        from E_Tag
         ORDER BY et_id ASC
     </select>
 
     <select id="queryEtagById" resultType = "io.github.tawn0000.curation.entity.Etag">
         select *
-        from [dbo].[E_tag]
+        from E_Tag
         where  et_id = #{etagId}
     </select>
 
     <insert id="insertEtag" useGeneratedKeys="true" keyProperty="etId" keyColumn="et_id" parameterType="io.github.tawn0000.curation.entity.Etag">
         insert into
-                [dbo].[E_tag](e_id,e_tags)
+                E_Tag(e_id,e_tags)
         values (#{eId},#{eTags})
     </insert>
 
     <update id="updateEtag" parameterType="io.github.tawn0000.curation.entity.Etag">
-        update [dbo].[E_tag]
+        update E_Tag
         <set>
             <if test = "eId != null" > e_id = #{eId},</if>
             <if test = "eTags != null" > e_tags = #{eTags}</if>
@@ -31,7 +31,7 @@
 
     <delete id="deleteEtag">
         delete from
-                [dbo].[E_tag]
+                E_Tag
         where et_id = #{etagId}
     </delete>
 

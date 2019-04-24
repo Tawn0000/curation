@@ -6,12 +6,13 @@ import io.github.tawn0000.curation.service.CommentService;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.beans.Transient;
+
 import java.util.List;
 
 @Service
-@MapperScan("io.github.tawn0000.curation")
+//@MapperScan("io.github.tawn0000.curation")
 
 public class CommentServiceImpl implements CommentService {
     @Autowired
@@ -32,7 +33,7 @@ public class CommentServiceImpl implements CommentService {
         return commentDao.queryCommentById(commentId);
     }
 
-    @Transient
+    @Transactional
     @Override
     public Boolean addComment(Comment comment){
         //此评论的用户编号不为空并且用户编号大于0
@@ -50,7 +51,7 @@ public class CommentServiceImpl implements CommentService {
         return true;
     }
 
-    @Transient
+    @Transactional
     @Override
     public Boolean modifyComment(Comment comment){
         //此评论的id号不为空且大于0
@@ -68,7 +69,7 @@ public class CommentServiceImpl implements CommentService {
         return true;
     }
 
-    @Transient
+    @Transactional
     @Override
     public  Boolean deleteComment(Long commentId){
         if (commentId > 0)

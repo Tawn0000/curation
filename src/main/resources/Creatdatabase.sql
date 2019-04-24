@@ -1,8 +1,8 @@
-
----删除数据库
-    Use master
-    go
-    Drop database curation;
+--
+-- ---删除数据库
+--     Use master
+--     go
+--     Drop database curation;
 
 ---创建数据库 curation
 
@@ -10,7 +10,6 @@ CREATE Database curation;
 
 ---创建表
     use curation;
-    go
 
 -- 用户（自增用户编号，微信号，姓名，性别，头像，蓝牙权限(开/关）,是否填写过调查问卷，喜好标签)
 
@@ -57,10 +56,10 @@ CREATE TABLE [dbo].[Exhibit](
         [e1_id] [bigint] identity(1,1) ,
         [e_id] [bigint] NOT NULL,
         [e1_name] [varchar](100) NOT NULL ,
-        [e1_author] [varchar](20) NOT NULL ,
-        [e1_date] [date] NOT NULL ,
-        [e1_image] varchar(300) NOT NULL,
-        [e1_description] text NOT NULL,
+        [e1_author] [varchar](20)  ,
+        [e1_date] [date]  ,
+        [e1_image] varchar(300),
+        [e1_description] text ,
         CONSTRAINT [PK_Exhibit] PRIMARY KEY CLUSTERED ([e1_id] ASC )
 );
 

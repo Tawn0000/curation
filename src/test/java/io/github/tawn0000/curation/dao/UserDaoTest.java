@@ -57,7 +57,7 @@ public class UserDaoTest {
     public void testInsertUser() {
         //List<User> userList1 = userDao.queryUser();
         //创建一个用户对象
-        User user = new User("fab1234560555","张宇","男","1.jpg","否","复古");
+        User user = new User("fab123456dddd0555","张宇","男","1.jpg","否","复古");
         //将该对象实例添加入库
         userDao.insertUser(user);
         System.out.println(user.getuId());

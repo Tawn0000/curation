@@ -8,7 +8,7 @@ public interface IbeaconDao {
     List<Ibeacon> queryIbeacon();
 
     //获取空闲或则忙碌的蓝牙Ibeacon
-    List<Ibeacon> queryIbeaconByStatus(boolean status);
+    List<Ibeacon> queryIbeaconByStatus(Integer status);
 
     //通过IbeaconId获得Ibeacon的所有信息
     Ibeacon queryIbeaconById(Long ibeaconId);

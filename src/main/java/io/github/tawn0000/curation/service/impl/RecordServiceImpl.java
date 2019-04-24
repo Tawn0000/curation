@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 @Service
-@MapperScan("io.github.tawn0000.curation")
+//@MapperScan("io.github.tawn0000.curation")
 public class RecordServiceImpl implements RecordService {
 
 

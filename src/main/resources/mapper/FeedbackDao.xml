@@ -4,37 +4,37 @@
 <mapper namespace = "io.github.tawn0000.curation.dao.FeedbackDao">
     <select id = "queryFeedback" resultType = "io.github.tawn0000.curation.entity.Feedback">
         select *
-        from [dbo].[Feedback]
+        from Feedback
         order by f_id ASC
     </select>
 
     <select id = "queryFeedbackByTime" resultType = "io.github.tawn0000.curation.entity.Feedback">
         select *
-        from [dbo].[Feedback]
+        from Feedback
         where f_time between #{beginTime} and #{endTime}
         order by f_time ASC
     </select>
 
     <select id="queryFeedbackByUid" resultType="io.github.tawn0000.curation.entity.Feedback">
         select *
-        from [dbo].[Feedback]
+        from Feedback
         where u_id = #{userId}
     </select>
 
     <select id="queryFeedbackById" resultType="io.github.tawn0000.curation.entity.Feedback">
         select *
-        from [dbo].[Feedback]
+        from Feedback
         where f_id = #{feedbackId}
     </select>
 
     <insert id="insertFeedback" useGeneratedKeys="true" keyProperty="fId" keyColumn="f_id" parameterType="io.github.tawn0000.curation.entity.Feedback">
         insert into
-                [dbo].[Feedback](u_id,f_content,f_image,f_phone_number,f_time)
+                Feedback(u_id,f_content,f_image,f_phone_number,f_time)
         values (#{uId},#{fContent},#{fImage},#{fPhoneNumber},#{fTime})
     </insert>
 
     <update id="updateFeedback" parameterType="io.github.tawn0000.curation.entity.Feedback">
-        update [dbo].[Feedback]
+        update Feedback
         <set>
             <if test = "uId != null"> u_id = #{uId}, </if>
             <if test = "fContent != null"> f_content = #{fContent},</if>
@@ -47,7 +47,7 @@
 
     <delete id="deleteFeedback">
         delete from
-                [dbo].[Feedback]
+                Feedback
         where f_id = #{feedbackId}
     </delete>
 

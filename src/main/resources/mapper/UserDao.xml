@@ -4,27 +4,27 @@
 <mapper namespace = "io.github.tawn0000.curation.dao.UserDao">
         <select id = "queryUser" resultType = "io.github.tawn0000.curation.entity.User">
             SELECT *
-            FROM [dbo].[User]
+            FROM User
             ORDER BY u_id ASC
         </select>
         <select id="queryUserById" resultType="io.github.tawn0000.curation.entity.User">
             SELECT *
-            FROM [dbo].[User]
+            FROM User
             WHERE u_id=#{userId}
         </select>
        <select id="queryUserByOpenId" resultType="io.github.tawn0000.curation.entity.User">
             SELECT *
-            FROM [dbo].[User]
+            FROM User
             WHERE open_id=#{openId}
         </select>
         <insert id="insertUser" useGeneratedKeys="true" keyProperty="uId" keyColumn="u_id" parameterType="io.github.tawn0000.curation.entity.User">
             INSERT into
-            [dbo].[User] (open_id,u_name,u_sex,u_icon,u_query_status,u_tag)
+            User (open_id,u_name,u_sex,u_icon,u_query_status,u_tag)
             values
                     (#{openId},#{uName},#{uSex},#{uIcon},#{uQueryStatus},#{uTag})
         </insert>
         <update id="updateUser" parameterType="io.github.tawn0000.curation.entity.User">
-            update [dbo].[User]
+            update User
             <set>
                 <if test = "openId != null"> open_id = #{openId},</if>
                 <if test = "uName != null">u_name = #{uName},</if>
@@ -38,7 +38,7 @@
 
         <delete id="deleteUser" >
             delete from
-                    [dbo].[User]
+                    User
             where u_id = #{userId}
         </delete>
 </mapper>

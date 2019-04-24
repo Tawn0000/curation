@@ -6,12 +6,13 @@ import io.github.tawn0000.curation.service.AdminService;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.beans.Transient;
+
 import java.util.List;
 
 @Service
-@MapperScan("io.github.tawn0000.curation")
+//@MapperScan("io.github.tawn0000.curation")
 
 public class AdminServiceImpl implements AdminService {
     @Autowired
@@ -29,7 +30,7 @@ public class AdminServiceImpl implements AdminService {
         return adminDao.queryAdminById(adminId);
     }
 
-    @Transient
+    @Transactional
     @Override
     public Boolean insertAdmin(Admin admin){
         //空值判断，主要是判断openId是否为空
@@ -50,7 +51,7 @@ public class AdminServiceImpl implements AdminService {
         return true;
     }
 
-    @Transient
+    @Transactional
     @Override
     public  Boolean updateAdmin(Admin admin){
         if(admin.getaId() != null && admin.getaId() > 0){
@@ -67,7 +68,7 @@ public class AdminServiceImpl implements AdminService {
         return true;
     }
 
-    @Transient
+    @Transactional
     @Override
     public Boolean deleteAdmin(int adminId){
         if (adminId > 0)

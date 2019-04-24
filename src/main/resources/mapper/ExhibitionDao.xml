@@ -4,25 +4,25 @@
 <mapper namespace = "io.github.tawn0000.curation.dao.ExhibitionDao">
     <select id = "queryExhibition" resultType = "io.github.tawn0000.curation.entity.Exhibition">
         select *
-        from [dbo].[Exhibition]
+        from Exhibition
         order by e_id ASC
     </select>
 
     <select id="queryExhibitionById" resultType="io.github.tawn0000.curation.entity.Exhibition">
         select *
-        from [dbo].[Exhibition]
+        from Exhibition
         where e_id = #{exhibitionId}
     </select>
 
     <insert id="insertExhibition" useGeneratedKeys="true" keyProperty="eId" keyColumn="e_id" parameterType="io.github.tawn0000.curation.entity.Exhibition">
         insert into
-                [dbo].[Exhibition](e_name,e_address,e_date,e_price,e_description,e_image,e_video,e_person_in_charge)
+                Exhibition(e_name,e_address,e_date,e_price,e_description,e_image,e_video,e_person_in_charge)
         values (#{eName},#{eAddress},#{eDate},#{ePrice},#{eDescription},#{eImage},#{eVideo},#{ePersonCharge})
 
     </insert>
 
     <update id="updateExhibition" parameterType="io.github.tawn0000.curation.entity.Exhibition">
-        update [dbo].[Exhibition]
+        update Exhibition
         <set>
             <if test = "eName != null">e_name = #{eName},</if>
             <if test = "eAddress != null">e_address = #{eAddress},</if>
@@ -38,7 +38,7 @@
 
     <delete id="deleteExhibition">
         delete from
-                [dbo].[Exhibition]
+                Exhibition
         where e_id = #{exhibitionId}
     </delete>
 

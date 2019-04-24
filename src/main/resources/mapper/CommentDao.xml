@@ -4,31 +4,31 @@
 <mapper namespace = "io.github.tawn0000.curation.dao.CommentDao">
     <select id = "queryComment" resultType = "io.github.tawn0000.curation.entity.Comment">
         select *
-        from [dbo].[Comment]
+        from Comment
         ORDER BY c_id ASC
     </select>
 
     <select id = "queryCommentByEid" resultType = "io.github.tawn0000.curation.entity.Comment">
         select *
-        from [dbo].[Comment]
+        from Comment
         where e_id = #{eId}
         ORDER BY c_date ASC
     </select>
 
     <select id="queryCommentById" resultType = "io.github.tawn0000.curation.entity.Comment">
         select *
-        from [dbo].[Comment]
+        from Comment
         where c_id = #{commentId}
     </select>
 
     <insert id="insertComment" useGeneratedKeys="true" keyProperty="id" keyColumn="c_id" parameterType= "io.github.tawn0000.curation.entity.Comment">
         insert into
-              [dbo].[Comment](u_id,e_id,c_grade,c_date,c_content,c_image)
+              Comment(u_id,e_id,c_grade,c_date,c_content,c_image)
         values (#{uId},#{eId},#{cGrade},#{cDate},#{cContent},#{cImage})
     </insert>
 
     <update id="updateComment" parameterType= "io.github.tawn0000.curation.entity.Comment">
-        update [dbo].[Comment]
+        update Comment
         <set>
             <if test = "uId != null" > u_id = #{uId}, </if>
             <if test = "eId != null" >e_id = #{eId},</if>
@@ -42,7 +42,7 @@
 
     <delete id="deleteComment">
         delete from
-                [dbo].[Comment]
+                Comment
         where c_id = #{commentId}
     </delete>
 

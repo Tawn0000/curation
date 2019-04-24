@@ -4,52 +4,52 @@
 <mapper namespace = "io.github.tawn0000.curation.dao.UEDao">
     <select id = "queryUE" resultType = "io.github.tawn0000.curation.entity.UE">
         select *
-        from [dbo].[UE]
+        from UE
         ORDER BY ue_id ASC
     </select>
 
     <select id = "queryUEByUid" resultType = "io.github.tawn0000.curation.entity.UE">
         select *
-        from [dbo].[UE]
+        from UE
+        where ue_time is NOT NULL AND u_id = #{userId}
         ORDER BY ue_time ASC
-        where ue_time != NULL AND u_id = #{userId}
     </select>
 
 
     <select id="queryUEByUidEid" resultType="io.github.tawn0000.curation.entity.UE">
         select *
-        from [dbo].[UE]
+        from UE
         where  u_id = #{userId} AND e_id = #{exhibitionId}
     </select>
 
     <select id="queryUEById" resultType="io.github.tawn0000.curation.entity.UE">
         select *
-        from [dbo].[UE]
+        from UE
         where ue_id = #{ueId}
     </select>
 
 
     <select id="queryExhibitionByUid" resultType="Long">
         select e_id
-        from [dbo].[UE]
+        from UE
         where u_id = #{userId} AND ue_collection = 1
     </select>
 
     <select id="queryUEByUeStatus" resultType="Long">
         select e_id
-        from [dbo].[UE]
-        where u_id = #{userId} AND ue_collection = #{ueStatus}
+        from UE
+        where u_id = #{userId} AND ue_status = #{ueStatus}
     </select>
 
 
     <insert id="insertUE" useGeneratedKeys="true" keyProperty="ueId" keyColumn="ue_id" parameterType="io.github.tawn0000.curation.entity.UE">
         insert into
-                [dbo].[UE](u_id,e_id,ue_status,ue_collection,ue_time)
+                UE(u_id,e_id,ue_status,ue_collection,ue_time)
         values (#{uId},#{eId},#{ueStatus},#{ueCollection},#{ueTime})
     </insert>
 
     <update id="updateUE" parameterType="io.github.tawn0000.curation.entity.UE">
-        update [dbo].[UE]
+        update UE
         <set>
             <if test = "uId != null"> u_id = #{uId}, </if>
             <if test = "eId != null"> e_id = #{eId},</if>
@@ -61,7 +61,7 @@
     </update>
 
     <delete id="deleteUE">
-        delete from [dbo].[UE]
+        delete from UE
         where ue_id = #{ueId}
     </delete>
 </mapper>

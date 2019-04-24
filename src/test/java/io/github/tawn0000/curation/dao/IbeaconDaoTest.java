@@ -30,7 +30,7 @@ public class IbeaconDaoTest {
     @Test
     public void testQueryIbeaconByStatus()
     {
-        List<Ibeacon> ibeaconList = ibeaconDao.queryIbeaconByStatus(false);
+        List<Ibeacon> ibeaconList = ibeaconDao.queryIbeaconByStatus(0);
         System.out.println(ibeaconList.size());
     }
 
@@ -50,14 +50,14 @@ public class IbeaconDaoTest {
 
     @Test
     public void testInsertIbeacon() {
-        Ibeacon ibeacon = new Ibeacon("111","222","333","23",true,1L,0.5D);
+        Ibeacon ibeacon = new Ibeacon("114","222","333","23",1,1L,0.5F);
         ibeaconDao.insertIbeacon(ibeacon);
         testQeryIbeacon();
     }
 
     @Test
     public void testUpdateIbeacon() {
-        Ibeacon ibeacon = new Ibeacon(1L,"111","222","333","55",false,1L,0.5D);
+        Ibeacon ibeacon = new Ibeacon(1L,"111","222","333","55",0,1L,0.5F);
         ibeaconDao.updateIbeacon(ibeacon);
         testQueryIbeaconById();
     }

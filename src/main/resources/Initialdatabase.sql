@@ -55,3 +55,10 @@ select *
 from [dbo].[Ibeacon]
 where i_status = 1
 ORDER BY i_id ASC
+
+select *
+from [dbo].[UE]
+where ue_time is NOT NULL AND u_id = 1
+ORDER BY ue_time ASC
+
+

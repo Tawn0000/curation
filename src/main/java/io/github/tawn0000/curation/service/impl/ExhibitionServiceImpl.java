@@ -7,16 +7,17 @@ import io.github.tawn0000.curation.entity.Exhibition;
 import io.github.tawn0000.curation.entity.ExhibitionToken;
 import io.github.tawn0000.curation.service.ExhibitionService;
 import io.github.tawn0000.curation.utils.KMPUtil;
+
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.beans.Transient;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
-@MapperScan("io.github.tawn0000.curation")
+//@MapperScan("io.github.tawn0000.curation")
 
 public class ExhibitionServiceImpl implements ExhibitionService {
 
@@ -49,13 +50,13 @@ public class ExhibitionServiceImpl implements ExhibitionService {
         for(Exhibition x: exhibitionList)
         {
             String str = x.geteAddress();
-            if(KMPUtil.kmpStringMatch(str,address) == false)
+            if(KMPUtil.kmpStringMatch(str,address) == true)
                 exhibitionTokenList.add(new ExhibitionToken(x));
         }
         return exhibitionTokenList;
     }
 
-    @Transient
+    @Transactional
     @Override
     public List<Long> addExhibition(Exhibition exhibition,List<Exhibit> exhibitList){
         List <Long> res = new ArrayList<>();
@@ -69,7 +70,7 @@ public class ExhibitionServiceImpl implements ExhibitionService {
         return res;
     }
 
-    @Transient
+    @Transactional
     @Override
     public Long modifyExhibition(Exhibition exhibition){
          exhibitionDao.updateExhibition((exhibition));
@@ -81,7 +82,7 @@ public class ExhibitionServiceImpl implements ExhibitionService {
         return exhibit.getE1Id();
     }
 
-     @Transient
+     @Transactional
      @Override
     public int deleteExhibition(Long exhibitionId)
     {

@@ -6,11 +6,12 @@ import io.github.tawn0000.curation.service.IbeaconService;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.beans.Transient;
 import java.util.List;
 @Service
-@MapperScan("io.github.tawn0000.curation")
+//@MapperScan("io.github.tawn0000.curation")
 
 public class IbeanconServiceImpl implements IbeaconService {
 
@@ -21,7 +22,7 @@ public class IbeanconServiceImpl implements IbeaconService {
     public List<Ibeacon> queryIbeacon(){return ibeaconDao.queryIbeacon();}
 
     @Override
-    public List<Ibeacon> queryIbeaconByStatus(boolean status){return ibeaconDao.queryIbeaconByStatus(status);}
+    public List<Ibeacon> queryIbeaconByStatus(Integer status){return ibeaconDao.queryIbeaconByStatus(status);}
 
     @Override
     public Ibeacon queryIbeaconById(Long ibeaconId){return ibeaconDao.queryIbeaconById(ibeaconId);}
@@ -29,11 +30,11 @@ public class IbeanconServiceImpl implements IbeaconService {
     @Override
     public Long queryExhibitByUuid(String uuid){return ibeaconDao.queryExhibitByUuid(uuid);}
 
-    @Transient
+    @Transactional
     @Override
     public int addIbeacon(Ibeacon ibeacon){return ibeaconDao.insertIbeacon(ibeacon);}
 
-    @Transient
+    @Transactional
     @Override
     public int modifyIbeacon(Ibeacon ibeacon){return ibeaconDao.updateIbeacon(ibeacon);}
 

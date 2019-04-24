@@ -4,29 +4,29 @@
 <mapper namespace = "io.github.tawn0000.curation.dao.ExhibitDao">
     <select id = "queryExhibit" resultType = "io.github.tawn0000.curation.entity.Exhibit">
         select *
-        from [dbo].[Exhibit]
+        from Exhibit
         ORDER BY e1_id ASC
     </select>
 
     <select id = "queryExhibitByEid" resultType = "io.github.tawn0000.curation.entity.Exhibit">
         select *
-        from [dbo].[Exhibit]
+        from Exhibit
         where e_id = #{exhibitionId}
     </select>
 
     <select id="queryExhibitById" resultType="io.github.tawn0000.curation.entity.Exhibit">
         select *
-        from [dbo].[Exhibit]
+        from Exhibit
         where e1_id = #{exhibitId}
     </select>
     <insert id="insertExhibit" useGeneratedKeys="true" keyProperty="e1Id" keyColumn="e1_id" parameterType="io.github.tawn0000.curation.entity.Exhibit">
         insert into
-                [dbo].[Exhibit] (e_id,e1_name,e1_author,e1_date,e1_image,e1_description)
+                Exhibit (e_id,e1_name,e1_author,e1_date,e1_image,e1_description)
         values (#{eId},#{e1Name},#{e1Author},#{e1Date},#{e1Image},#{e1Description})
     </insert>
 
     <update id="updateExhibit" parameterType="io.github.tawn0000.curation.entity.Exhibit">
-        update [dbo].[Exhibit]
+        update Exhibit
         <set>
             <if test = "eId != null"> e_id = #{eId},</if>
             <if test = "e1Name != null">e1_name = #{e1Name},</if>
@@ -40,13 +40,13 @@
 
     <delete id="deleteExhibitByEid">
         delete from
-                [dbo].[Exhibit]
+                Exhibit
         where e_id = #{exhibitionId}
     </delete>
 
     <delete id="deleteExhibit">
         delete from
-                [dbo].[Exhibit]
+                Exhibit
         where e1_id = #{exhibitId}
     </delete>
 

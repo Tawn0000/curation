@@ -1,11 +1,14 @@
 package io.github.tawn0000.curation.web;
 
 
-import io.github.tawn0000.curation.entity.Comment;
 import io.github.tawn0000.curation.entity.Feedback;
 import io.github.tawn0000.curation.entity.User;
 import io.github.tawn0000.curation.service.FeedbackService;
 import io.github.tawn0000.curation.service.UserService;
+import io.github.tawn0000.curation.service.impl.FeedbackServiceImpl;
+import io.github.tawn0000.curation.service.impl.UserServiceImpl;
+import io.github.tawn0000.curation.utils.Responsetil;
+import io.github.tawn0000.curation.utils.UploadUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
@@ -18,8 +21,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
-import io.github.tawn0000.curation.utils.Responsetil;
-import io.github.tawn0000.curation.utils.UploadUtil;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -33,10 +34,10 @@ import java.sql.Timestamp;
 class UserController{
 
     @Autowired
-    private UserService userService;
+    private UserServiceImpl userService;
 
     @Autowired
-    private FeedbackService feedbackService;
+    private FeedbackServiceImpl feedbackService;
 
     //用户头像路径
     @Value("${curarion.user-image-path}")
@@ -56,7 +57,7 @@ class UserController{
     }
 
 //    @ApiOperation(value = "用户修改个人信息")
-//    @ApiImplicitParam(nmae = "id", value = "用户 Id", required = true, dataTypeClass = "io.github.tawn0000.curation.entity.User")
+//    @ApiImplicitParam(name = "id", value = "用户 Id", required = true, dataTypeClass = "io.github.tawn0000.curation.entity.User")
     @PostMapping("/update")
     public Object update(User user){
         if(userService.modifyUser(user))

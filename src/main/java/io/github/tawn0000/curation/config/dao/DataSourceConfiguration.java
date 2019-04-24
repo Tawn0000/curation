@@ -8,9 +8,9 @@ import org.springframework.context.annotation.Configuration;
 
 import java.beans.PropertyVetoException;
 
-@Configuration("")
+@Configuration
 //配置mybatis mapper 的扫描路径
-@MapperScan("io.github.tawn0000.curation.config.dao")
+@MapperScan("io.github.tawn0000.curation.dao")
 public class DataSourceConfiguration {
     @Value("${jdbc.driver}")
     private String jdbcDriver;
@@ -22,13 +22,28 @@ public class DataSourceConfiguration {
     private String jdbcPassword;
     @Bean(name = "dataSource")
     public ComboPooledDataSource createDataSource() throws PropertyVetoException {
+            // 生成datasource实例
             ComboPooledDataSource dataSource = new ComboPooledDataSource();
+            // 跟配置文件一样设置以下信息
+            // 驱动
             dataSource.setDriverClass(jdbcDriver);
+            // 数据库连接URL
             dataSource.setJdbcUrl(jdeUrl);
+            // 设置用户名
             dataSource.setUser(jdbcUsername);
+            // 设置用户密码
             dataSource.setPassword(jdbcPassword);
-            //关闭连接后不自动commit
+            // 配置c3p0连接池的私有属性
+            // 连接池最大线程数
+            dataSource.setMaxPoolSize(30);
+            // 连接池最小线程数
+            dataSource.setMinPoolSize(10);
+            // 关闭连接后不自动commit
             dataSource.setAutoCommitOnClose(false);
+            // 连接超时时间
+            dataSource.setCheckoutTimeout(10000);
+            // 连接失败重试次数
+            dataSource.setAcquireRetryAttempts(2);
             return dataSource;
     }
 
