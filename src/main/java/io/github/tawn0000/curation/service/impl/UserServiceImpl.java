@@ -36,17 +36,12 @@ public class UserServiceImpl implements UserService {
         @Transactional
         @Override
         public boolean addUser(User user) {
-            // 空值判断，主要是判断userName不为空
-            if (user.getuName() != null && !"".equals(user.getuName())) {
                 // 设置默认值
                 try {
                       userDao.insertUser(user);
                 } catch (Exception e) {
                     throw new RuntimeException("添加用户信息失败:" + e.toString());
                 }
-            } else {
-                throw new RuntimeException("用户信息不能为空！");
-            }
             return true;
         }
 

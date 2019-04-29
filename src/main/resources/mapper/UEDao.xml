@@ -44,8 +44,8 @@
 
     <insert id="insertUE" useGeneratedKeys="true" keyProperty="ueId" keyColumn="ue_id" parameterType="io.github.tawn0000.curation.entity.UE">
         insert into
-                UE(u_id,e_id,ue_status,ue_collection,ue_time)
-        values (#{uId},#{eId},#{ueStatus},#{ueCollection},#{ueTime})
+                UE(u_id,e_id,ue_status,ue_collection,ue_time,ue_heart_rate_min,ue_heart_rate_max,ue_heart_rate_ave,ue_heart_times)
+        values (#{uId},#{eId},#{ueStatus},#{ueCollection},#{ueTime},#{ueHeartRateMin},#{ueHeartRateMax},#{ueHeartRateAve},#{ueHeartTimes})
     </insert>
 
     <update id="updateUE" parameterType="io.github.tawn0000.curation.entity.UE">
@@ -55,7 +55,11 @@
             <if test = "eId != null"> e_id = #{eId},</if>
             <if test = "ueStatus != null"> ue_status = #{ueStatus},</if>
             <if test = "ueCollection != null"> ue_collection = #{ueCollection},</if>
-            <if test = "ueTime != null">ue_time = #{ueTime}</if>
+            <if test = "ueTime != null">ue_time = #{ueTime},</if>
+            <if test = "ueHeartRateMin">ue_heart_rate_min = #{ueHeartRateMin},</if>
+            <if test = "ueHeartRateMax">ue_heart_rate_max = #{ueHeartRateMax},</if>
+            <if test = "ueHeartRateAve">ue_heart_rate_ave = #{ueHeartRateAve},</if>
+            <if test = "ueHeartTimes">ue_heart_times = #{ueHeartTimes}</if>
         </set>
         where u_id = #{uId} AND e_id = #{eId}
     </update>

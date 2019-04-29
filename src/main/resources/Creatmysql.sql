@@ -16,7 +16,7 @@ create database curation;
 
 CREATE TABLE `User` (
         `u_id` bigint auto_increment primary key ,
-        `open_id` varchar(20) unique not null ,
+        `open_id` varchar(150) unique not null ,
         `u_name` varchar(32)  ,
         `u_sex` varchar(3) ,
         `u_icon` varchar(300) ,
@@ -40,7 +40,8 @@ CREATE TABLE `Exhibition`(
         `e_id` bigint auto_increment primary key ,
         `e_name` varchar(100) not null ,
         `e_address` varchar(100)  ,
-        `e_date` datetime  ,
+        `e_begin_date` datetime  ,
+        `e_end_date` datetime,
         `e_price` int ,
         `e_description` text ,
         `e_image` varchar(300) ,
@@ -105,8 +106,7 @@ CREATE TABLE `Record`(
         `e1_id` bigint not null ,
         `r_begin_time` datetime  ,
         `r_end_time` datetime  ,
-        `r_interval` int ,
-        `r_heart_rate` int
+        `r_interval` int
         )DEFAULT CHARSET=utf8;
 
 
@@ -118,7 +118,11 @@ CREATE TABLE `UE`(
         `e_id` bigint not null ,
         `ue_status` int not null default '0' ,
         `ue_collection` tinyint default '0',
-        `ue_time` datetime
+        `ue_time` datetime,
+        `ue_heart_rate_min` int,
+        `ue_heart_rate_max` int,
+        `ue_heart_rate_ave` int,
+        `ue_heart_times` int
         )DEFAULT CHARSET=utf8;
 
 

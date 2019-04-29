@@ -46,14 +46,14 @@ public class RecordDaoTest {
 
     @Test
     public void testInsertRecord() {
-        Record record = new Record(1L,1L,1L, new Timestamp(System.currentTimeMillis()),null,null,null);
+        Record record = new Record(1L,1L,1L, new Timestamp(System.currentTimeMillis()),null,null);
         recordDao.insertRecord(record);
         testQueryRecord();
    }
 
     @Test
     public void testUpdateRecord() {
-        Record record = new Record(1L,1L,1L,1L, new Timestamp(System.currentTimeMillis()),null,null,null);
+        Record record = new Record(1L,1L,1L,1L, new Timestamp(System.currentTimeMillis()),null,null);
         //Record record = new Record(1L,1L,1L,1L, null,new Timestamp(System.currentTimeMillis()),null,null);
         recordDao.updateRecord(record);
         testQueryRecordById();

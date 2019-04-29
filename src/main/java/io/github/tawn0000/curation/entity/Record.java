@@ -19,10 +19,8 @@ public class Record {
     private Timestamp rEndTime;
     //停留时长
     private Integer rInterval;
-    //心率
-    private Integer rHeartRate;
 
-    public Record(Long rId, Long uId, Long eId, Long e1Id, Timestamp rBeginTime, Timestamp rEndTime, Integer rInterval, Integer rHeartRate) {
+    public Record(Long rId, Long uId, Long eId, Long e1Id, Timestamp rBeginTime, Timestamp rEndTime, Integer rInterval) {
         this.rId = rId;
         this.uId = uId;
         this.eId = eId;
@@ -30,17 +28,15 @@ public class Record {
         this.rBeginTime = rBeginTime;
         this.rEndTime = rEndTime;
         this.rInterval = rInterval;
-        this.rHeartRate = rHeartRate;
     }
 
-    public Record(Long uId, Long eId, Long e1Id, Timestamp rBeginTime, Timestamp rEndTime, Integer rInterval, Integer rHeartRate) {
+    public Record(Long uId, Long eId, Long e1Id, Timestamp rBeginTime, Timestamp rEndTime, Integer rInterval) {
         this.uId = uId;
         this.eId = eId;
         this.e1Id = e1Id;
         this.rBeginTime = rBeginTime;
         this.rEndTime = rEndTime;
         this.rInterval = rInterval;
-        this.rHeartRate = rHeartRate;
     }
 
     public Long getrId() {
@@ -97,13 +93,5 @@ public class Record {
 
     public void setrInterval(Integer rInterval) {
         this.rInterval = rInterval;
-    }
-
-    public Integer getrHeartRate() {
-        return rHeartRate;
-    }
-
-    public void setrHeartRate(Integer rHeartRate) {
-        this.rHeartRate = rHeartRate;
     }
 }

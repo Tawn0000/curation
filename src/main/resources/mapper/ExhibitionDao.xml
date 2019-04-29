@@ -16,8 +16,8 @@
 
     <insert id="insertExhibition" useGeneratedKeys="true" keyProperty="eId" keyColumn="e_id" parameterType="io.github.tawn0000.curation.entity.Exhibition">
         insert into
-                Exhibition(e_name,e_address,e_date,e_price,e_description,e_image,e_video,e_person_in_charge)
-        values (#{eName},#{eAddress},#{eDate},#{ePrice},#{eDescription},#{eImage},#{eVideo},#{ePersonCharge})
+                Exhibition(e_name,e_address,e_begin_date,e_end_date,e_price,e_description,e_image,e_video,e_person_in_charge)
+        values (#{eName},#{eAddress},#{eBeginDate},#{eEndDate},#{ePrice},#{eDescription},#{eImage},#{eVideo},#{ePersonCharge})
 
     </insert>
 
@@ -26,7 +26,8 @@
         <set>
             <if test = "eName != null">e_name = #{eName},</if>
             <if test = "eAddress != null">e_address = #{eAddress},</if>
-            <if test = "eDate != null">e_date = #{eDate},</if>
+            <if test = "eBeginDate != null">e_begin_date = #{eBeginDate},</if>
+            <if test = "eEndDate != null">e_end_date = #{eEndDate},</if>
             <if test = "ePrice != null">e_price = #{ePrice},</if>
             <if test = "eDescription != null">e_description = #{eDescription},</if>
             <if test = "eImage != null">e_image = #{eImage},</if>

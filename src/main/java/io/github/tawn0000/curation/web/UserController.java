@@ -28,7 +28,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.sql.Timestamp;
 
-@Api(value = "用户相关接口", tags = "user")
+@Api(value = "用户相关接口", tags = "User")
 @RestController
 @RequestMapping("/user")
 class UserController{

@@ -10,8 +10,10 @@ public class Exhibition {
     private String eName;
     //地点
     private String eAddress;
-    //时间
-    private Timestamp eDate;
+    //开始时间
+    private Timestamp e_Begin_Date;
+    //结束时间
+    private Timestamp e_End_Date;
     //价格
     private int ePrice;
     //展览描述
@@ -23,10 +25,12 @@ public class Exhibition {
     //负责人
     private String ePersonCharge;
 
-    public Exhibition(String eName, String eAddress, Timestamp eDate, int ePrice, String eDescription, String eImage, String eVideo, String ePersonCharge) {
+    public Exhibition(Long eId, String eName, String eAddress, Timestamp e_Begin_Date, Timestamp e_End_Date, int ePrice, String eDescription, String eImage, String eVideo, String ePersonCharge) {
+        this.eId = eId;
         this.eName = eName;
         this.eAddress = eAddress;
-        this.eDate = eDate;
+        this.e_Begin_Date = e_Begin_Date;
+        this.e_End_Date = e_End_Date;
         this.ePrice = ePrice;
         this.eDescription = eDescription;
         this.eImage = eImage;
@@ -34,11 +38,11 @@ public class Exhibition {
         this.ePersonCharge = ePersonCharge;
     }
 
-    public Exhibition(Long eId, String eName, String eAddress, Timestamp eDate, int ePrice, String eDescription, String eImage, String eVideo, String ePersonCharge) {
-        this.eId = eId;
+    public Exhibition(String eName, String eAddress, Timestamp e_Begin_Date, Timestamp e_End_Date, int ePrice, String eDescription, String eImage, String eVideo, String ePersonCharge) {
         this.eName = eName;
         this.eAddress = eAddress;
-        this.eDate = eDate;
+        this.e_Begin_Date = e_Begin_Date;
+        this.e_End_Date = e_End_Date;
         this.ePrice = ePrice;
         this.eDescription = eDescription;
         this.eImage = eImage;
@@ -70,12 +74,20 @@ public class Exhibition {
         this.eAddress = eAddress;
     }
 
-    public Timestamp geteDate() {
-        return eDate;
+    public Timestamp getE_Begin_Date() {
+        return e_Begin_Date;
     }
 
-    public void seteDate(Timestamp eDate) {
-        this.eDate = eDate;
+    public void setE_Begin_Date(Timestamp e_Begin_Date) {
+        this.e_Begin_Date = e_Begin_Date;
+    }
+
+    public Timestamp getE_End_Date() {
+        return e_End_Date;
+    }
+
+    public void setE_End_Date(Timestamp e_End_Date) {
+        this.e_End_Date = e_End_Date;
     }
 
     public int getePrice() {

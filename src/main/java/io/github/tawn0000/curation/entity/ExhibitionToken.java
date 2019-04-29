@@ -9,8 +9,10 @@ public class ExhibitionToken {
     private String eName;
     //地点
     private String eAddress;
-    //时间
-    private Timestamp eDate;
+    //开始时间
+    private Timestamp eBeginDate;
+    //结束时间
+    private Timestamp dEndDate;
     //价格
     private int ePrice;
     //展览描述
@@ -18,11 +20,12 @@ public class ExhibitionToken {
     //图片
     private String eImage;
 
-    public ExhibitionToken(Long eId, String eName, String eAddress, Timestamp eDate, int ePrice, String eDescription, String eImage) {
+    public ExhibitionToken(Long eId, String eName, String eAddress, Timestamp eBeginDate, Timestamp dEndDate, int ePrice, String eDescription, String eImage) {
         this.eId = eId;
         this.eName = eName;
         this.eAddress = eAddress;
-        this.eDate = eDate;
+        this.eBeginDate = eBeginDate;
+        this.dEndDate = dEndDate;
         this.ePrice = ePrice;
         this.eDescription = eDescription;
         this.eImage = eImage;
@@ -33,7 +36,8 @@ public class ExhibitionToken {
         this.eId = exhibition.geteId();
         this.eName = exhibition.geteName();
         this.eAddress = exhibition.geteAddress();
-        this.eDate = exhibition.geteDate();
+        this.eBeginDate = exhibition.getE_Begin_Date();
+        this.eBeginDate = exhibition.getE_End_Date();
         this.ePrice = exhibition.getePrice();
         this.eDescription = exhibition.geteDescription();
         this.eImage = exhibition.geteImage();
@@ -63,12 +67,20 @@ public class ExhibitionToken {
         this.eAddress = eAddress;
     }
 
-    public Timestamp geteDate() {
-        return eDate;
+    public Timestamp geteBeginDate() {
+        return eBeginDate;
     }
 
-    public void seteDate(Timestamp eDate) {
-        this.eDate = eDate;
+    public void seteBeginDate(Timestamp eBeginDate) {
+        this.eBeginDate = eBeginDate;
+    }
+
+    public Timestamp getdEndDate() {
+        return dEndDate;
+    }
+
+    public void setdEndDate(Timestamp dEndDate) {
+        this.dEndDate = dEndDate;
     }
 
     public int getePrice() {
