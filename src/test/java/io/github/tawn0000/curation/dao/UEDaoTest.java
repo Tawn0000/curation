@@ -63,14 +63,14 @@ public class UEDaoTest {
 
     @Test
     public void testInsertUE() {
-        UE ue = new UE(1L,1L,0,0, DateUtil.dateToTime(GregorianCalendar.getInstance().getTime()),null,null,null);
+        UE ue = new UE(1L,1L,0,0, DateUtil.dateToTime(GregorianCalendar.getInstance().getTime()),null,null,null,null);
         ueDao.insertUE(ue);
         testQueryUE();
     }
 
     @Test
     public void testUpdateUE() {
-        UE ue = new UE(1L,null,1,0, DateUtil.dateToTime(GregorianCalendar.getInstance().getTime()),null,null,null);
+        UE ue = new UE(1L,null,1,0, DateUtil.dateToTime(GregorianCalendar.getInstance().getTime()),null,null,null,null);
         ueDao.updateUE(ue);
         testQueryUEById();
     }

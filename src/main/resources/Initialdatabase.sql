@@ -31,8 +31,8 @@ INSERT INTO `curation`.`Record` (`u_id`, `e_id`, `e1_id`, `r_begin_time`, `r_end
 INSERT INTO `curation`.`Record` (`u_id`, `e_id`, `e1_id`, `r_begin_time`, `r_end_time`, `r_interval`) VALUES (1, 1, 2, '2019-04-28 07:19:00', '2019-04-28 07:19:06', 6);
 
 #插入UE表记录
-INSERT INTO `curation`.`UE` (`u_id`, `e_id`, `ue_status`, `ue_collection`, `ue_time`, `ue_heart_rate_min`, `ue_heart_rate_max`, `ue_heart_rate_ave`,`ue_heart_times`) VALUES (1, 1, 1, 1, '2019-04-28 07:20:53', 60, 120, 80);
-INSERT INTO `curation`.`UE` (`u_id`, `e_id`, `ue_status`, `ue_collection`, `ue_time`, `ue_heart_rate_min`, `ue_heart_rate_max`, `ue_heart_rate_ave`,`ue_heart_times`) VALUES (2, 1, 3, 0, '2019-04-28 07:20:53', 70, 120, 80);
+INSERT INTO `curation`.`UE` (`u_id`, `e_id`, `ue_status`, `ue_collection`, `ue_time`, `ue_heart_rate_min`, `ue_heart_rate_max`, `ue_heart_rate_ave`,`ue_heart_times`) VALUES (1, 1, 1, 1, '2019-04-28 07:20:53', 60, 120, 80,80);
+INSERT INTO `curation`.`UE` (`u_id`, `e_id`, `ue_status`, `ue_collection`, `ue_time`, `ue_heart_rate_min`, `ue_heart_rate_max`, `ue_heart_rate_ave`,`ue_heart_times`) VALUES (2, 1, 3, 0, '2019-04-28 07:20:53', 70, 120, 80,80);
 
 #插入用户表记录
 INSERT INTO `curation`.`User` (`open_id`, `u_name`, `u_sex`, `u_icon`, `u_query_status`, `u_tag`) VALUES ('ozHxH40cveh9WUlY3HdqkrpwM_uc', '向欢', '女', null, null, null);

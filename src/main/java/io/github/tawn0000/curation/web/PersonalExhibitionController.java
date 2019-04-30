@@ -120,26 +120,40 @@ public class PersonalExhibitionController {
         })
     @GetMapping("/end")
     public Map<Object,Object> end(Long uid, Long eid) {
+
+        String basePath = new ApplicationHome(this.getClass()).getSource().getParentFile().getPath();
+        System.out.println(basePath);
+
         Map<Object, Object> map = new HashedMap();
 
         String[] color_path = {"00","01red","02orange","03yellow","04green","05cyan","06blue","07pruple"};
         String[] times_path = {"00","01one","02two","03three","04four","five"};
         String[] ave_path = {"00","01","02","03","04"};
 
-        int low,high,ave,times,dur;
+        int low,high,ave,times,dur,dur_sum;
         UE ue = ueService.queryUEByUidEid(uid,eid);
         low = ue.getUeHeartRateMin();
         high = ue.getUeHeartRateMax();
         ave = ue.getUeHeartRateAve();
         times = ue.getUeHeartTimes();
         dur = 0;
+        dur_sum = 0;
         List<Record>  recordList = recordService.queryRecordById(uid,eid);
+        String exhibit_dur_name = "";
         for(Record record : recordList)
         {
             if(record.getrInterval() == null)
-                record.setrInterval((int) (record.getrEndTime().getTime()/60000  - record.getrBeginTime().getTime()/60000));
-            dur = Math.max(dur,record.getrInterval());
+                record.setrInterval((int) (record.getrEndTime().getTime()/1000  - record.getrBeginTime().getTime()/1000));
+            dur_sum += record.getrInterval();
+            if(dur < record.getrInterval())
+            {
+                dur = record.getrInterval();
+                exhibit_dur_name = exhibitionService.queryExhibitById(record.getE1Id()).getE1Name();
+            }
+
         }
+
+        int dur_m = dur/60;
 
         low = Math.min(low,129);
         low = Math.max(low,60);
@@ -147,21 +161,23 @@ public class PersonalExhibitionController {
         high = Math.max(low,60);
         ave = Math.min(ave,114);
         ave = Math.max(ave,65);
-        dur = Math.min(dur,44);
-        dur = Math.max(dur,0);
+        dur_m = Math.min(dur_m,44);
+        dur_m = Math.max(dur_m,0);
+        times = Math.max(times,100);
+        times = Math.min(times,500);
 
         int low_idx = 13-low/10;
         int high_idx = 13-high/10;
         int times_idx = times/100;
         int ave_idx = 12 - (ave+5)/10;
-        int dur_idx = dur/5 + 1;
+        int dur_idx = dur_m/5 + 1;
+
         /*
         :param background: 背景图
         :param center: 中心图案
         :param text_area 背景文字图
         :param exhibition: 展览图案
         :param target 输出的图片路径
-        :param text_level: 文本内容
         :param text_result:总结
         :param text_grade: 来电等级
         :param text_fav:喜爱度
@@ -170,19 +186,42 @@ public class PersonalExhibitionController {
          */
 
         String background = "background/" + "0" + low_idx + "0" + high_idx + "0"+ times_idx + "-0" + ave_idx + ".png";;
-        String center = "pattern/" + "0" + low_idx + "0" + high_idx + "0" + times_idx + "0" + dur +  ".png";
+        String center = "pattern/" + "0" + low_idx + "0" + high_idx + "0" + times_idx + "0" + dur_idx +  "-0" + ave_idx + ".png";
         String text_area = "text_area.png";
         String exhibition_path = "exhibition.png";
-        String target =  transPath(ueReportPath) + "/" + uid.toString() + eid.toString() + ".png";
-        String text_level ;
-        String text_result;
-        String text_grade;
-        String text_fav;
-        String text_fresh;
-        String text_heart_range;
+        String target =  transPath(ueReportPath) + "/" + uid.toString() + "-" + eid.toString() + ".png";
+        String text_result = "在展览中，你在《" + exhibit_dur_name +"》前停留了"+ (dur/60) + "分"+ (dur%60) + "秒，你是不是对它产生共鸣了？";
+        String text_grade = ""+ times_idx;
+        String text_fav =  ave + "/min";
+        String text_fresh = (dur_sum/3600) + "h" + (dur_sum/60%60) + "min";
+        String text_heart_range = low + "-" + high + "/min";
 
 
-
+        String headpath = "./Image_merge/";
+        //String[] arg = {"python","../Image_merge/test.py","050702-02.png", "center.png", "text_area.png",  "exhibition.png", "./out.png", "dfs", "4", "88/min", "1h02min", "65-75/min"};
+        String[] arg = new String [12];
+        arg[0] = "python";
+        arg[1] = headpath + "test.py";
+        arg[2] = headpath + background;
+        arg[3] = headpath + center;
+        arg[4] = headpath + text_area;
+        arg[5] = headpath + exhibition_path;
+        arg[6] = target;
+        arg[7] = text_result;
+        arg[8] = text_grade;
+        arg[9] = text_fav;
+        arg[10] = text_fresh;
+        arg[11] = text_heart_range;
+        for(String x : arg)
+            System.out.println(x);
+        try{
+            Runtime.getRuntime().exec(arg);
+        }catch (Exception exhibition)
+        {
+            System.out.println("false");
+        }
+       // map.put("arg",arg);
+        map.put("report-path",target);
         return map;
     }
 

@@ -1,6 +1,7 @@
 package io.github.tawn0000.curation.service;
 
 import io.github.tawn0000.curation.entity.Exhibition;
+import io.github.tawn0000.curation.entity.Exhibit;
 import io.github.tawn0000.curation.entity.ExhibitionToken;
 import io.github.tawn0000.curation.service.impl.ExhibitionServiceImpl;
 import org.junit.Test;
@@ -31,8 +32,7 @@ public class ExhibitionServiceTest {
     //public List<Exhibition> queryExhibition()
     public void testQueryExhibition()
     {
-        List<Exhibition> exhibitionList = exhibitionService.queryExhibition();
-        for(Exhibition x : exhibitionList)
-            System.out.println(x.geteName());
+        Exhibition exhibition = exhibitionService.queryExhibitionById(1L);
+        System.out.println(exhibition.geteName());
     }
 }

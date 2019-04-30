@@ -29,6 +29,9 @@ public interface ExhibitionService {
     //修改展品信息
     Long modifyExhibit(Exhibit exhibit);
 
+    //通过展品id获得展品信息
+    Exhibit queryExhibitById(Long exhibitId);
+
     //删除展览信息
     int deleteExhibition(Long exhibitionId);
 }

@@ -51,16 +51,17 @@ public class ExhibitionController {
     }
 
     @ApiOperation(value = "展览详细信息")
-    @ApiImplicitParam(name = "exhibitionId", value = "展览id", required = true, dataType = "Long")
-    @GetMapping("/detail")
+    @ApiImplicitParam(name = "eid", value = "展览id", required = true, dataType = "Long")
+    @RequestMapping(value = "/detail" , method = RequestMethod.GET)
     //展览、展品、评论
-    public Object queryExhibitByEid(Long exhibitionId){
-        Exhibition exhibition = exhibitionService.queryExhibitionById(exhibitionId);
+    public Map<Object,Object> queryExhibitByEid(Long eid){
         Map<Object,Object> result = new HashMap<>();
+        System.out.println(eid);
+        Exhibition exhibition = exhibitionService.queryExhibitionById(eid);
         result.put("exhibition", exhibition);
-        List<Exhibit> exhibitList = exhibitionService.queryExhibitByEid(exhibitionId);
+        List<Exhibit> exhibitList = exhibitionService.queryExhibitByEid(eid);
         result.put("exhibit",exhibitList);
-        List<Comment> commentList = commentService.queryCommentByEid(exhibitionId);
+        List<Comment> commentList = commentService.queryCommentByEid(eid);
         result.put("comment",commentList);
         return result;
     }

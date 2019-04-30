@@ -35,14 +35,14 @@ public class ExhibitionDaoTest {
     @Test
     public void testQueryExhibitionById() {
         Exhibition exhibition = exhibitionDao.queryExhibitionById(1L);
-        System.out.println(exhibition.geteName() + " " + DateUtil.timeToDate(exhibition.geteDate()).toString());
+        System.out.println(exhibition.geteName() + " " + DateUtil.timeToDate(exhibition.getE_Begin_Date()).toString());
     }
 
     @Test
     public void testInsertExhibition() {
         Calendar calendar = new GregorianCalendar();
         calendar.set(2020,06,1,13,00);
-        Exhibition exhibition = new Exhibition("张宇画展","江苏省无锡市江南大学桃园", new Timestamp(calendar.getTimeInMillis()),50,"张宇的个人画展","1.jpg","1.mp4","张宇");
+        Exhibition exhibition = new Exhibition("张宇画展","江苏省无锡市江南大学桃园", new Timestamp(calendar.getTimeInMillis()),new Timestamp(calendar.getTimeInMillis()),50,"张宇的个人画展","1.jpg","1.mp4","张宇");
         exhibitionDao.insertExhibition(exhibition);
         System.out.println(exhibition.geteId());
         testQueryExhibition();
@@ -52,7 +52,7 @@ public class ExhibitionDaoTest {
     public void testUpdateExhibition() {
         Calendar calendar = new GregorianCalendar();
         calendar.set(2020,03,1,13,00);
-        Exhibition exhibition = new Exhibition(1L,"张宇画展","江苏省无锡市江南大学李园25-206", DateUtil.dateToTime(calendar.getTime()),50,"张宇的个人画展","1.jpg","1.mp4","张宇");
+        Exhibition exhibition = new Exhibition(1L,"张宇画展","江苏省无锡市江南大学李园25-206", DateUtil.dateToTime(calendar.getTime()),DateUtil.dateToTime(calendar.getTime()),50,"张宇的个人画展","1.jpg","1.mp4","张宇");
         exhibitionDao.updateExhibition(exhibition);
         testQueryExhibitionById();
     }

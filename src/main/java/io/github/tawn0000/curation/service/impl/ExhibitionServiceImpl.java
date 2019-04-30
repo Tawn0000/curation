@@ -76,11 +76,17 @@ public class ExhibitionServiceImpl implements ExhibitionService {
          exhibitionDao.updateExhibition((exhibition));
          return exhibition.geteId();
     }
-
+    @Override
     public Long modifyExhibit(Exhibit exhibit){
         exhibitDao.updateExhibit(exhibit);
         return exhibit.getE1Id();
     }
+
+    @Override
+    public Exhibit queryExhibitById(Long exhibitId){
+        return exhibitDao.queryExhibitById(exhibitId);
+    }
+
 
      @Transactional
      @Override
