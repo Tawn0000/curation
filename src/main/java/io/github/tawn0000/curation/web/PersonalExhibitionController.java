@@ -1,33 +1,35 @@
 package io.github.tawn0000.curation.web;
 
 
-import io.github.tawn0000.curation.entity.Exhibition;
-import io.github.tawn0000.curation.entity.ExhibitionToken;
-import io.github.tawn0000.curation.entity.UE;
-import io.github.tawn0000.curation.entity.Record;
+import io.github.tawn0000.curation.entity.*;
 import io.github.tawn0000.curation.service.impl.ExhibitionServiceImpl;
+import io.github.tawn0000.curation.service.impl.IbeanconServiceImpl;
 import io.github.tawn0000.curation.service.impl.RecordServiceImpl;
 import io.github.tawn0000.curation.service.impl.UEServiceImpl;
+import io.github.tawn0000.curation.utils.DateUtil;
 import io.github.tawn0000.curation.utils.Responsetil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.apache.commons.collections.map.HashedMap;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.system.ApplicationHome;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.util.*;
 
 
 @Api(value = "个人中心展览信息",tags = "PersonalExhibition")
@@ -45,6 +47,9 @@ public class PersonalExhibitionController {
     @Autowired
     private RecordServiceImpl recordService;
 
+    @Autowired
+    private IbeanconServiceImpl ibeanconService;
+
     @Value("${curation.exhibitions-path}")
     private String exhibitionPath;
 
@@ -61,14 +66,20 @@ public class PersonalExhibitionController {
        // System.out.println("**");
         List<Long> eidList = ueService.queryExhibitionByUid(id);
         List<ExhibitionToken> exhibitionTokens = new ArrayList<>();
-        for(Long eid : eidList){
-            ExhibitionToken exhibitionToken = new ExhibitionToken(exhibitionService.queryExhibitionById(eid));
-            exhibitionTokens.add(exhibitionToken);
-        }
-        //System.out.println(exhibitionTokens.size());
+        Transform(exhibitionTokens, eidList);
        map.put("exhibition",exhibitionTokens);
        return exhibitionTokens;
     }
+
+    public void Transform(List<ExhibitionToken> exhibitionTokens, List<Long> eidList)
+    {
+        for(Long eid : eidList){
+            ExhibitionToken exhibitionToken = new ExhibitionToken(exhibitionService.queryExhibitionById(eid));
+            exhibitionToken.seteImage(exhibitionPath + '/'+ exhibitionToken.geteImage());
+            exhibitionTokens.add(exhibitionToken);
+        }
+    }
+
 
     @ApiOperation(value = "获取历史足迹信息")
     @ApiImplicitParam(name = "id",value = "用户id", required = true, dataType = "Long")
@@ -82,6 +93,7 @@ public class PersonalExhibitionController {
         List<ExhibitionToken> exhibitionTokens = new ArrayList<>();
         for(UE ue : ueList){
             ExhibitionToken exhibitionToken = new ExhibitionToken(exhibitionService.queryExhibitionById(ue.geteId()));
+            exhibitionToken.seteImage(exhibitionPath + '/'+ exhibitionToken.geteImage());
             exhibitionTokens.add(exhibitionToken);
         }
         return exhibitionTokens;
@@ -90,28 +102,39 @@ public class PersonalExhibitionController {
     @ApiOperation(value = "获取用户的体验")
     @ApiImplicitParam(name = "id", value = "用户id", required = true, dataType = "Long")
     @GetMapping("/experience")
+    @ResponseBody
     public Object experience(Long id){
         //已体验
         Map<Object, Object> result = new HashMap<>();
         List<Long> experiencedList = ueService.queryUEByUeStatus(id, 3);
         List<ExhibitionToken> experienceExhibitions = new ArrayList<>();
-        for(Long eid : experiencedList){
-            ExhibitionToken exhibitionToken = new ExhibitionToken(exhibitionService.queryExhibitionById(eid));
-            experienceExhibitions.add(exhibitionToken);
-        }
+        Transform(experienceExhibitions,experiencedList);
         result.put("Experienced",experienceExhibitions);
 
         //已报名
         List<Long> noExperiencedList = ueService.queryUEByUeStatus(id, 1);
         List<ExhibitionToken> experienceNoExhibitions = new ArrayList<>();
-        for(Long eid : noExperiencedList){
-            ExhibitionToken exhibitionToken = new ExhibitionToken(exhibitionService.queryExhibitionById(eid));
-            experienceNoExhibitions.add(exhibitionToken);
-        }
+        Transform(experienceNoExhibitions, noExperiencedList);
         result.put("NoExperienced",experienceNoExhibitions);
         return Responsetil.ok(result);
     }
 
+
+    @ApiOperation(value = "插入记录")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "uid", value = "用户id", required = true, dataType = "Long"),
+            @ApiImplicitParam(name = "eid", value = "展览id", required = true, dataType = "Long"),
+            @ApiImplicitParam(name = "begin", value = "开始时间", required = true, dataType = "Date"),
+            @ApiImplicitParam(name = "end", value = "结束时间", required = true, dataType = "Date"),
+            @ApiImplicitParam(name = "uuid", value = "ibeaconID", required = true, dataType = "String")
+    })
+    @PostMapping("/record")
+    public Object insertRecord(Long uid, Long eid, Date begin, Date end, String uuid) {
+        Long e1id = ibeanconService.queryExhibitByUuid(uuid);
+        Record record = new Record(uid, eid, e1id, DateUtil.dateToTime(begin), DateUtil.dateToTime(end), (int) (DateUtil.dateToTime(end).getTime() / 1000 - DateUtil.dateToTime(begin).getTime() / 1000));
+        recordService.addRecord(record);
+        return Responsetil.ok();
+    }
 
     @ApiOperation(value = "生成体验结果图片")
     @ApiImplicitParams({
@@ -119,7 +142,16 @@ public class PersonalExhibitionController {
         @ApiImplicitParam(name = "eid", value = "展览id",required = true,dataType = "Long"),
         })
     @GetMapping("/end")
+    @ResponseBody
     public Map<Object,Object> end(Long uid, Long eid) {
+
+        if(ueService.queryUEByUidEid(uid,eid) == null)
+            ueService.addUE(new UE(uid,eid,3,null, DateUtil.dateToTime(GregorianCalendar.getInstance().getTime()),null,null,null,null));
+
+        UE ue = ueService.queryUEByUidEid(uid,eid);
+        ue.setUeStatus(3);
+        ue.setUeTime(DateUtil.dateToTime(GregorianCalendar.getInstance().getTime()));
+        ueService.modifyUE(ue);
 
         String basePath = new ApplicationHome(this.getClass()).getSource().getParentFile().getPath();
         System.out.println(basePath);
@@ -129,28 +161,37 @@ public class PersonalExhibitionController {
         String[] color_path = {"00","01red","02orange","03yellow","04green","05cyan","06blue","07pruple"};
         String[] times_path = {"00","01one","02two","03three","04four","five"};
         String[] ave_path = {"00","01","02","03","04"};
-
         int low,high,ave,times,dur,dur_sum;
-        UE ue = ueService.queryUEByUidEid(uid,eid);
-        low = ue.getUeHeartRateMin();
-        high = ue.getUeHeartRateMax();
-        ave = ue.getUeHeartRateAve();
-        times = ue.getUeHeartTimes();
+        low = ue.getUeHeartRateMin() == null? 0: ue.getUeHeartRateMin();
+        high = ue.getUeHeartRateMax() == null? 0: ue.getUeHeartRateMax();
+        ave = ue.getUeHeartRateAve() == null? 0: ue.getUeHeartRateAve();
+        times = ue.getUeHeartTimes() == null? 0: ue.getUeHeartTimes();
         dur = 0;
         dur_sum = 0;
+        System.out.println("END");
         List<Record>  recordList = recordService.queryRecordById(uid,eid);
         String exhibit_dur_name = "";
+
+        Map <String,Integer>  mp =  new HashedMap();;
+
         for(Record record : recordList)
         {
             if(record.getrInterval() == null)
                 record.setrInterval((int) (record.getrEndTime().getTime()/1000  - record.getrBeginTime().getTime()/1000));
             dur_sum += record.getrInterval();
-            if(dur < record.getrInterval())
-            {
-                dur = record.getrInterval();
-                exhibit_dur_name = exhibitionService.queryExhibitById(record.getE1Id()).getE1Name();
-            }
 
+            dur = record.getrInterval();
+            exhibit_dur_name = exhibitionService.queryExhibitById(record.getE1Id()).getE1Name();
+
+            if(mp.containsKey(exhibit_dur_name) == false) mp.put(exhibit_dur_name,dur);
+            else mp.put(exhibit_dur_name,mp.get(exhibit_dur_name)+dur);
+
+            for(String obj : mp.keySet())
+                if(dur < mp.get(obj))
+                {
+                    dur = mp.get(obj);
+                    exhibit_dur_name = obj;
+                }
         }
 
         int dur_m = dur/60;
@@ -159,7 +200,7 @@ public class PersonalExhibitionController {
         low = Math.max(low,60);
         high = Math.min(high,129);
         high = Math.max(low,60);
-        ave = Math.min(ave,114);
+        ave = Math.min(ave,104);
         ave = Math.max(ave,65);
         dur_m = Math.min(dur_m,44);
         dur_m = Math.max(dur_m,0);
@@ -169,7 +210,7 @@ public class PersonalExhibitionController {
         int low_idx = 13-low/10;
         int high_idx = 13-high/10;
         int times_idx = times/100;
-        int ave_idx = 12 - (ave+5)/10;
+        int ave_idx = 11 - (ave+5)/10;
         int dur_idx = dur_m/5 + 1;
 
         /*
@@ -184,7 +225,6 @@ public class PersonalExhibitionController {
         :param text_fresh:新鲜度
         :param text_heart_range: 心动范围
          */
-
         String background = "background/" + "0" + low_idx + "0" + high_idx + "0"+ times_idx + "-0" + ave_idx + ".png";;
         String center = "pattern/" + "0" + low_idx + "0" + high_idx + "0" + times_idx + "0" + dur_idx +  "-0" + ave_idx + ".png";
         String text_area = "text_area.png";
@@ -215,7 +255,9 @@ public class PersonalExhibitionController {
         for(String x : arg)
             System.out.println(x);
         try{
-            Runtime.getRuntime().exec(arg);
+                Runtime.getRuntime().exec(arg);
+            System.out.println("true");
+
         }catch (Exception exhibition)
         {
             System.out.println("false");
@@ -224,22 +266,29 @@ public class PersonalExhibitionController {
         map.put("report-path",target);
         return map;
     }
-
-
     @ApiOperation(value = "获得体验结果报告图片")
     @ApiImplicitParams( {
         @ApiImplicitParam(name = "uid", value = "用户id",required = true, dataType = "Long"),
         @ApiImplicitParam(name = "eid", value = "展览id",required = true,dataType = "Long"),
     })
     @GetMapping("/report")
+    @ResponseBody
     public Map<Object,Object> report(Long uid, Long eid)
     {
         Map map = new HashedMap();
-        String res = ueReportPath + "/" + uid.toString() + eid.toString() + ".png";
-        File file=new File(res);
+        String res = ueReportPath;
+        String temp_res = transPath(res)+ "/" + uid.toString() +"-"+ eid.toString() + ".png";
+        File file=new File(temp_res);
+        res = res + "/" + uid.toString() +"-"+ eid.toString() + ".png";
+        System.out.println("file:"+ file);
+
         if(file.exists())
             map.put("report_path",res);
-        else map.put("msg","无用户体验结果");
+        else {
+            end(uid, eid);
+            map.put("report_path",res);
+            //else map.put("msg","无用户体验结果......");
+        }
         return map;
     }
 
@@ -249,6 +298,43 @@ public class PersonalExhibitionController {
     public Exhibition detail (Long eid){
         Exhibition exhibition = exhibitionService.queryExhibitionById(eid);
         return exhibition;
+    }
+
+    @ApiOperation(value = "上传excel")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "Excel",value = "excel文件",required = true,dataType = "file"),
+            @ApiImplicitParam(name = "eid", value = "展览id", required = true,dataType = "Long")}
+    )
+    @PostMapping("/insert/heart_rate")
+    public Object readMultipartFile(MultipartFile file, Long eid)throws IOException {
+        InputStream input = file.getInputStream();
+        XSSFWorkbook wb = null;
+        try {
+            wb = new XSSFWorkbook(input);
+        } catch (FileNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        LocalDateTime localDateTime = LocalDateTime.now();
+        Timestamp timestamp = Timestamp.valueOf(localDateTime.toString());
+        //取工作表
+        XSSFSheet sheet = wb.getSheetAt(0);
+        for(int i = 1; i <= sheet.getLastRowNum(); i++){
+            XSSFRow row = sheet.getRow(i);
+            Long uid = (Long) Math.round(row.getCell(0).getNumericCellValue());
+            Integer max = new Integer((int) Math.round(row.getCell(1).getNumericCellValue())) ;
+            Integer min = Integer.valueOf((int) Math.round(row.getCell(2).getNumericCellValue()));
+            Integer ave = Integer.valueOf((int) Math.round(row.getCell(3).getNumericCellValue()));
+            Integer num = Integer.valueOf((int) Math.round(row.getCell(4).getNumericCellValue()));
+            UE ue = new UE(uid,eid,Integer.valueOf(1),Integer.valueOf(1),timestamp,min,max,ave,num);
+            if(ueService.queryUEByUidEid(uid,eid) == null)
+                ueService.addUE(ue);
+            else ueService.modifyUE(ue);
+        }
+        return Responsetil.ok();
     }
 
 

@@ -1,8 +1,5 @@
-# --
-# -- ---删除数据库
-# --     Use master
-# --     go
-# --     Drop database curation;
+-- 删除数据库
+-- Drop database curation;
 
 # --创建数据库 curation
 
@@ -133,3 +130,32 @@ CREATE TABLE `E_tag`(
         `e_id` bigint not null ,
         `e_tags` varchar(20) not null
         )DEFAULT CHARSET=utf8;
+
+
+
+
+INSERT INTO `curation`.`Ibeacon` (`i_uid`, `i_status`, `i_connect_e1_id`) VALUES ('01122334-4556-6778-899a-abbccddeeff1',1,1);
+INSERT INTO `curation`.`Ibeacon` (`i_uid`, `i_status`, `i_connect_e1_id`) VALUES ('01122334-4556-6778-899a-abbccddeeff2',1,2);
+INSERT INTO `curation`.`Ibeacon` (`i_uid`, `i_status`, `i_connect_e1_id`) VALUES ('01122334-4556-6778-899a-abbccddeeff3',1,3);
+INSERT INTO `curation`.`Ibeacon` (`i_uid`, `i_status`, `i_connect_e1_id`) VALUES ('01122334-4556-6778-899a-abbccddeeff4',1,4);
+INSERT INTO `curation`.`Ibeacon` (`i_uid`, `i_status`, `i_connect_e1_id`) VALUES ('01122334-4556-6778-899a-abbccddeeff5',1,5);
+INSERT INTO `curation`.`Ibeacon` (`i_uid`, `i_status`, `i_connect_e1_id`) VALUES ('01122334-4556-6778-899a-abbccddeeff6',1,6);
+INSERT INTO `curation`.`Ibeacon` (`i_uid`, `i_status`, `i_connect_e1_id`) VALUES ('01122334-4556-6778-899a-abbccddeeff7',1,7);
+INSERT INTO `curation`.`Ibeacon` (`i_uid`, `i_status`, `i_connect_e1_id`) VALUES ('01122334-4556-6778-899a-abbccddeeff8',1,8);
+INSERT INTO `curation`.`Ibeacon` (`i_uid`, `i_status`, `i_connect_e1_id`) VALUES ('01122334-4556-6778-899a-abbccddeeff9',1,9);
+INSERT INTO `curation`.`Ibeacon` (`i_uid`, `i_status`, `i_connect_e1_id`) VALUES ('01122334-4556-6778-899a-abbccddeef10',1,10);
+
+#插入展品
+INSERT INTO `curation`.`Exhibit` (`e_id`, `e1_name`, `e1_author`, `e1_date`, `e1_image`, `e1_description`) VALUES (1, '展品1', '张宇', '2019-04-16', '1.jpg', '精美');
+INSERT INTO `curation`.`Exhibit` (`e_id`, `e1_name`, `e1_author`, `e1_date`, `e1_image`, `e1_description`) VALUES (1, '展品2', '张宇', '2019-04-16', '1.jpg', '大气');
+INSERT INTO `curation`.`Exhibit` (`e_id`, `e1_name`, `e1_author`, `e1_date`, `e1_image`, `e1_description`) VALUES (1, '展品3', '张宇', '2019-04-16', '1.jpg', '精美');
+INSERT INTO `curation`.`Exhibit` (`e_id`, `e1_name`, `e1_author`, `e1_date`, `e1_image`, `e1_description`) VALUES (1, '展品4', '张宇', '2019-04-16', '1.jpg', '大气');
+INSERT INTO `curation`.`Exhibit` (`e_id`, `e1_name`, `e1_author`, `e1_date`, `e1_image`, `e1_description`) VALUES (1, '展品5', '张宇', '2019-04-16', '1.jpg', '精美');
+INSERT INTO `curation`.`Exhibit` (`e_id`, `e1_name`, `e1_author`, `e1_date`, `e1_image`, `e1_description`) VALUES (1, '展品6', '张宇', '2019-04-16', '1.jpg', '大气');
+INSERT INTO `curation`.`Exhibit` (`e_id`, `e1_name`, `e1_author`, `e1_date`, `e1_image`, `e1_description`) VALUES (1, '展品7', '张宇', '2019-04-16', '1.jpg', '精美');
+INSERT INTO `curation`.`Exhibit` (`e_id`, `e1_name`, `e1_author`, `e1_date`, `e1_image`, `e1_description`) VALUES (1, '展品8', '张宇', '2019-04-16', '1.jpg', '大气');
+INSERT INTO `curation`.`Exhibit` (`e_id`, `e1_name`, `e1_author`, `e1_date`, `e1_image`, `e1_description`) VALUES (1, '展品9', '张宇', '2019-04-16', '1.jpg', '精美');
+INSERT INTO `curation`.`Exhibit` (`e_id`, `e1_name`, `e1_author`, `e1_date`, `e1_image`, `e1_description`) VALUES (1, '展品10', '张宇', '2019-04-16', '1.jpg', '大气');
+
+#插入展览
+INSERT INTO `curation`.`Exhibition` (`e_name`, `e_address`, `e_begin_date`,`e_end_date`, `e_price`, `e_description`, `e_image`, `e_video`, `e_person_in_charge`) VALUES ('简至诗意升起时(SIMPLICITY CREATES POETRY', '江苏省无锡市滨湖区蠡湖大道500号', '2019-05-22 14:00:00','2019-07-15 17:00:00', 0, '约翰·莫尔绘画奖（中国）特展', '1.jpg', '1.mp4', '王雨晴');
